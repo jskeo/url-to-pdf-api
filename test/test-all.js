@@ -9,8 +9,8 @@ const config = require('../src/config.js');
 const app = createApp();
 
 describe('GET /api/render', () => {
-  it('request must have "url" query parameter', () =>
-    request(app).get('/api/render').expect(400)
+  it('request must fail when not from allowed domain', () =>
+    request(app).get('/api/render').expect(403)
   );
 
   it('invalid domain should cause an error', () =>
@@ -26,7 +26,7 @@ describe('GET /api/render', () => {
     request(app)
       .get('/api/render')
       .query({
-        url: ALLOW_DOMAIN,
+        url: 'https://'ALLOW_DOMAIN,
       })
       .expect(200)
   );
