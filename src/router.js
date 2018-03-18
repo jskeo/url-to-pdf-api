@@ -24,7 +24,6 @@ function createRouter() {
     });
   } else {
     logger.warn('Warning: no authentication required to use the API');
-    logger.info(req);
   }
  
 
