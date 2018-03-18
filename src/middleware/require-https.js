@@ -19,7 +19,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         var request_url_splitted_step_c = request_url_splitted_step_a.split(":")[1].split("/")[2];
 
-        var request_url_splitted_step_d = request_url_splitted_step_a.split(":")[1].split("//")[2].split("/")[0];
+        // var request_url_splitted_step_d = request_url_splitted_step_a.split(":")[1].split("//")[2].split("/")[0];
 
         // Logging target domain
 
@@ -42,10 +42,15 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             return err;
 
         } else {
+            
+        // When all is good, go on
 
             return next();
         }
     }
+    
+    // Vanilla Function, should validate https when allow_http is false in env, but doesn't. Main contributors of url-to-pdf-api
+    // seem to be working on a fix. In the meantime, I decided to handle this the gnarly way.
 
     const err = new Error('Only HTTPS allowed.');
     err.status = 403;
