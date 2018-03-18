@@ -4,7 +4,7 @@ const chai = require('chai');
 const request = require('supertest');
 const { getResource } = require('./util');
 const createApp = require('../src/app');
-const config = require('../config');
+const config = require('../src/config.js');
 
 const app = createApp();
 
