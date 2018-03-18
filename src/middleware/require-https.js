@@ -20,7 +20,21 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 		next(err);
 	}
 
-	else
+	else {
+
+		var request_url_splitted_step_c = request_url_splitted_step_a.split(":")[1].split("/")[2];
+		
+		var request_url_splitted_step_d = request_url_splitted_step_a.split(":")[1].split("//")[2].split("/")[0];
+
+		console.log(request_url_splitted_step_c);
+
+		if (request_url_splitted_step_c !== "admin.bottimmo.de") {
+
+		const err = new Error('Access Denied.');
+		err.status = 403;
+		return err;
+
+	}
     
     return next();
   }
