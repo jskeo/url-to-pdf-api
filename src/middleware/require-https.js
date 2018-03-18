@@ -20,7 +20,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 		next(err);
 	}
 
-	else {
+	else if {
 
 		var request_url_splitted_step_c = request_url_splitted_step_a.split(":")[1].split("/")[2];
 		
@@ -35,6 +35,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 		return err;
 
 	}
+	
+	else
     
     return next();
   }
