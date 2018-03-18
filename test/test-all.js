@@ -25,7 +25,7 @@ describe('GET /api/render', () => {
     request(app)
       .get('/api/render')
       .query({
-        url: 'https://'.get(config.ALLOW_DOMAIN),
+        url: 'https://' + .get(config.ALLOW_DOMAIN),
       })
       .expect(200)
   );
