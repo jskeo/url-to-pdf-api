@@ -1,6 +1,9 @@
+const config = require('../config');
 const createRequireHttps = () => function RequireHttps(req, res, next) {
     if (req.secure) {
         // Allow requests only over https
+        // Logging if env is correct
+        console.log(config.ALLOW_DOMAIN);
         // Logging request url
         console.log(req.url);
 
@@ -35,7 +38,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
 
         // Actual gnarly condition allowing of only one target domain
-        else if (request_url_splitted_step_c !== "admin.bottimmo.de") {
+        else if (request_url_splitted_step_c !== config.ALLOW_DOMAIN) {
 
             const err = new Error('Access Denied.');
             err.status = 403;
