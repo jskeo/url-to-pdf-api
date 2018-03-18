@@ -1,6 +1,7 @@
 const createRequireHttps = () => function RequireHttps(req, res, next) {
   if (req.secure) {
     // Allow requests only over https
+    logger.info(req);
     return next();
   }
 
