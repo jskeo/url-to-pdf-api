@@ -1,10 +1,10 @@
 /* eslint-env mocha */
 
+const config = require('../src/config.js');
 const chai = require('chai');
 const request = require('supertest');
 const { getResource } = require('./util');
 const createApp = require('../src/app');
-const config = require('../src/config.js');
 
 const app = createApp();
 
