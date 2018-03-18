@@ -1,10 +1,11 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jskeo/url-to-pdf-api)
 
+
 Branch: Master
-[![Build Status](https://travis-ci.org/jskeo/url-to-pdf-api.svg?branch=master)](https://travis-ci.org/jskeo/url-to-pdf-api)
+[![Build Status](https://travis-ci.org/jskeo/pdf-api.svg?branch=master)](https://travis-ci.org/jskeo/pdf-api)
 
 Branch: jskeo-dev
-[![Build Status](https://travis-ci.org/jskeo/url-to-pdf-api.svg?branch=jskeo-dev)](https://travis-ci.org/jskeo/url-to-pdf-api)
+[![Build Status](https://travis-ci.org/jskeo/pdf-api.svg?branch=jskeo-dev)](https://travis-ci.org/jskeo/pdf-api)
 
 # URL to PDF Microservice
 
@@ -16,6 +17,11 @@ Branch: jskeo-dev
 risks. It allows API users to run any JavaScript code inside a Chrome session on the server.
 It's fairly easy to expose the contents of files on the server. You have been warned!*
 
+**JSKEO**: Thanks for the warning! This repo has fixes for these security concerns. For now the documentation is almost the same, most important takeaway is 
+this version has a new env variable: ALLOW_DOMAIN. It's used to allow only one target domain. Also, various interaction methods are disabled and a fix for a known bug
+in the original version that allows http even when ALLOW_HTTP variable is false. My fix is not too sophisticated, but it works.
+
+Stay tuned.
 **⭐️ Features:**
 
 * Converts any URL or HTML content to a PDF file
