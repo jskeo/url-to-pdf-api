@@ -1,6 +1,10 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jskeo/url-to-pdf-api)
 
-[![Build Status](https://travis-ci.org/alvarcarto/url-to-pdf-api.svg?branch=master)](https://travis-ci.org/alvarcarto/url-to-pdf-api)
+Branch: Master
+[![Build Status](https://travis-ci.org/jskeo/url-to-pdf-api.svg?branch=master)](https://travis-ci.org/jskeo/url-to-pdf-api)
+
+Branch: jskeo-dev
+[![Build Status](https://travis-ci.org/jskeo/url-to-pdf-api.svg?branch=jskeo-dev)](https://travis-ci.org/jskeo/url-to-pdf-api)
 
 # URL to PDF Microservice
 
