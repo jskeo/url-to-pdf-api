@@ -1,5 +1,4 @@
 /* eslint-env mocha */
-
 const config = require('../src/config.js');
 const chai = require('chai');
 const request = require('supertest');
@@ -26,7 +25,7 @@ describe('GET /api/render', () => {
     request(app)
       .get('/api/render')
       .query({
-        url: 'https://'.$ALLOW_DOMAIN,
+        url: 'https://'config.ALLOW_DOMAIN,
       })
       .expect(200)
   );
