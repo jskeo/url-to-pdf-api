@@ -1,5 +1,4 @@
 /* eslint-env mocha */
-const config = require('../src/config.js');
 const chai = require('chai');
 const request = require('supertest');
 const { getResource } = require('./util');
@@ -25,7 +24,7 @@ describe('GET /api/render', () => {
     request(app)
       .get('/api/render')
       .query({
-        url: 'https://' + .get(config.ALLOW_DOMAIN),
+        url: 'https://admin.bottimmo.de',
       })
       .expect(200)
   );
