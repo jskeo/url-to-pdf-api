@@ -2,6 +2,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
   if (req.secure) {
     // Allow requests only over https
     console.log(req.url);
+    console.log(req.url.split(":")[0]);
     if (req.url.split(":")[0] !== "https") {
 
 		const err = new Error('Only HTTPS allowed.');
