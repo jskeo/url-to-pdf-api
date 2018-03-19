@@ -13,7 +13,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
             const err = new Error('Access denied.');
             err.status = 403;
-            next(err);
+            err;
         };
 
 
