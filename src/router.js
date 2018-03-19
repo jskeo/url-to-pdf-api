@@ -26,13 +26,7 @@ function createRouter() {
     logger.warn('Warning: no authentication required to use the API');
   }
  
-   if (router.req.method !== "GET") {
-
-            const err = new Error('Access denied');
-            err.status = 403;
-            next(err);
-        } else {
-
+  
 
   const getRenderSchema = {
     query: renderQuerySchema,
@@ -59,7 +53,7 @@ function createRouter() {
  
   
   return router;
-  }
+  
 }
 
 module.exports = createRouter;
