@@ -49,11 +49,7 @@ function createRouter() {
     },
   };
   //router.post('/api/render', validate(postRenderSchema), pdf.postRender);
-  
-  if router.post('/api/render', validate(postRenderSchema), pdf.postRender)
-  {
-    ex.throwStatus(403, 'Access denied');
-  }
+ 
   
   return router;
 }
