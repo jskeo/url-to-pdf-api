@@ -48,8 +48,13 @@ function createRouter() {
       contextRequest: true,
     },
   };
-  router.post('/api/render', validate(postRenderSchema), pdf.postRender);
-
+  //router.post('/api/render', validate(postRenderSchema), pdf.postRender);
+  
+  if router.post('/api/render', validate(postRenderSchema), pdf.postRender)
+  {
+    ex.throwStatus(400, 'Access denied');
+  }
+  
   return router;
 }
 
