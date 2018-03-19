@@ -3,6 +3,9 @@ const ex = require('../util/express');
 const pdfCore = require('../core/pdf-core');
 
 const getRender = ex.createRoute((req, res) => {
+  if (req.method !== GET) {
+    ex.throwStatus(400, 'Access denied');
+  }
   const opts = getOptsFromQuery(req.query);
   return pdfCore.render(opts)
     .then((data) => {
@@ -90,4 +93,3 @@ module.exports = {
   getRender,
   postRender,
 };
-
