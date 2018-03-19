@@ -1,5 +1,7 @@
 const createRequireHttps = () => function RequireHttps(req, res, next) {
-  if (req.x-forwarded-proto ='https') {
+  console.log(req.x-forwarded-proto);
+        
+  if (req.x-forwarded-proto = 'https') {
     // Allow requests only over https
     return next();
   }
