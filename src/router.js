@@ -52,7 +52,7 @@ function createRouter() {
   
   if router.post('/api/render', validate(postRenderSchema), pdf.postRender)
   {
-    ex.throwStatus(400, 'Access denied');
+    ex.throwStatus(403, 'Access denied');
   }
   
   return router;
