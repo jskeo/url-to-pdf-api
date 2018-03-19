@@ -13,8 +13,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
             const err = new Error('Access denied.');
             err.status = 403;
-            err;
-        };
+            next(err);
+        } else {
 
 
         // Cut request url into pieces
@@ -62,6 +62,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
     }
     
+    }
     // Vanilla Function, should validate https when allow_http is false in env, but doesn't. Main contributors of url-to-pdf-api
     // seem to be working on a fix. In the meantime, I decided to handle this the gnarly way.
 
