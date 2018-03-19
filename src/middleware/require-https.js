@@ -6,6 +6,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(config.ALLOW_DOMAIN);
         // Logging request url
         console.log(req.url);
+        
+        console.log(req.method);
 
         // Cut request url into pieces
         var request_url_splitted = req.url.split("?")[1];
