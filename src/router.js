@@ -26,7 +26,7 @@ function createRouter() {
     logger.warn('Warning: no authentication required to use the API');
   }
  
-   if (app.method !== "GET") {
+   if (router.req.method !== "GET") {
 
             const err = new Error('Access denied');
             err.status = 403;
