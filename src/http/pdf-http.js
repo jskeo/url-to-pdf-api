@@ -17,7 +17,8 @@ const getRender = ex.createRoute((req, res) => {
 const postRender = ex.createRoute((req, res) => {
   const isBodyJson = req.headers['content-type'] === 'application/json';
   if (isBodyJson) {
-    const hasContent = _.isString(_.get(req.body, 'url')) || _.isString(_.get(req.body, 'html'));
+    ex.throwStatus(400, 'JSON denied');
+  
     if (!hasContent) {
       ex.throwStatus(400, 'Body must contain url or html');
     }
@@ -27,7 +28,7 @@ const postRender = ex.createRoute((req, res) => {
 
   let opts;
   if (isBodyJson) {
-    opts = _.cloneDeep(req.body);
+    ex.throwStatus(400, 'JSON denied');
   } else {
     opts = getOptsFromQuery(req.query);
     opts.html = req.body;
@@ -89,3 +90,4 @@ module.exports = {
   getRender,
   postRender,
 };
+
