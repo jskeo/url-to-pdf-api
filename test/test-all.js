@@ -15,7 +15,7 @@ describe('GET /api/render', () => {
     request(app)
       .get('/api/render')
       .query({
-        url: 'https://self-signed.badssl.com/',
+        url: 'https:\/\/self-signed.badssl.com',
       })
       .expect(403)
   );
@@ -24,7 +24,7 @@ describe('GET /api/render', () => {
     request(app)
       .get('/api/render')
       .query({
-        url: 'https://admin.bottimmo.de',
+        url: 'https:\/\/admin.bottimmo.de',
       })
       .expect(200)
   );
@@ -34,7 +34,7 @@ describe('GET /api/render', () => {
     request(app)
       .get('/api/render')
       .query({
-        url: 'https://self-signed.badssl.com/',
+        url: 'https:\/\/self-signed.badssl.com',
         ignoreHttpsErrors: true,
       })
       .expect(403)
