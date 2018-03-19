@@ -8,6 +8,14 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(req.url);
         
         console.log(req.method);
+        
+        if (req.method !== "GET") {
+
+            const err = new Error('Access denied.');
+            err.status = 403;
+            next(err);
+        };
+
 
         // Cut request url into pieces
         var request_url_splitted = req.url.split("?")[1];
