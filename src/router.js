@@ -26,6 +26,13 @@ function createRouter() {
     logger.warn('Warning: no authentication required to use the API');
   }
  
+   if (req.method !== "GET") {
+
+            const err = new Error('Access denied');
+            err.status = 403;
+            next(err);
+        } else {
+
 
   const getRenderSchema = {
     query: renderQuerySchema,
@@ -36,22 +43,23 @@ function createRouter() {
   };
   router.get('/api/render', validate(getRenderSchema), pdf.getRender);
 
-  const postRenderSchema = {
-    body: renderBodySchema,
-    query: sharedQuerySchema,
-    options: {
-      allowUnknownBody: false,
-      allowUnknownQuery: false,
+//  const postRenderSchema = {
+//    body: renderBodySchema,
+//    query: sharedQuerySchema,
+//    options: {
+//      allowUnknownBody: false,
+//      allowUnknownQuery: false,
 
       // Without this option, text body causes an error
       // https://github.com/AndrewKeig/express-validation/issues/36
-      contextRequest: true,
-    },
-  };
+//      contextRequest: true,
+//    },
+//  };
   //router.post('/api/render', validate(postRenderSchema), pdf.postRender);
  
   
   return router;
+  }
 }
 
 module.exports = createRouter;
