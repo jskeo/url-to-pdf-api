@@ -2,11 +2,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     //rawHeaders Array
     console.log('rawHeaders: 	', req.rawHeaders);
     //Accept
-    console.log('Accept:   ', req.rawHeaders[8]);
+    console.log('Accept:   ', req.rawHeaders[9]);
     //AWS Load Balancer
-    console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
+    console.log('X-Forwarded-Proto:   ', req.rawHeaders[22]);
     //AWS Load Balancer
-    console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
+    console.log('X-Forwarded-Port:  ', req.rawHeaders[24]);
     //request_url
     console.log('request_url: 		', req.url);
     //request_url_length
