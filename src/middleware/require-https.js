@@ -1,8 +1,26 @@
 const createRequireHttps = () => function RequireHttps(req, res, next) {
-  console.log(req.protocol);
-  console.log(req.rawHeaders);
-  console.log('X-Forwarded-Proto:   ' , req.rawHeaders[21]);
-  console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
+    //rawHeaders Array
+    console.log('rawHeaders: 	', req.rawHeaders);
+    //Accept
+    console.log('Accept:   ', req.rawHeaders[8]);
+    //AWS Load Balancer
+    console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
+    //AWS Load Balancer
+    console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
+    //request_url
+    console.log('request_url: 		', request_url);
+    //request_url_length
+    console.log('request_url_length: 	', request_url.length);
+    //request_method should be GET
+    console.log('request_method: 	', req.method);
+    //original_url
+    console.log('originalUrl: 	', req.originalUrl);
+    //parsed_url
+    console.log('_parsedUrl: 	', req._parsedUrl);
+    //params
+    console.log('params' 	,req.params);
+ 	  //query
+    console.log('query 		', req.query);
         
   if (req.rawHeaders[21] == 'https') {
     // Allow requests only over https
