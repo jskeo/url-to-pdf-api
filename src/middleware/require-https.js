@@ -4,9 +4,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     //Accept
     console.log('Accept:   ', req.rawHeaders[9]);
     //AWS Load Balancer
-    console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
+    console.log('X-Forwarded-Proto:   ', req.rawHeaders[19]);
     //AWS Load Balancer
-    console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
+    console.log('X-Forwarded-Port:  ', req.rawHeaders[21]);
     //request_url
     console.log('request_url: 		', req.url);
     //request_url_length
@@ -23,7 +23,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     console.log('query 		', req.query);
     
         
-  if (req.rawHeaders[21] == 'https') {
+  if (req.rawHeaders[19] == 'https') {
     // Allow requests only over https
     return next();
   }
