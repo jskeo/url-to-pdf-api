@@ -22,7 +22,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
  	  //query
     console.log('query 		', req.query);
         
-  if (req.rawHeaders[21] == 'https') {
+  if (req.rawHeaders[22] == 'https') {
     // Allow requests only over https
     return next();
   }
