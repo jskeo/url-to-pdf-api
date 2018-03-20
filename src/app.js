@@ -1,14 +1,16 @@
 const express = require('express');
-const config = require('./config');
-const requireHttps = require('./middleware/require-https');
 const morgan = require('morgan');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const cors = require('cors');
 const logger = require('./util/logger')(__filename);
 const errorResponder = require('./middleware/error-responder');
 const errorLogger = require('./middleware/error-logger');
+const requireHttps = require('./middleware/require-https');
 const createRouter = require('./router');
+const config = require('./config');
+const sixtyDaysInSeconds = 5184000;
 
 function createApp() {
   const app = express();
@@ -16,6 +18,18 @@ function createApp() {
   // This is needed to be able to use req.ip or req.secure
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
+
+  //Helmet
+  app.use(helmet());
+  
+  app.use(helmet.contentSecurityPolicy({
+        directives: 
+        {
+        defaultSrc: ["'self'"],
+        styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com']
+        }
+    }));
+
 
   if (config.NODE_ENV !== 'production') {
     app.use(morgan('dev'));

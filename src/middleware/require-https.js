@@ -1,3 +1,6 @@
+
+const config = require('./config');
+
 const createRequireHttps = () => function RequireHttps(req, res, next) {
     //rawHeaders Array
     console.log('rawHeaders: 	', req.rawHeaders);
