@@ -1,6 +1,6 @@
 const createRequireHttps = () => function RequireHttps(req, res, next) {
   console.log(req.protocol);
-  console.log(req.headers[0]);
+  console.log(req.rawHeaders[0]);
         
   if (req.protocol == 'https') {
     // Allow requests only over https
