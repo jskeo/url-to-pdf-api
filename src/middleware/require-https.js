@@ -8,9 +8,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     //AWS Load Balancer
     console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
     //request_url
-    console.log('request_url: 		', request_url);
+    console.log('request_url: 		', req.url);
     //request_url_length
-    console.log('request_url_length: 	', request_url.length);
+    console.log('request_url_length: 	', req.url.length);
     //request_method should be GET
     console.log('request_method: 	', req.method);
     //original_url
