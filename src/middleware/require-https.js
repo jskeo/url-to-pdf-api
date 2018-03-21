@@ -86,12 +86,12 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
 
         var target = req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2];
-        var requestUrlLength = length(req.url);
-        var requestIdLength = length(req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3]);
+        var requestUrl = req.url;
+        var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
 
         console.log(target);
-        console.log(requestUrlLength);
-        console.log(requestIdLength);
+        console.log(requestUrl.length);
+        console.log(requestId.length);
         
             if (req.method !== "GET") {
                 const err = new Error('Invalid Request. 1');
@@ -101,7 +101,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (config.REQUEST_URL_LENGTH !== requestUrlLength) {
+            } else if (config.REQUEST_URL_LENGTH !== requestUrl.length) {
                 const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
