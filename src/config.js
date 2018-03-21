@@ -8,7 +8,7 @@ const config = {
   ALLOW_HTTP: process.env.ALLOW_HTTP === 'false',
   DEBUG_MODE: process.env.DEBUG_MODE === 'true',
   ALLOW_POST: process.env.ALLOW_POST === 'false',
-  ALLOW_DOMAIN: process.env.ALLOW_DOMAIN
+  ALLOW_DOMAIN: process.env.ALLOW_DOMAIN,
   REQUEST_ARRAY: process.env.REQUEST_ARRAY,
   REQUEST_URL_LENGTH: process.env.REQUEST_URL_LENGTH,
   API_TOKENS: [],
