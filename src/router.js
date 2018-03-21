@@ -5,12 +5,8 @@ const pdf = require('./http/pdf-http');
 const config = require('./config');
 const logger = require('./util/logger')(__filename);
 const { renderQuerySchema, renderBodySchema, sharedQuerySchema } = require('./util/validation');
-
-const postRequestDenied = function postRequestDenied() {
-    const err = new Error('Invalid Request.');
-    err.status = 403;
-    return err;
-};
+const postRequestDenied = require('postdenied');
+const bodyParser = require('body-parser');
 
 function createRouter() {
     const router = express.Router();
@@ -72,18 +68,23 @@ function createRouter() {
         },
     };
 
-    if (config.ALLOW_POSTS === 'true') {
-        logger.warn('POST Requests allowed. Set this vaule to false to disable.');
+    // if (config.ALLOW_POSTS === 'true') {
+    //     logger.warn('POST Requests allowed. Set this vaule to false to disable.');
 
-        router.post('/api/render', validate(postRenderSchema), pdf.postRender);
+    //     router.post('/api/render', validate(postRenderSchema), pdf.postRender);
 
-    } else {
+    // } else {
 
-        logger.info('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: All POST Requests are denied.');
+    //     logger.info('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: All POST Requests are denied.');
 
-        postRequestDenied();
+    //     postRequestDenied();
 
-    };
+    // };
+    //
+    //
+    var jsonParser = bodyParser.json();
+    router.post('/api/render', validate(postRenderSchema), jsonParser, function (req, res) {
+      return res.sendStatus(403) });
 
 
     return router;
