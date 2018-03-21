@@ -91,7 +91,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     }
     //requestId
     try {
-    console.log('requestId:         ', isEmpty(req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3]));
+    console.log('requestId:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3]);
     } catch(error) {
         const err = new Error('Invalid Request. 5');
                 err.status = 403;
