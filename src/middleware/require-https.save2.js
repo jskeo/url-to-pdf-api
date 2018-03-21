@@ -27,12 +27,64 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     try {
     console.log('req.url_undef:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[4]);
     } catch(error) {
-        const err = new Error('Invalid Request. 5');
+        const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
     }
 
-   
+    //id
+    console.log('req.url_id:        ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3]);
+
+    //req.url_id_legnth
+    console.log('req.url_length:    ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3].length);
+
+    //req.url_pdfs
+    console.log('req.url_pdfs:      ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[2]);
+
+    //req.url_pdfs_length
+    console.log('req.url_pdfs_length:', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[2].length);
+
+    //req.url_v1
+    console.log('req.url_v1:        ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[1]);
+
+    //req.url_v1_length
+    console.log('req.url_v1_length:     ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[1].length);
+
+    //req.url_api
+    console.log('req.url_api:       ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[0]);
+
+    //req.url_api_length
+    console.log('req.url_api_length:    ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[0].length);
+
+    //target_domain
+    console.log('target_domain:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2]);
+
+    //target_domain_length
+    console.log('target_domain_length:  ', req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2].length);
+
+    //url_equal_input_param_and_url
+    console.log('first_questionmark:    ', req.url.split("?")[1]);
+
+    //target_uri
+    console.log('target_uri:        ', req.url.split("?")[1].split("=")[1]);
+
+    //protocol_type
+    console.log('protocol_type:         ', req.url.split("?")[1].split("=")[1].split(":")[0]);
+
+    //protocol_type_length
+    console.log('protocol_type_length:  ', req.url.split("?")[1].split("=")[1].split(":")[0].length);
+
+    //req.url
+    console.log('req.url:       ', req.url);
+
+    //req.url_length
+    console.log('requestUrlLength:    ', req.url.length);
+
+    //additionals
+    console.log('additionals:       ', req.url.split("?")[2]);
+
+    //additionals_length    
+    console.log('additionals_length:    ', req.url.split("?")[2].length);
 
     console.log(config.REQUEST_URL_LENGTH);
     console.log(config.TARGET_DOMAIN);

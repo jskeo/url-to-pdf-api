@@ -79,7 +79,7 @@ function createRouter() {
 
     } else {
 
-        logger.warn('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: POST Request denied.');
+        logger.info('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: All POST Requests are denied.');
 
         postRequestDenied();
 
