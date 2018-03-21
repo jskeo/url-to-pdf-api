@@ -6,7 +6,7 @@ const config = require('./config');
 const logger = require('./util/logger')(__filename);
 const { renderQuerySchema, renderBodySchema, sharedQuerySchema } = require('./util/validation');
 
-function postRequestDenied {
+function postRequestDenied() {
                 const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
