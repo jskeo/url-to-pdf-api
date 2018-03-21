@@ -81,8 +81,8 @@ function createRouter() {
     // };
     //
     //
-    var jsonParser = bodyParser.json();
-    router.post('/api/render', jsonParser,function (req, res) {
+    
+    router.post('/api/render', function (res) {
       return res.sendStatus(403) });
 
 
