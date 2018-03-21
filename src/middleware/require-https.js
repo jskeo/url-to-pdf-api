@@ -28,48 +28,62 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     console.log('params' 	,req.params);
  	//query
     console.log('query 		', req.query);
+   //undefinded
+    console.log('req.url_undef:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[4]); 
+    
+    //id
+    console.log('req.url_id:        ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3]); 
+    
+    //req.url_id_legnth
+    console.log('req.url_length:    ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3].length);  
+    
+    //req.url_pdfs
+    console.log('req.url_pdfs:      ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[2]); 
+
+    //req.url_pdfs_length
+    console.log('req.url_pdfs_length:', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[2].length); 
+
+    //req.url_v1
+    console.log('req.url_v1:        ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[1]); 
+
+    //req.url_v1_length
+    console.log('req.url_v1_length:     ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[1].length);  
+
+    //req.url_api
+    console.log('req.url_api:       ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[0]);
+
+    //req.url_api_length
+    console.log('req.url_api_length:    ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[0].length);  
+
     //target_domain
     console.log('target_domain:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2]);
 
-    console.log('what       ', req.url.split("?")[1].split("=")[1]);
+    //target_domain_length
+    console.log('target_domain_length:  ', req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2].length);
 
-  
-    //undefinded
+    //url_equal_input_param_and_url
+    console.log('first_questionmark:    ',req.url.split("?")[1]);
 
-    console.log('request_url_undef:     ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[4]);    
+    //target_uri
+    console.log('target_uri:        ', req.url.split("?")[1].split("=")[1]);
 
+    //protocol_type
+    console.log('protocol_type:         ', req.url.split("?")[1].split("=")[1].split(":")[0]);
 
-    //id
+    //protocol_type_length
+    console.log('protocol_type_length:  ', req.url.split("?")[1].split("=")[1].split(":")[0].length);
 
-    console.log('request_url_id:    ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[3]);    
+    //req.url
+    console.log('req.url:       ', req.url);
 
-    //request_url_id_legnth
+    //req.url_length
+    console.log('req.url_length:    ', req.url.length);
+    
+    //additionals
+    console.log('additionals:       ', req.url.split("?")[2]);
 
-    console.log('request_url_length:    ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[3].length); 
-
-    //request_url_pdfs
-
-    console.log('request_url_pdfs:  ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[2]);    
-
-    //request_url_pdfs_length
-
-    console.log('request_url_pdfs_length:', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[2].length);    
-
-    //request_url_v1
-
-    console.log('request_url_v1:    ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[1]);    
-
-    //request_url_v1_length
-
-    console.log('request_url_v1_length:     ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[1].length); 
-
-    //request_url_api
-
-    console.log('request_url_api:   ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0]);
-
-    //request_url_api
-
-    console.log('request_url_api_length:   ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].length);
+    //additionals_length    
+    console.log('additionals_length:    ', req.url.split("?")[2].length);
 
         
   if (req.url.split("?")[1] == 'https') {
