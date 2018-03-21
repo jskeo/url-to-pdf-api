@@ -15,6 +15,10 @@
       "description": "When set to \"true\", unsecure requests are allowed.",
       "value": "false"
     },
+    "ALLOW_POST": {
+      "description": "When set to \"true\", POST requests are allowed.",
+      "value": "false"
+    },
     "API_TOKENS": {
       "description": "Comma-separated list of accepted keys in x-api-key header.",
       "required": false

@@ -5,9 +5,10 @@ const config = {
   PORT: Number(process.env.PORT) || 9000,
   NODE_ENV: process.env.NODE_ENV,
   LOG_LEVEL: process.env.LOG_LEVEL,
-  ALLOW_HTTP: process.env.ALLOW_HTTP === 'true',
+  ALLOW_HTTP: process.env.ALLOW_HTTP === 'false',
   DEBUG_MODE: process.env.DEBUG_MODE === 'true',
-  ALLOW_DOMAIN: process.env.ALLOW_DOMAIN,
+  ALLOW_POST: process.env.ALLOW_POST === 'false',
+  ALLOW_DOMAIN: process.env.ALLOW_DOMAIN
   REQUEST_ARRAY: process.env.REQUEST_ARRAY,
   REQUEST_URL_LENGTH: process.env.REQUEST_URL_LENGTH,
   API_TOKENS: [],

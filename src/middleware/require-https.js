@@ -81,10 +81,22 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     //additionals_length    
     console.log('additionals_length:    ', req.url.split("?")[2].length);
 
-        
-  if (req.url.split("?")[1].split("=")[1].split(":")[0] == 'https') {
     // Allow requests only over https
-    return next();
+  if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
+    if (config.ALLOW_POSTS === 'false') {
+        if (req.method) !=== 'GET' {
+            const err = new Error('Invalid Request.');
+            err.status = 403;
+            return next(err);
+        }
+    
+        return next();
+  
+    }
+} else {
+          
+    return next();    
+
   }
 
   const err = new Error('Only HTTPS allowed.');
