@@ -80,6 +80,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     //additionals_length    
     console.log('additionals_length:    ', req.url.split("?")[2].length);
 
+    console.log(config.REQUEST_URL_LENGTH);
+    console.log(config.TARGET_DOMAIN);
     // Allow requests only over https
     if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
 
