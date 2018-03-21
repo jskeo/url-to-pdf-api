@@ -6,7 +6,7 @@ const config = require('./config');
 const logger = require('./util/logger')(__filename);
 const { renderQuerySchema, renderBodySchema, sharedQuerySchema } = require('./util/validation');
 
-function postRequestDenied() {
+const postRequestDenied = function postRequestDenied() {
     const err = new Error('Invalid Request.');
     err.status = 403;
     return err;
@@ -81,7 +81,7 @@ function createRouter() {
 
         logger.info('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: POST Requests option is switched off by default.');
 
-        router.post('/api/render', validate(postRenderSchema), pdf.postRequestDenied())
+        router.post('/api/render', validate(postRenderSchema), pdf.postRequestDenied);
 
     };
 
