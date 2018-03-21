@@ -77,6 +77,6 @@ function createRouter() {
 
 
     return router;
-}
+};
 
 module.exports = createRouter;
