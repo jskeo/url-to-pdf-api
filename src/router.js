@@ -82,7 +82,7 @@ function createRouter() {
     //
     //
     var jsonParser = bodyParser.json();
-    router.post('/api/render', validate(postRenderSchema), jsonParser, function (req, res) {
+    router.post('/api/render', jsonParser,function (req, res) {
       return res.sendStatus(403) });
 
 
