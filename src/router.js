@@ -79,7 +79,7 @@ function createRouter() {
 
     } else {
 
-        logger.info('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: POST Requests option is switched off by default.');
+        logger.warn('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: POST Request denied.');
 
         postRequestDenied();
 
