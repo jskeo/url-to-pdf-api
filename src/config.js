@@ -9,7 +9,7 @@ const config = {
   DEBUG_MODE: process.env.DEBUG_MODE === 'true',
   ALLOW_POST: process.env.ALLOW_POST === 'false',
   ALLOW_DOMAIN: process.env.ALLOW_DOMAIN,
-  REQUEST_ARRAY: process.env.REQUEST_ARRAY,
+  TARGET_DOMAIN: process.env.TARGET_DOMAIN,
   REQUEST_URL_LENGTH: process.env.REQUEST_URL_LENGTH,
   API_TOKENS: [],
 };

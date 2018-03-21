@@ -88,9 +88,17 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
-        }
-    
-        return next();
+        }  else if (req.url.length !== REQUEST_URL_LENGTH) {
+                const err = new Error('Invalid Request.');
+                err.status = 403;
+                return next(err);
+            }  else if (req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2] !== TARGET_DOMAIN) {
+                    const err = new Error('Invalid Request.');
+                    err.status = 403;
+                    return next(err);
+                }  
+        
+                return next();
   
     }
 } else {
