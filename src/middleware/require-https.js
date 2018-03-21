@@ -4,7 +4,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     //rawHeaders Array
     try {
     console.log('rawHeaders:    ', req.rawHeaders);
-    catch(error) {
+    } catch(error) {
         const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
