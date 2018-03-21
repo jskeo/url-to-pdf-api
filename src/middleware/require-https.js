@@ -100,8 +100,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
    
 
-    console.log(config.REQUEST_URL_LENGTH);
-    console.log(config.TARGET_DOMAIN);
+    
+    
     // Allow requests only over https
     if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
     // Cut request into pieces
@@ -118,7 +118,10 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     }
 
     // Logging my last resot
+        console.log('ENV TARGET_DOMAIN :    ', config.TARGET_DOMAIN);
         console.log(target);
+        console.log('ENV REQUEST_URL_LENGTH :       ', config.REQUEST_URL_LENGTH);
+        console.log('requestUrl:        ', requestUrl);
         console.log(requestUrlLength);
         console.log(requestId);
         console.log(requestIdLength);
@@ -131,7 +134,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (config.REQUEST_URL_LENGTH != requestUrlLength || config.REQUEST_URL_LENGTH_WITHOUT_FLAG != requestUrlLength) {
+            } else if (config.REQUEST_URL_LENGTH != requestUrlLength) {
                 const err = new Error('Invalid Request. 3');
                 err.status = 403;
                 return next(err);
