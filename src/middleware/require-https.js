@@ -56,7 +56,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     if (req.method != "GET") {
             const err = new Error('Invalid Request. 0');
             err.status = 403;
-            return next(err);
+            return err;
         };
     } catch(error) {
         const err = new Error('Invalid Request.');
@@ -132,11 +132,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(requestId);
         console.log(requestIdLength);
     // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
-            if (config.TARGET_DOMAIN !== target){
+            if (config.TARGET_DOMAIN !== target) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (config.REQUEST_URL_LENGTH != requestUrlLength || config.REQUEST_URL_LENGTH_WITHOUT_FLAG != requestUrlLength) {
+            } else if (config.REQUEST_URL_LENGTH != requestUrlLength) {
                 const err = new Error('Invalid Request. 3');
                 err.status = 403;
                 return next(err);
