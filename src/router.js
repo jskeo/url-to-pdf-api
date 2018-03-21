@@ -23,7 +23,7 @@ function createRouter() {
       return next();
     });
   } else {
-    logger.warn('Warning: no authentication required to use the API');
+    logger.info('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: X-API-KEY option is switched off');
   }
  
 

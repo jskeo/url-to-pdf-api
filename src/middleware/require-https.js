@@ -33,6 +33,44 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
     console.log('what       ', req.url.split("?")[1].split("=")[1]);
 
+  
+    //undefinded
+
+    console.log('request_url_undef:     ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[4]);    
+
+
+    //id
+
+    console.log('request_url_id:    ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[3]);    
+
+    //request_url_id_legnth
+
+    console.log('request_url_length:    ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[3].length); 
+
+    //request_url_pdfs
+
+    console.log('request_url_pdfs:  ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[2]);    
+
+    //request_url_pdfs_length
+
+    console.log('request_url_pdfs_length:', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[2].length);    
+
+    //request_url_v1
+
+    console.log('request_url_v1:    ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[1]);    
+
+    //request_url_v1_length
+
+    console.log('request_url_v1_length:     ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].split(":")[1].split("//")[2].split("/")[1].length); 
+
+    //request_url_api
+
+    console.log('request_url_api:   ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0]);
+
+    //request_url_api
+
+    console.log('request_url_api_length:   ', req.url.split("=")[1].split(":")[1].split("//")[2].split("/")[0].length);
+
         
   if (req.url.split("?")[1] == 'https') {
     // Allow requests only over https
