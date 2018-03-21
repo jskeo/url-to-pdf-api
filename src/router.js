@@ -81,7 +81,7 @@ function createRouter() {
 
         logger.info('Security Enhanced URL-TO-PDF-API modded by Jrm. Info: POST Requests option is switched off by default.');
 
-        router.post('/api/render', validate(postRenderSchema), postRequestDenied())
+        router.post('/api/render', validate(postRenderSchema), res.postRequestDenied())
 
     };
 
