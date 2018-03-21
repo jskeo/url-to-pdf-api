@@ -90,11 +90,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 1');
                 err.status = 403;
                 return next(err);
-            } else if (req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2] !== config.TARGET_DOMAIN){
+            } else if (config.TARGET_DOMAIN !== req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2]){
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (req.url.length !=== config.REQUEST_URL_LENGTH) {
+            } else if (config.REQUEST_URL_LENGTH !== req.url.length) {
                 const err = new Error('Invalid Request. 3');
                 err.status = 403;
                 return next(err);
