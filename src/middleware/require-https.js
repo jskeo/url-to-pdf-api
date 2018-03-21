@@ -88,16 +88,28 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
-        }
-    
-        return next();
+            }   
+            if (req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2] !== config.TARGET_DOMAIN) {
+                        const err = new Error('Invalid Request.');
+                        err.status = 403;
+                        return next(err);
+                        } 
+                        if (req.url.length !== config.REQUEST_URL_LENGTH) {
+                            const err = new Error('Invalid Request.');
+                            err.status = 403;
+                            return next(err); 
+                            }
+                            
+                            return next();
   
     }
-} 
+} else { 
 
   const err = new Error('Only HTTPS allowed.');
   err.status = 403;
   next(err);
+
+}
 };
 
 module.exports = createRequireHttps;
