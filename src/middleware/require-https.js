@@ -84,15 +84,18 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     console.log(config.TARGET_DOMAIN);
     // Allow requests only over https
     if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
-
+    // Cut request into pieces
         var target = req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2];
         var requestUrl = req.url;
+        var requestUrlLength = requestUrl.length;
         var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
-
+        var requestIdLength = requestId.length;
+    // Logging my last resot
         console.log(target);
-        console.log(requestUrl.length);
-        console.log(requestId.length);
-        
+        console.log(requestUrlLength);
+        console.log(requestId);
+        console.log(requestIdLength);
+    // Check that method is GET, check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
             if (req.method !== "GET") {
                 const err = new Error('Invalid Request. 1');
                 err.status = 403;
@@ -101,18 +104,24 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (config.REQUEST_URL_LENGTH !== requestUrl.length) {
+            } else if (config.REQUEST_URL_LENGTH != requestUrlLength) {
                 const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
-            } else {
+            } else if (config.REQUEST_ID_LENGTH != requestIdLength) {
+                const err = new Error('Invalid Request.');
+                err.status = 403;
+                return next(err); 
+            }
 
+            else {
+    // When all is fine go on
            return next();
 
        }
       
     } else {
-        
+    // When protocol is not HTTPS
     const err = new Error('Only HTTPS allowed.');
     err.status = 403;
     next(err);
