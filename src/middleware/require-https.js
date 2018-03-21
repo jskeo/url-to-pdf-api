@@ -1,5 +1,5 @@
 
-const config = require('./config');
+const config = require('../config');
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
     //rawHeaders Array
