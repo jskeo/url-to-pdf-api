@@ -93,11 +93,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         return next();
   
     }
-} else {
-          
-    return next();    
-
-  }
+} 
 
   const err = new Error('Only HTTPS allowed.');
   err.status = 403;
