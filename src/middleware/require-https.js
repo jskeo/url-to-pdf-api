@@ -85,22 +85,26 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     // Allow requests only over https
     if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
 
+        var target = req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2];
+        console.log(target);
         
             if (req.method !== "GET") {
                 const err = new Error('Invalid Request. 1');
                 err.status = 403;
                 return next(err);
-            } else if (config.TARGET_DOMAIN !== req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2]){
+            } else if (config.TARGET_DOMAIN !== target){
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (config.REQUEST_URL_LENGTH !== req.url.length) {
-                const err = new Error('Invalid Request. 3');
+            } else if (config.REQUEST_URL_LENGTH !== req.url.length ) {
+                const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
-            } 
+            } else {
 
-            return next();
+           return next();
+
+       }
       
     }
         
