@@ -17,6 +17,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 err.status = 403;
                 return next(err);
     }
+
     //AWS Load Balancer
     try {
     console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
@@ -49,9 +50,14 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 err.status = 403;
                 return next(err);
     }
-    //request_method should be GET
+    //Check if method is GET, request_method should be GET
     try {
     console.log('request_method:    ', req.method);
+    if (req.method != "GET") {
+            const err = new Error('Invalid Request. 0');
+            err.status = 403;
+            return next(err);
+        };
     } catch(error) {
         const err = new Error('Invalid Request.');
                 err.status = 403;
@@ -93,7 +99,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     try {
     console.log('requestId:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3]);
     } catch(error) {
-        const err = new Error('Invalid Request. 5');
+        const err = new Error('Invalid Request. 1');
                 err.status = 403;
                 return next(err);
     }
@@ -125,12 +131,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(requestUrlLength);
         console.log(requestId);
         console.log(requestIdLength);
-    // Check that method is GET, check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
-            if (req.method !== "GET") {
-                const err = new Error('Invalid Request. 1');
-                err.status = 403;
-                return next(err);
-            } else if (config.TARGET_DOMAIN !== target){
+    // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
+            if (config.TARGET_DOMAIN !== target){
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
