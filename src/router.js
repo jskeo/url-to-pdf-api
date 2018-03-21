@@ -9,7 +9,7 @@ const { renderQuerySchema, renderBodySchema, sharedQuerySchema } = require('./ut
 function postRequestDenied() {
     const err = new Error('Invalid Request.');
     err.status = 403;
-    return next(err);
+    return err;
 };
 
 function createRouter() {
