@@ -7,9 +7,9 @@ const logger = require('./util/logger')(__filename);
 const { renderQuerySchema, renderBodySchema, sharedQuerySchema } = require('./util/validation');
 
 function postRequestDenied() {
-                const err = new Error('Invalid Request.');
-                err.status = 403;
-                return next(err);
+    const err = new Error('Invalid Request.');
+    err.status = 403;
+    return next(err);
 };
 
 function createRouter() {
@@ -40,6 +40,7 @@ function createRouter() {
             allowUnknownQuery: false,
         },
     };
+
     router.get('/api/render', validate(getRenderSchema), pdf.getRender);
 
     // const postRenderSchema = {
@@ -58,21 +59,21 @@ function createRouter() {
     //original route
     //router.post('/api/render', validate(postRenderSchema), pdf.postRender);
 
+    const postRenderSchema = {
+        body: renderBodySchema,
+        query: sharedQuerySchema,
+        options: {
+            allowUnknownBody: false,
+            allowUnknownQuery: false,
+
+            // Without this option, text body causes an error
+            // https://github.com/AndrewKeig/express-validation/issues/36
+            contextRequest: true,
+        },
+    };
+
     if (config.ALLOW_POSTS === 'true') {
         logger.warn('POST Requests allowed. Set this vaule to false to disable.');
-
-        const postRenderSchema = {
-            body: renderBodySchema,
-            query: sharedQuerySchema,
-            options: {
-                allowUnknownBody: false,
-                allowUnknownQuery: false,
-
-                // Without this option, text body causes an error
-                // https://github.com/AndrewKeig/express-validation/issues/36
-                contextRequest: true,
-            },
-        };
 
         router.post('/api/render', validate(postRenderSchema), pdf.postRender);
 
@@ -82,7 +83,7 @@ function createRouter() {
 
         router.post('/api/render', validate(postRenderSchema), postRequestDenied())
 
-      };
+    };
 
 
     return router;
