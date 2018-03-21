@@ -83,7 +83,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
     // Allow requests only over https
   if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
-    if (config.ALLOW_POSTS === 'false') {
+    
         if (req.method !== GET) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -102,7 +102,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             
                             return next();
   
-    }
+    
 } else { 
 
   const err = new Error('Only HTTPS allowed.');

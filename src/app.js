@@ -20,16 +20,19 @@ function createApp() {
 
   
 
-  if (config.NODE_ENV !== 'production') {
-    app.use(morgan('dev'));
-  }
+  // if (config.NODE_ENV !== 'production') {
+  //   app.use(morgan('dev'));
+  // }
 
-  if (!config.ALLOW_HTTP) {
-    logger.info('All requests require HTTPS.');
-    app.use(requireHttps());
-  } else {
-    logger.info('ALLOW_HTTP=true, unsafe requests are allowed. Don\'t use this in production.');
-  }
+  logger.info('All requests require HTTPS.');
+     app.use(requireHttps());
+
+  // if (!config.ALLOW_HTTP) {
+  //   logger.info('All requests require HTTPS.');
+  //   app.use(requireHttps());
+  // } else {
+  //   logger.info('ALLOW_HTTP=true, unsafe requests are allowed. Don\'t use this in production.');
+  // }
 
   const corsOpts = {
     origin: config.CORS_ORIGIN,
