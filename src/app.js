@@ -19,17 +19,7 @@ function createApp() {
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
 
-  //Helmet
-  app.use(helmet());
   
-  app.use(helmet.contentSecurityPolicy({
-        directives: 
-        {
-        defaultSrc: ["'self'"],
-        styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com']
-        }
-    }));
-
 
   if (config.NODE_ENV !== 'production') {
     app.use(morgan('dev'));
