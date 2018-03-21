@@ -5,7 +5,6 @@ const pdf = require('./http/pdf-http');
 const config = require('./config');
 const logger = require('./util/logger')(__filename);
 const { renderQuerySchema, renderBodySchema, sharedQuerySchema } = require('./util/validation');
-const postRequestDenied = require('postdenied');
 const bodyParser = require('body-parser');
 
 function createRouter() {
