@@ -12,10 +12,6 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
     //request_url
     console.log('request_url: 		', req.url);
-    //request_protocol
-    console.log('request_protocol:       ', req.url.split("?")[1]);
-    //request_protocol_length
-    console.log('request_protocol_length:       ', req.url.split("?")[1].length);
     //request_url_length
     console.log('request_url_length: 	', req.url.length);
     //request_method should be GET
@@ -86,7 +82,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     console.log('additionals_length:    ', req.url.split("?")[2].length);
 
         
-  if (req.url.split("?")[1] == 'https') {
+  if (req.url.split("?")[1].split("=")[1].split(":")[0] == 'https') {
     // Allow requests only over https
     return next();
   }
