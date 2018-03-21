@@ -88,7 +88,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
-            } else if (req.url.length !== config.REQUEST_URL_LENGTH_WITHOUT_FLAG) {
+            } else if (req.url.length !== config.REQUEST_URL_LENGTH) {
                 const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
@@ -96,15 +96,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
-            }  else if (req.url.split("?")[2] !== config.ADDITIONAL_FLAG) {
-                const err = new Error('Invalid Request.');
-                err.status = 403;
-                return next(err);
-            } else if (!req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[4].isEmpty()) {
-                const err = new Error('Invalid Request.');
-                err.status = 403;
-                return next(err);
-            }
+            } 
 
             return next();
       
