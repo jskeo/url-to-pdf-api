@@ -78,7 +78,7 @@ function createRouter() {
             return next(err);
         };
 
-    }
+    };
 
 
     return router;
