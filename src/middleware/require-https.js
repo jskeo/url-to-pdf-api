@@ -94,7 +94,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (req.url.length !== config.REQUEST_URL_LENGTH) {
+            } else if (req.url.length !=== config.REQUEST_URL_LENGTH) {
                 const err = new Error('Invalid Request. 3');
                 err.status = 403;
                 return next(err);
