@@ -1,8 +1,4 @@
-const express = require('express');
 const config = require('../config');
-const bodyParser = require('body-parser');
-const expressSanitizer = require('express-sanitizer');
-
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
     //rawHeaders Array
