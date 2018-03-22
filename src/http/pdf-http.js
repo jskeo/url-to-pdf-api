@@ -5,7 +5,6 @@ const pdfCore = require('../core/pdf-core');
 
 const getRender = ex.createRoute((req, res) => {
   const opts = getOptsFromQuery(req.query);
-  const attachmentName = config.FILE_NAME;
   return pdfCore.render(opts)
     .then((data) => {
       if (opts.attachmentName) {
@@ -50,7 +49,7 @@ const postRender = ex.createRoute((req, res) => {
 function getOptsFromQuery(query) {
   const opts = {
     url: query.url,
-    attachmentName: query.attachmentName,
+    attachmentName: config.FILE_NAME,
     scrollPage: query.scrollPage,
     emulateScreenMedia: query.emulateScreenMedia,
     ignoreHttpsErrors: query.ignoreHttpsErrors,
