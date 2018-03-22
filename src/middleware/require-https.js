@@ -158,8 +158,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 4');
                 err.status = 403;
                 return next(err); 
-            } else if (config.REQUEST_ID_LENGTH != requestIdLength) {
-                const err = new Error('Invalid Request. 4');
+            } else if (requestPathToApi != 11) {
+                const err = new Error('Invalid Request. 10');
                 err.status = 403;
                 return next(err); 
             } else if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG) {
