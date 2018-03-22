@@ -55,13 +55,13 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     }
     //Check if method is GET, request_method should be GET
     try {
-    console.log('request_method:    ', req.method);
+    console.log('request_method:    ', req.method); 
     if (req.method != "GET") {
-        const err = new Error('Invalid Request.');
+        const err = new Error('Invalid Request. I');
                 err.status = 403;
-                return next(err);
+                return next(err); }
     } catch(error) {
-        const err = new Error('Invalid Request.');
+        const err = new Error('Invalid Request. II');
                 err.status = 403;
                 return next(err);
     }
