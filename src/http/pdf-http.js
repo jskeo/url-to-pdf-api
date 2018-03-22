@@ -49,7 +49,6 @@ function getOptsFromQuery(query) {
   const opts = {
     url: query.url,
     title: config.FILE_NAME,
-    attachmentName: config.FILE_NAME,
     scrollPage: query.scrollPage,
     emulateScreenMedia: query.emulateScreenMedia,
     ignoreHttpsErrors: query.ignoreHttpsErrors,
