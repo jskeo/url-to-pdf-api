@@ -82,8 +82,8 @@ function createRouter() {
     //
     //
     
-    router.post('/api/render', function (res) {
-      return res.sendStatus(403) });
+    router.post('/api/render', function (req, res) {
+      return res.sendFile('error.html') });
 
 
     return router;
