@@ -1,3 +1,4 @@
+const Ddos = require('ddos')
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -10,6 +11,7 @@ const requireHttps = require('./middleware/require-https');
 const createRouter = require('./router');
 const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
+const ddos = new Ddos({burst:10, limit:15})
 
 function createApp() {
   const app = express();
@@ -18,7 +20,7 @@ function createApp() {
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
 
-  
+  app.use(ddos.express);
 
   // if (config.NODE_ENV !== 'production') {
   //   app.use(morgan('dev'));
