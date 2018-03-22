@@ -131,6 +131,10 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         var requestUrlLength = requestUrl.length;
         var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
         var requestIdLength = requestId.length;
+        var requestPathToApi = req.url.split("?")[0];
+        var requestPathToApiLength = requestPathToApi.length;
+        console.log(requestPathToApiLength);
+
         } catch(error) {
         const err = new Error('Invalid Request. 6');
                 err.status = 403;
@@ -150,6 +154,10 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
+            } else if (config.REQUEST_ID_LENGTH != requestIdLength) {
+                const err = new Error('Invalid Request. 4');
+                err.status = 403;
+                return next(err); 
             } else if (config.REQUEST_ID_LENGTH != requestIdLength) {
                 const err = new Error('Invalid Request. 4');
                 err.status = 403;
