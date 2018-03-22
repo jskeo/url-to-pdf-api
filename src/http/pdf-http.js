@@ -5,7 +5,7 @@ const pdfCore = require('../core/pdf-core');
 const title = config.FILE_NAME;
 
 const getRender = ex.createRoute((req, res) => {
-  req.query.set('title', title);
+      req.set('title', title);
   const opts = getOptsFromQuery(req.query);
   return pdfCore.render(opts)
     .then((data) => {
