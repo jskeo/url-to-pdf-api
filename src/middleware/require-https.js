@@ -57,7 +57,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             const err = new Error('Invalid Request. 8');
                 err.status = 403;
                 return next(err);
-                res.end();
+                res.send(['Invalid Request. 8']).res.end();
+                req.end();
+                
         };
     } catch(error) {
         const err = new Error('Invalid Request.');
