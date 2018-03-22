@@ -3,6 +3,7 @@ const _ = require('lodash');
 const config = require('../config');
 const logger = require('../util/logger')(__filename);
 
+
 async function render(_opts = {}) {
   const opts = _.merge({
     cookies: [],
@@ -146,5 +147,5 @@ function logOpts(opts) {
 }
 
 module.exports = {
-  render, config.FILE_NAME
+  render, 
 };
