@@ -137,7 +137,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         const err = new Error('Invalid Request. 6');
                 err.status = 403;
                 return next(err);
-    }
+        }
 
     // Logging my last resot
         console.log('ENV TARGET_DOMAIN :    ', config.TARGET_DOMAIN);
@@ -172,13 +172,16 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     const err = new Error('Invalid Request. 2');
                     err.status = 403;
                     return next(err);
-                } else {
+                }
+            
+                 else {
                 // Request Length mismatch
                 const err = new Error('Invalid Request. 3');
                 err.status = 403;
                 return next(err);
-                }    
-    } else {
+            }
+        }    
+     else {
     // When protocol is not HTTPS
     const err = new Error('Only HTTPS allowed.');
     err.status = 403;
