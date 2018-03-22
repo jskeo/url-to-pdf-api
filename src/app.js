@@ -36,8 +36,7 @@ function createApp() {
 
   const corsOpts = {
     origin: config.CORS_ORIGIN,
-    methods: ['GET'],
-    //methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'PATCH'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'PATCH'],
   };
   logger.info('Using CORS options:', corsOpts);
   app.use(cors(corsOpts));
@@ -45,6 +44,8 @@ function createApp() {
   // Limit to 10mb if HTML has e.g. inline images
   app.use(bodyParser.text({ limit: '4mb', type: 'text/html' }));
   app.use(bodyParser.json({ limit: '4mb' }));
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(expressSanitizer());
 
   app.use(compression({
     // Compress everything over 10 bytes

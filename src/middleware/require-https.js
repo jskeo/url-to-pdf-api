@@ -51,20 +51,17 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 return next(err);
     }
     //Check if method is GET, request_method should be GET
-    // try {
-    // console.log('request_method:    ', req.method);
-    // if (req.method != "GET") {
-    //         const err = new Error('Invalid Request. 0');
-    //         err.status = 403;
-    //         return err;
-    //         res.end();
-    //     };
-    // } catch(error) {
-    //     const err = new Error('Invalid Request.');
-    //             err.status = 403;
-    //             return next(err);
-    // }
-    //original_url
+    try {
+    console.log('request_method:    ', req.method);
+    if (req.method != "GET") {
+            res.send(['Invalid Request. 8']).end();
+        };
+    } catch(error) {
+        const err = new Error('Invalid Request.');
+                err.status = 403;
+                return next(err);
+    }
+    original_url
     try {
     console.log('originalUrl:   ', req.originalUrl);
     } catch(error) {
