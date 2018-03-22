@@ -1,4 +1,9 @@
 const config = require('../config');
+const bodyParser = require('body-parser');
+app.use(bodyParser.text({ limit: '4mb', type: 'text/html' }));
+app.use(bodyParser.json({ limit: '4mb' }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressSanitizer());
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
     //rawHeaders Array
@@ -54,7 +59,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     try {
     console.log('request_method:    ', req.method);
     if (req.method != "GET") {
-            res.send(['Invalid Request. 8']).end();
+                res.end();
         };
     } catch(error) {
         const err = new Error('Invalid Request.');
