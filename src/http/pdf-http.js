@@ -68,7 +68,6 @@ function getOptsFromQuery(query) {
       networkIdleTimeout: query['goto.networkIdleTimeout'],
     },
     pdf: {
-      headerTemlate: \<title>pageTitle\<\/title>,
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],
