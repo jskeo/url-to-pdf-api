@@ -2,8 +2,10 @@ const _ = require('lodash');
 const ex = require('../util/express');
 const config = require('../config');
 const pdfCore = require('../core/pdf-core');
+const title = config.FILE_NAME;
 
 const getRender = ex.createRoute((req, res) => {
+  req.query.set('title', title);
   const opts = getOptsFromQuery(req.query);
   return pdfCore.render(opts)
     .then((data) => {
@@ -11,8 +13,6 @@ const getRender = ex.createRoute((req, res) => {
         res.attachment(opts.attachmentName);
       }
       res.set('content-type', 'application/pdf');
-      console.log('FILE_NAME:   ', config.FILE_NAME);
-      console.log('FILE_NAME:   ', config.FILE_NAME);
       res.send(data);
     });
 });
@@ -69,7 +69,7 @@ function getOptsFromQuery(query) {
       networkIdleTimeout: query['goto.networkIdleTimeout'],
     },
     pdf: {
-      title: config.FILE_NAME,
+      title: query.title,
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],
