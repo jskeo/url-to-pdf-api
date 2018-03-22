@@ -5,7 +5,6 @@ const pdfCore = require('../core/pdf-core');
 const title = config.FILE_NAME;
 
 const getRender = ex.createRoute((req, res) => {
-      req.set('title', title);
   const opts = getOptsFromQuery(req.query);
   return pdfCore.render(opts)
     .then((data) => {
@@ -69,7 +68,7 @@ function getOptsFromQuery(query) {
       networkIdleTimeout: query['goto.networkIdleTimeout'],
     },
     pdf: {
-      title: query.title,
+      title: title,
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],
