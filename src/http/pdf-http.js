@@ -11,7 +11,8 @@ const getRender = ex.createRoute((req, res) => {
         res.attachment(opts.attachmentName);
       }
       res.set('content-type', 'application/pdf');
-      res.set('file-name', config.FILE_NAME)
+      console.log('FILE_NAME:   ', config.FILE_NAME);
+      console.log(attachmentName);
       res.send(data);
     });
 });
