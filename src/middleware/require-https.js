@@ -57,7 +57,6 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     try {
     console.log('request_method:    ', req.method);
     if (req.method != "GET") {
-            res.send('Invalid.');
             const err = new Error('Invalid Request.');
                 err.status = 403;
                 return next(err);
