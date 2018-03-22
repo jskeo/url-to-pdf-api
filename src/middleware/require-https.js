@@ -156,7 +156,6 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 return next(err); 
             } else if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG) {
                 // When all is fine go on
-                set.query.attachmentName
                 return next();
             } else {
                 // Throw error invalid request
