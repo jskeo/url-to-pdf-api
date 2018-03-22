@@ -2,7 +2,7 @@ const _ = require('lodash');
 const ex = require('../util/express');
 const config = require('../config');
 const pdfCore = require('../core/pdf-core');
-const title = config.FILE_NAME;
+const pageTitle = config.FILE_NAME;
 
 const getRender = ex.createRoute((req, res) => {
   const opts = getOptsFromQuery(req.query);
@@ -48,9 +48,6 @@ const postRender = ex.createRoute((req, res) => {
 function getOptsFromQuery(query) {
   const opts = {
     url: query.url,
-    headerTemplate: {
-      title: title
-    },
     attachmentName: query.attachmentName,
     scrollPage: query.scrollPage,
     emulateScreenMedia: query.emulateScreenMedia,
@@ -71,6 +68,7 @@ function getOptsFromQuery(query) {
       networkIdleTimeout: query['goto.networkIdleTimeout'],
     },
     pdf: {
+      headerTemlate: \<title>pageTitle\<\/title>,
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],
