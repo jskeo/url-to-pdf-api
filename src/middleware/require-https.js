@@ -57,8 +57,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     try {
     console.log('request_method:    ', req.method);
     if (req.method != "GET") {
-                return res.sendStatus(403);
-                req.end;
+
+                return res.write(403);
+                
         };
     } catch(error) {
         const err = new Error('Invalid Request.');
@@ -138,7 +139,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (config.REQUEST_URL_LENGTH != requestUrlLength) {
+            } else if (config.REQUEST_URL_LENGTH != requestUrlLength || config.REQUEST_URL_LENGTH_WITHOUT_FLAG != requestUrlLength) {
                 const err = new Error('Invalid Request. 3');
                 err.status = 403;
                 return next(err);
