@@ -2,6 +2,7 @@ const Ddos = require('ddos')
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const expressSanitizer = require('express-sanitizer');
 const compression = require('compression');
 const cors = require('cors');
 const logger = require('./util/logger')(__filename);
@@ -48,7 +49,8 @@ function createApp() {
   // Limit to 10mb if HTML has e.g. inline images
   app.use(bodyParser.text({ limit: '4mb', type: 'text/html' }));
   app.use(bodyParser.json({ limit: '4mb' }));
-  
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(expressSanitizer()); 
 
   app.use(compression({
     // Compress everything over 10 bytes
