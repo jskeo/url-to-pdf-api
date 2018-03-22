@@ -140,19 +140,19 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (requestUrlLength != config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_WITHOUT_FLAG) {
-                const err = new Error('Invalid Request. 3');
-                err.status = 403;
-                return next(err);
             } else if (config.REQUEST_ID_LENGTH != requestIdLength) {
                 const err = new Error('Invalid Request. 4');
                 err.status = 403;
                 return next(err); 
-            }
-
-            else {
-    // When all is fine go on
-           return next();
+            } else if {
+                if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG) {
+                // When all is fine go on
+                return next();
+            } else {
+                // Throw error invalid request
+                const err = new Error('Invalid Request. 3');
+                err.status = 403;
+                return next(err);
 
        }
       
