@@ -22,9 +22,10 @@ this version has a new env variable: ALLOW_DOMAIN. It's used to allow only one t
 in the original version that allows http even when ALLOW_HTTP variable is false. My fix is not too sophisticated, but it works.
 
 Stay tuned.
+
 **⭐️ Features:**
 
-* Converts any URL or HTML content to a PDF file
+* Converts only one distinct URL to a PDF file
 * Rendered with Headless Chrome, using [Puppeteer](https://github.com/GoogleChrome/puppeteer). The PDFs should match to the ones generated with a desktop Chrome.
 * Sensible defaults but everything is configurable.
 * Single-page app (SPA) support. Waits until all network requests are finished before rendering. **A feature which even most of the paid services don't have.**
