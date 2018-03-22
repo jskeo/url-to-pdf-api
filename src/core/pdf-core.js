@@ -2,8 +2,8 @@ const puppeteer = require('puppeteer');
 const _ = require('lodash');
 const config = require('../config');
 const title = config.FILE_NAME;
-const logger = require('../util/logger')(title);
-//const logger = require('../util/logger')(__filename);
+//const logger = require('../util/logger')(title);
+const logger = require('../util/logger')(__filename);
 
 
 async function render(_opts = {}) {
