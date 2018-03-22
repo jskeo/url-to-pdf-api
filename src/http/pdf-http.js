@@ -49,7 +49,6 @@ const postRender = ex.createRoute((req, res) => {
 function getOptsFromQuery(query) {
   const opts = {
     url: query.url,
-    title: config.FILE_NAME,
     attachmentName: query.attachmentName,
     scrollPage: query.scrollPage,
     emulateScreenMedia: query.emulateScreenMedia,
@@ -70,6 +69,7 @@ function getOptsFromQuery(query) {
       networkIdleTimeout: query['goto.networkIdleTimeout'],
     },
     pdf: {
+      title: config.FILE_NAME,
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],
