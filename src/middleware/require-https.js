@@ -64,7 +64,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 err.status = 403;
                 return next(err);
     }
-    original_url
+    //original_url
     try {
     console.log('originalUrl:   ', req.originalUrl);
     } catch(error) {
