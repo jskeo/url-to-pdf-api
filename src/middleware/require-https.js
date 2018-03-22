@@ -1,9 +1,8 @@
+const express = require('express');
 const config = require('../config');
 const bodyParser = require('body-parser');
-app.use(bodyParser.text({ limit: '4mb', type: 'text/html' }));
-app.use(bodyParser.json({ limit: '4mb' }));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(expressSanitizer());
+const expressSanitizer = require('express-sanitizer');
+
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
     //rawHeaders Array
