@@ -148,11 +148,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(requestId);
         console.log(requestIdLength);
     // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
-            if (config.TARGET_DOMAIN !== target) {
+            if (config.TARGET_DOMAIN !== target || config.TARGET_DOMAIN_TESTING !== target) {
                 const err = new Error('Invalid Request. 2');
                 err.status = 403;
                 return next(err);
-            } else if (config.REQUEST_ID_LENGTH != requestIdLength) {
+            } else if (config.REQUEST_ID_LENGTH != requestIdLength || config.REQUEST_ID_LENGTH_TESTING != requestIdLength ) {
                 const err = new Error('Invalid Request. 4');
                 err.status = 403;
                 return next(err); 
