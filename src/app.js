@@ -25,6 +25,17 @@ function createApp() {
   //   app.use(morgan('dev'));
   // }
   
+
+  logger.info('All requests require HTTPS.');
+  app.use(requireHttps());
+
+  // if (!config.ALLOW_HTTP) {
+  //   logger.info('All requests require HTTPS.');
+  //   app.use(requireHttps());
+  // } else {
+  //   logger.info('ALLOW_HTTP=true, unsafe requests are allowed. Don\'t use this in production.');
+  // }
+
   const corsOpts = {
   origin: config.CORS_ORIGIN,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'PATCH'],
@@ -39,17 +50,6 @@ function createApp() {
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(expressSanitizer()); 
   
-
-  logger.info('All requests require HTTPS.');
-  app.use(requireHttps());
-
-  // if (!config.ALLOW_HTTP) {
-  //   logger.info('All requests require HTTPS.');
-  //   app.use(requireHttps());
-  // } else {
-  //   logger.info('ALLOW_HTTP=true, unsafe requests are allowed. Don\'t use this in production.');
-  // }
-
 
 
   app.use(compression({
