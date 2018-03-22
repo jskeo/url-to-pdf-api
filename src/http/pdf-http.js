@@ -5,6 +5,7 @@ const pdfCore = require('../core/pdf-core');
 
 const getRender = ex.createRoute((req, res) => {
   const opts = getOptsFromQuery(req.query);
+  const attachmentName = config.FILE_NAME;
   return pdfCore.render(opts)
     .then((data) => {
       if (opts.attachmentName) {
@@ -12,7 +13,7 @@ const getRender = ex.createRoute((req, res) => {
       }
       res.set('content-type', 'application/pdf');
       console.log('FILE_NAME:   ', config.FILE_NAME);
-      console.log(attachmentName);
+      console.log(req.query.attachmentName);
       res.send(data);
     });
 });
