@@ -148,29 +148,36 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(requestId);
         console.log(requestIdLength);
     // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
-            if (config.TARGET_DOMAIN !== target || config.TARGET_DOMAIN_TESTING !== target) {
-                const err = new Error('Invalid Request. 2');
-                err.status = 403;
-                return next(err);
-            } else if (config.REQUEST_ID_LENGTH != requestIdLength || config.REQUEST_ID_LENGTH_TESTING != requestIdLength ) {
-                const err = new Error('Invalid Request. 4');
-                err.status = 403;
-                return next(err); 
-            } else if (requestPathToApiLength != 11) {
-                const err = new Error('Invalid Request. 10');
-                err.status = 403;
-                return next(err); 
-            } else if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG) {
-                // When all is fine go on
-                return next();
-            } else {
-                // Throw error invalid request
+            if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || requestUrlLength == config.REQUEST_URL_LENGTH_TESTING || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
+                if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
+                    if (requestPathToApiLength == 11) {
+                        if (config.REQUEST_ID_LENGTH == requestIdLength) {
+                            // When all is fine go on
+                            return next();
+                            } else {
+                                // Request ID Length error
+                                const err = new Error('Invalid Request. 4');
+                                err.status = 403;
+                                return next(err); 
+                                }
+                            } else {
+                        //RequestPathToApiLength error
+                        const err = new Error('Invalid Request. 10');
+                        err.status = 403;
+                        return next(err);
+                        }
+                    }
+                } else {
+                    //Target Domain mismatch
+                    const err = new Error('Invalid Request. 2');
+                    err.status = 403;
+                    return next(err);
+                } else {
+                // Request Length mismatch
                 const err = new Error('Invalid Request. 3');
                 err.status = 403;
                 return next(err);
-
-       }
-      
+                }    
     } else {
     // When protocol is not HTTPS
     const err = new Error('Only HTTPS allowed.');
