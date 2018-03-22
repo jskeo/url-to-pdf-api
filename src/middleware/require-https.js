@@ -108,6 +108,16 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 return next(err);
     }
 
+    //path to api
+    try {
+    console.log('requestId:         ', req.url.split("?")[0]);
+    } catch(error) {
+        const err = new Error('Invalid Request Path.');
+                err.status = 403;
+                return next(err);
+    }
+    
+
    
 
     
@@ -146,6 +156,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 return next(err); 
             } else if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG) {
                 // When all is fine go on
+                set.query.attachmentName
                 return next();
             } else {
                 // Throw error invalid request
