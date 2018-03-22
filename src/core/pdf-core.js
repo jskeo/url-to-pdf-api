@@ -146,5 +146,5 @@ function logOpts(opts) {
 }
 
 module.exports = {
-  render,
+  render, config.FILE_NAME
 };

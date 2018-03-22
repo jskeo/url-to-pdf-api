@@ -12,6 +12,7 @@ const getRender = ex.createRoute((req, res) => {
       }
       res.set('content-type', 'application/pdf');
       console.log('FILE_NAME:   ', config.FILE_NAME);
+      console.log('FILE_NAME:   ', config.FILE_NAME);
       res.send(data);
     });
 });
@@ -49,6 +50,7 @@ function getOptsFromQuery(query) {
   const opts = {
     url: query.url,
     title: config.FILE_NAME,
+    attachmentName: query.attachmentName,
     scrollPage: query.scrollPage,
     emulateScreenMedia: query.emulateScreenMedia,
     ignoreHttpsErrors: query.ignoreHttpsErrors,
