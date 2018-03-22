@@ -110,7 +110,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
     //path to api
     try {
-    console.log('requestId:         ', req.url.split("?")[0]);
+    console.log('requestPathToApi:         ', req.url.split("?")[0]);
     } catch(error) {
         const err = new Error('Invalid Request Path.');
                 err.status = 403;
