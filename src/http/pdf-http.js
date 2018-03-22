@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const ex = require('../util/express');
+const config = require('../config');
 const pdfCore = require('../core/pdf-core');
 
 const getRender = ex.createRoute((req, res) => {
@@ -10,6 +11,7 @@ const getRender = ex.createRoute((req, res) => {
         res.attachment(opts.attachmentName);
       }
       res.set('content-type', 'application/pdf');
+      res.set('file-name', config.FILE_NAME)
       res.send(data);
     });
 });
