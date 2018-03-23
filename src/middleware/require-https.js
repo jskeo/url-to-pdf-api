@@ -149,10 +149,10 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(requestId);
         console.log(requestIdLength);
         // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
-        if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || requestUrlLength == config.REQUEST_URL_LENGTH_TESTING || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
+        if (config.REQUEST_ID_LENGTH == requestIdLength) {
             if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                 if (requestPathToApiLength == 11) {
-                    if (config.REQUEST_ID_LENGTH == requestIdLength) {
+                    if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_TESTING || config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
                         // When all is fine go on
                         return next();
                     } else {
