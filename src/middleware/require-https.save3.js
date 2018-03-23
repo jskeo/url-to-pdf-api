@@ -100,7 +100,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     }
     //requestId
     try {
-        console.log('requestId:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3].split("&")[0]);
+        console.log('requestId:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3]);
     } catch (error) {
         const err = new Error('Invalid Request. 1');
         err.status = 403;
@@ -128,7 +128,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             var target = req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2];
             var requestUrl = req.url;
             var requestUrlLength = requestUrl.length;
-            var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3].split("&")[0];
+            var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
             var requestIdLength = requestId.length;
             var requestPathToApi = req.url.split("?")[0];
             var requestPathToApiLength = requestPathToApi.length;
