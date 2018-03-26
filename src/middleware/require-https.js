@@ -102,7 +102,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     //path to api
     try {
         console.log('requestPathToApi:         ', req.url.split("?")[0]);
-        var requestApiPath = req_url.split("?")[0];
+        var requestApiPath = req.url.split("?")[0];
         console.log(requestApiPath);
         var check_path = '/api/render';
         console.log(check_path)
@@ -123,9 +123,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
 
     try {
-        var requestStruc_a = req_url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[0];
-        var requestStruc_b = req_url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[1];
-        var requestStruc_c = req_url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[2];
+        var requestStruc_a = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[0];
+        var requestStruc_b = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[1];
+        var requestStruc_c = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[2];
         if (
             requestStruc_a == 'api' &&
             requestStruc_b == 'v1' &&
