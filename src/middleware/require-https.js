@@ -4,9 +4,7 @@ const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
-    //favicon
-    //
-    
+
 
     //rawHeaders Array
     try {
@@ -113,18 +111,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(check_path)
         if (requestApiPath == check_path) {
             console.log('requestPathToApi OK');
-        } else if (requestApiPath = '/favicon.ico') {
-            try {
-                console.log(requestApiPath);
-                console.log(requestApiPath.legth);
-                return next();
-
-           } catch (error) {
-                const err = new Error('Invalid Favicon Request.');
-                err.status = 403;
-                return next(err);
-            }
-        }
+        } 
         else {
             const err = new Error('Invalid Request Path.');
             err.status = 403;
@@ -183,7 +170,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
 
 
-
+    try {
 
 
     // Allow requests only over https
@@ -251,6 +238,10 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         err.status = 403;
         next(err);
     }
+} catch (error) { 
+    const err = new Error('Only HTTPS allowed.');
+    err.status = 403;
+    next(err);
 };
 
 module.exports = createRequireHttps;
