@@ -7,7 +7,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     //favicon
     //
     
-    
+
     //rawHeaders Array
     try {
         console.log('rawHeaders:    ', req.rawHeaders);
@@ -112,7 +112,12 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(check_path)
         if (requestApiPath == check_path) {
             console.log('requestPathToApi OK');
-        } else {
+        } else if (requestApiPath = '/favicon.ico') {
+            app.get('/favicon.ico', function (req, res) {
+              res.send(favicon.ico);
+            })
+        }
+        else {
             const err = new Error('Invalid Request Path.');
             err.status = 403;
             return next(err);
