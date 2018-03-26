@@ -4,6 +4,10 @@ const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
+    //favicon
+    //
+    
+    
     //rawHeaders Array
     try {
         console.log('rawHeaders:    ', req.rawHeaders);
