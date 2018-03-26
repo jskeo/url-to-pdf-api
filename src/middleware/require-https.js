@@ -108,12 +108,14 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log('requestPathToApi:         ', req.url.split("?")[0]);
         var requestApiPath = req.url.split("?")[0];
         console.log(requestApiPath);
+        console.log(requestApiPath.legth);
         var check_path = '/api/render';
         console.log(check_path)
         if (requestApiPath == check_path) {
             console.log('requestPathToApi OK');
         } else if (requestApiPath = '/favicon.ico') {
             try {
+
                 return next();
 
            } catch (error) {
