@@ -27,7 +27,7 @@ function createApp() {
   //   app.use(morgan('dev'));
   // }
   
-  app.use('/favicon.ico', express.static('images/favicon.ico'));
+  app.use('/favicon.ico', express.static('/images/favicon.ico'));
 
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
