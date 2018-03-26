@@ -244,6 +244,6 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         const err = new Error('Only HTTPS allowed.');
         err.status = 403;
         next(err);
-};
+}
 
 module.exports = createRequireHttps;
