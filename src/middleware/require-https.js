@@ -103,7 +103,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
     try {
         console.log('requestPathToApi:         ', req.url.split("?")[0]);
         var requestApiPath = req_url.split("?")[0];
+        console.log(requestApiPath);
         var check_path = '/api/render';
+        console.log(check_path)
         if (requestApiPath == check_path) {
             console.log('requestPathToApi OK');
         } else {
