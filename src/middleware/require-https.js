@@ -194,7 +194,13 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
                 var requestIdLength = requestId.length;
                 var requestPathToApi = req.url.split("?")[0];
-                var requestPathToApiLength = requestPathToApi.length;}
+                var requestPathToApiLength = requestPathToApi.length;} 
+                catch (error) {
+                    const err = new Error('Invalid Request. 16');
+                    err.status = 403;
+                    return next(err);
+                }
+
                 console.log(requestPathToApiLength);
 
             } catch (error) {
