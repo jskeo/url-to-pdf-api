@@ -1,4 +1,6 @@
-const Ddos = require('ddos')
+const Ddos = require('ddos');
+var favicon = require('serve-favicon');
+var path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -14,6 +16,10 @@ const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:10, limit:15})
 
+
+
+
+
 function createApp() {
   const app = express();
   // App is served behind Heroku's router.
@@ -27,7 +33,8 @@ function createApp() {
   //   app.use(morgan('dev'));
   // }
   
-  app.use('/favicon.ico', express.static('/images/favicon.ico'));
+  
+  app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
 
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());

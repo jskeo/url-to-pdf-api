@@ -114,9 +114,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             console.log('requestPathToApi OK');
         } else if (requestApiPath = '/favicon.ico') {
             try {
-                app.get('/favicon.ico', function (req, res) {
-                res.sendFile('../images/favicon.ico');
-            })} catch (error) {
+                return next();
+
+           } catch (error) {
                 const err = new Error('Invalid Favicon Request.');
                 err.status = 403;
                 return next(err);
