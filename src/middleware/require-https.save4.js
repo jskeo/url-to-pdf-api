@@ -98,69 +98,23 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         err.status = 403;
         return next(err);
     }
+    //requestId
+    try {
+        console.log('requestId:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3].split("&")[0]);
+    } catch (error) {
+        const err = new Error('Invalid Request. 1');
+        err.status = 403;
+        return next(err);
+    }
 
     //path to api
     try {
         console.log('requestPathToApi:         ', req.url.split("?")[0]);
-        var requestApiPath = req_url.split("?")[0];
-        var check_path = '/api/render';
-        if (requestApiPath == check_path) {
-            console.log('requestPathToApi OK');
-        } else {
-            const err = new Error('Invalid Request Path.');
-            err.status = 403;
-            return next(err);
-        } 
-
     } catch (error) {
         const err = new Error('Invalid Request Path.');
         err.status = 403;
         return next(err);
     }
-
-
-
-    try {
-        var requestStruc_a = req_url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[0];
-        var requestStruc_b = req_url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[1];
-        var requestStruc_c = req_url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[2];
-        if (
-            requestStruc_a == 'api' &&
-            requestStruc_b == 'v1' &&
-            requestStruc_c == 'pdfs'
-            ) 
-            {
-            console.log('Request API path structure OK');
-            } else {
-                const err = new Error('Invalid Request Query. 1');
-                err.status = 403;
-                return next(err);
-                }
-        } catch (error) {
-            const err = new Error('Invalid Request Query. 2');
-            err.status = 403;
-            return next(err);
-        };
-
-
-    // //requestId
-    // try {
-    //     console.log('requestId:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3].split("&")[0]);
-    // } catch (error) {
-    //     const err = new Error('Invalid Request. 1');
-    //     err.status = 403;
-    //     return next(err);
-    // }
-    // //tracking_flag
-    // try {
-    //     console.log('requestId:         ', req.url.split("&")[1]);
-    // } catch (error) {
-    //     const err = new Error('Invalid Request. 12');
-    //     err.status = 403;
-    //     return next(err);
-    // }
-
-    
 
 
 
