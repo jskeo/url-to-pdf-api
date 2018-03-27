@@ -113,7 +113,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(check_path)
         if (requestApiPath == check_path) {
             console.log('requestPathToApi OK');
-        } else if (requestApiPath = '/favicon.ico') {
+        } else if (requestApiPath == '/favicon.ico') {
             try {
                 console.log(requestApiPath);
                 console.log(requestApiPath.legth);
