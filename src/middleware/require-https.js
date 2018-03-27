@@ -140,6 +140,32 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             ) 
             {
             console.log('Request API path structure OK');
+                    // Logging my last resot
+            console.log('ENV TARGET_DOMAIN :    ', config.TARGET_DOMAIN);
+            console.log('ENV REQUEST_URL_LENGTH :       ', config.REQUEST_URL_LENGTH);
+            console.log('ENV REQUEST_URL_LENGTH_WITHOUT_FLAG :       ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
+            console.log('ENV TARGET_DOMAIN_TESTING :    ', config.TARGET_DOMAIN_TESTING);
+            console.log('ENV REQUEST_URL_LENGTH_TESTING :       ', config.REQUEST_URL_LENGTH_TESTING);
+            console.log('ENV REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING :       ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
+            console.log(target);
+            console.log('requestUrl:        ', requestUrl);
+            console.log(requestUrlLength);
+            if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_TESTING) {
+                try {
+                    var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+                    var requestIdLength = requestId.length;
+                    console.log('with flag');
+                } catch (error) {
+                    const err = new Error('Invalid Request. 116');
+                    err.status = 403;
+                    return next(err);
+                }
+            } else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_TESTING_WITHOUT_FLAG) {
+                    var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+                    var requestIdLength = requestId.length;
+                    console.log('without flag');
+            }
+   
             } else {
                 const err = new Error('Invalid Request Query. 1');
                 err.status = 403;
@@ -186,6 +212,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             var requestPathToApi = req.url.split("?")[0];
             var requestPathToApiLength = requestPathToApi.length;
             console.log(requestPathToApiLength);
+            console.log(requestId);
+            console.log(requestIdLength);
 
 
         } catch (error) {
@@ -194,33 +222,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             return next(err);
         }
 
-        // Logging my last resot
-        console.log('ENV TARGET_DOMAIN :    ', config.TARGET_DOMAIN);
-        console.log('ENV REQUEST_URL_LENGTH :       ', config.REQUEST_URL_LENGTH);
-        console.log('ENV REQUEST_URL_LENGTH_WITHOUT_FLAG :       ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
-        console.log('ENV TARGET_DOMAIN_TESTING :    ', config.TARGET_DOMAIN_TESTING);
-        console.log('ENV REQUEST_URL_LENGTH_TESTING :       ', config.REQUEST_URL_LENGTH_TESTING);
-        console.log('ENV REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING :       ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
-        console.log(target);
-        console.log('requestUrl:        ', requestUrl);
-        console.log(requestUrlLength);
-        if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_TESTING) {
-            try {
-                var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
-                var requestIdLength = requestId.length;
-                console.log('with flag');
-            } catch (error) {
-                const err = new Error('Invalid Request. 116');
-                err.status = 403;
-                return next(err);
-            }
-        } else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_TESTING_WITHOUT_FLAG) {
-                var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
-                var requestIdLength = requestId.length;
-                console.log('without flag');
-        }
-        console.log(requestId);
-        console.log(requestIdLength);
+
         // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
         if (config.REQUEST_ID_LENGTH == requestIdLength) {
             if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
