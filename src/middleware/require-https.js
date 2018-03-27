@@ -113,17 +113,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(check_path)
         if (requestApiPath == check_path) {
             console.log('requestPathToApi OK');
-        } else if (requestApiPath == '/favicon.ico') {
-            try {
-                console.log(requestApiPath);
-                console.log(requestApiPath.legth);
-                return next();
-
-           } catch (error) {
-                const err = new Error('Invalid Favicon Request.');
-                err.status = 403;
-                return next(err);
-            }
+        
         }
         else {
             const err = new Error('Invalid Request Path.');
