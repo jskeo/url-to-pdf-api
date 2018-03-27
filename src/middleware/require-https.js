@@ -207,16 +207,24 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
 
             // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
-            if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_TESTING) {
+            if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_TESTING) {
                 if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                     if (requestPathToApiLength == 11) {
                         if (requestIdLength == config.REQUEST_ID_LENGTH || 28) {
+                            if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_TESTING) {
                             // When all is fine go on
                             console.log('requestUrlLength from inside: ', requestUrlLength);
                             console.log('REQUEST_URL_LENGTH from inside: ', config.REQUEST_URL_LENGTH);
                             console.log('REQUEST_URL_LENGTH_TESTING from inside: ', config.REQUEST_URL_LENGTH_TESTING);
                             console.log('with Flag');
                             return next();
+                            }   else {
+                                // Request ID Length error
+                                const err = new Error('Invalid Request. 4 III');
+                                err.status = 403;
+                                return next(err);
+                            }
+
                         } else {
                             // Request ID Length error
                             const err = new Error('Invalid Request. 4');
@@ -241,7 +249,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                     if (requestPathToApiLength == 11) {
                         if (requestIdLength == config.REQUEST_ID_LENGTH || 28) {
-                            console.log('requestUrlLength from inside II: ', requestUrlLength)
+                            console.log('requestUrlLength from inside II: ', requestUrlLength);
                             console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
                             console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
                             console.log('without Flag');
