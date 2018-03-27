@@ -235,6 +235,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             //must be length 12
                             console.log(sendgridFlagLength);
                             if (sendgridFlagLength == 12) {
+                                req.url = requestUrl;
+                                req.query = requestUrl;
+
                                 return next();
                             } else {
                                 const err = new Error('Invalid Request. 4 IV');
