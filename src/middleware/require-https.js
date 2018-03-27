@@ -248,7 +248,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
                 if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                     if (requestPathToApiLength == 11) {
-                        if (requestIdLength == config.REQUEST_ID_LENGTH || 28) {
+                        if (requestIdLength == config.REQUEST_ID_LENGTH) {
                             if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
                             console.log('requestUrlLength from inside II: ', requestUrlLength);
                             console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
