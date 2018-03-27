@@ -113,17 +113,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(check_path)
         if (requestApiPath == check_path) {
             console.log('requestPathToApi OK');
-        } else if (requestApiPath = '/favicon.ico') {
-            try {
-                console.log(requestApiPath);
-                console.log(requestApiPath.legth);
-                return next();
-
-           } catch (error) {
-                const err = new Error('Invalid Favicon Request.');
-                err.status = 403;
-                return next(err);
-            }
+        
         }
         else {
             const err = new Error('Invalid Request Path.');
@@ -207,8 +197,12 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         // Logging my last resot
         console.log('ENV TARGET_DOMAIN :    ', config.TARGET_DOMAIN);
-        console.log(target);
         console.log('ENV REQUEST_URL_LENGTH :       ', config.REQUEST_URL_LENGTH);
+        console.log('ENV REQUEST_URL_LENGTH_WITHOUT_FLAG :       ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
+        console.log('ENV TARGET_DOMAIN_TESTING :    ', config.TARGET_DOMAIN_TESTING);
+        console.log('ENV REQUEST_URL_LENGTH_TESTING :       ', config.REQUEST_URL_LENGTH_TESTING);
+        console.log('ENV REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING :       ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
+        console.log(target);
         console.log('requestUrl:        ', requestUrl);
         console.log(requestUrlLength);
         console.log(requestId);

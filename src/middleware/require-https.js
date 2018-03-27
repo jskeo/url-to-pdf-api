@@ -208,13 +208,18 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(requestId);
         console.log(requestIdLength);
         // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
-        if (config.REQUEST_ID_LENGTH == requestIdLength) {
+        if (requestIdLength ==  config.REQUEST_ID_LENGTH || 28) {
             if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                 if (requestPathToApiLength == 11) {
-                    if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_TESTING || config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
+                    if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_TESTING) {
                         // When all is fine go on
+                        console.log('with Flag');
                         return next();
-                    } else {
+                    } else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
+                        console.log('without Flag');
+                        return next();
+                    }
+                    else {
                         // Request ID Length error
                         const err = new Error('Invalid Request. 4');
                         err.status = 403;
