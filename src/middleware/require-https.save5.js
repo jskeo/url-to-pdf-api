@@ -207,12 +207,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         // Logging my last resot
         console.log('ENV TARGET_DOMAIN :    ', config.TARGET_DOMAIN);
-        console.log('ENV REQUEST_URL_LENGTH :       ', config.REQUEST_URL_LENGTH);
-        console.log('ENV REQUEST_URL_LENGTH_WITHOUT_FLAG :       ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
-        console.log('ENV TARGET_DOMAIN_TESTING :    ', config.TARGET_DOMAIN_TESTING);
-        console.log('ENV REQUEST_URL_LENGTH_TESTING :       ', config.REQUEST_URL_LENGTH_TESTING);
-        console.log('ENV REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING :       ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
         console.log(target);
+        console.log('ENV REQUEST_URL_LENGTH :       ', config.REQUEST_URL_LENGTH);
         console.log('requestUrl:        ', requestUrl);
         console.log(requestUrlLength);
         console.log(requestId);
