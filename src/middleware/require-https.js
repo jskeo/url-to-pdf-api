@@ -199,8 +199,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 console.log(requestId);
                 console.log(requestIdLength)
                 if (requestIdLength == 28) {
-                    var req.url = req.url.replace("&", "?");
-                    var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+                    var requestUrl = req.url.replace("&", "?");
+                    var requestId = requestUrl.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
                     var requestIdLength = requestId.length;
                 } else {
                     const err = new Error('Invalid Request. ID 6');
