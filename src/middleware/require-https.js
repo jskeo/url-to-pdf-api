@@ -236,7 +236,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(sendgridFlagLength);
                             if (sendgridFlagLength == 12) {
                                 req.url = requestUrl;
-                                req.query = {url: req.url.split("?")[1].split("=")};
+                                req.query = { url: req.url.split("?url=")[1] };
                                 console.log(req.url);
                                 console.log(req.query);
 
