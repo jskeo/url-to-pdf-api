@@ -216,11 +216,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                         console.log('requestUrlLength from inside: ', requestUrlLength)
                         console.log('with Flag');
                         return next();
-                    } else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
-                        console.log('requestUrlLength from inside II: ', requestUrlLength)
-                        console.log('without Flag');
-                        return next();
-                    }
+                    } 
                     else {
                         // Request ID Length error
                         const err = new Error('Invalid Request. 4');
@@ -240,7 +236,15 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 err.status = 403;
                 return next(err);
             }
-        } else {
+        } 
+        else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
+                        console.log('requestUrlLength from inside II: ', requestUrlLength)
+                        console.log('without Flag');
+                        return next();
+                    }
+
+
+        else {
             // Request Length mismatch
             const err = new Error('Invalid Request. 3');
             err.status = 403;
