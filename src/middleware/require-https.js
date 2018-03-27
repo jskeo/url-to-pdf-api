@@ -198,7 +198,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 console.log(requestUrlLength);
                 console.log(requestId);
                 console.log(requestIdLength)
-                var sendgridFlag = req_url.split("?")[2];
+                var sendgridFlag = req.url.split("?")[2];
                 var sendgridFlagLength = sendgridFlag.length;
 
                 console.log(req_url);
