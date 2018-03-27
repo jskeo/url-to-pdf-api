@@ -244,16 +244,24 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     err.status = 403;
                     return next(err);
                 }
-            } else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
+            } else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
 
                 if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                     if (requestPathToApiLength == 11) {
                         if (requestIdLength == config.REQUEST_ID_LENGTH || 28) {
+                            if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
                             console.log('requestUrlLength from inside II: ', requestUrlLength);
                             console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
                             console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
                             console.log('without Flag');
                             return next();
+                            }   else {
+                                // Request ID Length error
+                                const err = new Error('Invalid Request. 4 IV');
+                                err.status = 403;
+                                return next(err);
+                            }
+
 
                         } else {
                             // Request ID Length error
