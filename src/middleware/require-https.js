@@ -212,7 +212,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     if (requestPathToApiLength == 11) {
                         if (requestIdLength == config.REQUEST_ID_LENGTH || 28) {
                             // When all is fine go on
-                            console.log('requestUrlLength from inside: ', requestUrlLength)
+                            console.log('requestUrlLength from inside: ', requestUrlLength);
+                            console.log('REQUEST_URL_LENGTH from inside: ', config.REQUEST_URL_LENGTH);
+                            console.log('REQUEST_URL_LENGTH_TESTING from inside: ', config.REQUEST_URL_LENGTH_TESTING);
                             console.log('with Flag');
                             return next();
                         } else {
@@ -240,6 +242,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     if (requestPathToApiLength == 11) {
                         if (requestIdLength == config.REQUEST_ID_LENGTH || 28) {
                             console.log('requestUrlLength from inside II: ', requestUrlLength)
+                            console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
+                            console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
                             console.log('without Flag');
                             return next();
 
