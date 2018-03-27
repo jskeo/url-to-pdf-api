@@ -139,6 +139,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             requestStruc_c == 'pdfs'
             ) 
             {
+            var target = req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2];
+            var requestUrl = req.url;
+            var requestUrlLength = requestUrl.length;
+            var requestPathToApi = req.url.split("?")[0];
+            var requestPathToApiLength = requestPathToApi.length;
             console.log('Request API path structure OK');
                     // Logging my last resot
             console.log('ENV TARGET_DOMAIN :    ', config.TARGET_DOMAIN);
