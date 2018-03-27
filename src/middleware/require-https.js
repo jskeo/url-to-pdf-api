@@ -208,10 +208,10 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(requestId);
         console.log(requestIdLength);
         // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
-        if (requestIdLength ==  config.REQUEST_ID_LENGTH || 28) {
+        if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_TESTING) {
             if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                 if (requestPathToApiLength == 11) {
-                    if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_TESTING) {
+                    if (requestIdLength == config.REQUEST_ID_LENGTH || 28) {
                         // When all is fine go on
                         console.log('requestUrlLength from inside: ', requestUrlLength)
                         console.log('with Flag');
