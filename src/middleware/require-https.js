@@ -261,7 +261,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     const err = new Error('Invalid Request. 2 II');
                     err.status = 403;
                     return next(err);
-                } else {
+                }
+            } else {
                     // Request Length mismatch
                     const err = new Error('Invalid Request. 3');
                     err.status = 403;
