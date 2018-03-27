@@ -229,7 +229,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log('REQUEST_URL_LENGTH from inside: ', config.REQUEST_URL_LENGTH);
                             console.log('REQUEST_URL_LENGTH_TESTING from inside: ', config.REQUEST_URL_LENGTH_TESTING);
                             console.log('with Flag');
-                            var sendgridFlag = req.url.split("?")[2];
+                            var sendgridFlag = requestUrl.split("?")[2];
                             var sendgridFlagLength = sendgridFlag.length;
                             console.log('Flag:', sendgridFlag);
                             //must be length 12
