@@ -198,6 +198,16 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 console.log(requestUrlLength);
                 console.log(requestId);
                 console.log(requestIdLength)
+                if (requestIdLength == 28) {
+                    var req.url = req.url.replace("&", "?");
+                    var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+                    var requestIdLength = requestId.length;
+                } else {
+                    const err = new Error('Invalid Request. ID 6');
+                    err.status = 403;
+                    return next(err);
+
+                }
                 
 
             } catch (error) {
@@ -212,6 +222,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                     if (requestPathToApiLength == 11) {
                         if (requestIdLength == config.REQUEST_ID_LENGTH) {
+
                             if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_TESTING) {
                             // When all is fine go on
                             console.log('requestUrlLength from inside: ', requestUrlLength);
@@ -221,8 +232,17 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             var sendgridFlag = req.url.split("?")[2];
                             var sendgridFlagLength = sendgridFlag.length;
                             console.log('Flag:', sendgridFlag);
+                            //must be length 12
                             console.log(sendgridFlagLength);
-                            return next();
+                            if (sendgridFlagLength == 12) {
+                                return next();
+                            } else {
+                                const err = new Error('Invalid Request. 4 IV');
+                                err.status = 403;
+                                return next(err);
+
+                            }
+                            
                             }   else {
                                 // Request ID Length error
                                 const err = new Error('Invalid Request. 4 III');
