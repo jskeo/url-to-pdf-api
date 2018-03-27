@@ -197,7 +197,13 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 console.log('requestUrl:        ', requestUrl);
                 console.log(requestUrlLength);
                 console.log(requestId);
-                console.log(requestIdLength);
+                console.log(requestIdLength)
+                var sendgridFlag = req_url.split("?")[2];
+                var sendgridFlagLength = sendgridFlag.length;
+
+                console.log(req_url);
+                console.log('Flag:', sendgridFlag);
+                console.log(sendgridFlagLength);
 
             } catch (error) {
                 const err = new Error('Invalid Request. 6');
@@ -210,7 +216,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_TESTING) {
                 if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
                     if (requestPathToApiLength == 11) {
-                        if (requestIdLength == config.REQUEST_ID_LENGTH || 28) {
+                        if (requestIdLength == config.REQUEST_ID_LENGTH) {
                             if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_TESTING) {
                             // When all is fine go on
                             console.log('requestUrlLength from inside: ', requestUrlLength);
