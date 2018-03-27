@@ -204,7 +204,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         console.log(target);
         console.log('requestUrl:        ', requestUrl);
         console.log(requestUrlLength);
-        if (requestUrlLength == ENV REQUEST_URL_LENGTH || ENV REQUEST_URL_LENGTH_TESTING) {
+        if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_TESTING) {
             try {
                 var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
                 var requestIdLength = requestId.length;
@@ -214,7 +214,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 err.status = 403;
                 return next(err);
             }
-        } else if (requestUrlLength == ENV REQUEST_URL_LENGTH_WITHOUT_FLAG || ENV REQUEST_URL_LENGTH_TESTING_WITHOUT_FLAG) {
+        } else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_TESTING_WITHOUT_FLAG) {
                 var requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
                 var requestIdLength = requestId.length;
                 console.log('without flag');
