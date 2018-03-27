@@ -213,9 +213,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 if (requestPathToApiLength == 11) {
                     if (requestUrlLength == config.REQUEST_URL_LENGTH || config.REQUEST_URL_LENGTH_TESTING) {
                         // When all is fine go on
+                        console.log('requestUrlLength from inside: ', requestUrlLength)
                         console.log('with Flag');
                         return next();
                     } else if (requestUrlLength == config.REQUEST_URL_LENGTH_WITHOUT_FLAG || config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING) {
+                        console.log('requestUrlLength from inside II: ', requestUrlLength)
                         console.log('without Flag');
                         return next();
                     }
