@@ -94,7 +94,7 @@ async function render(_opts = {}) {
       throw new Error(msg);
     }
 
-    data = await page.pdf(opts.pdf);
+    data = await page.on(err).pdf(opts.pdf);
   } catch (err) {
     logger.error(`Error when rendering page: ${err}`);
     logger.error(err.stack);
