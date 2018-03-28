@@ -21,7 +21,6 @@ const queueMw = expressQueue({ activeLimit: 2, queuedLimit: -1 });
 
 
 
-
 function createApp() {
   const app = express();
   // App is served behind Heroku's router.
