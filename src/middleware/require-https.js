@@ -28,11 +28,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         //AWS Load Balancer
         try {
             console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
-            if (req.rawHeaders[21] != 'https') {
-                const err = new Error('Invalid Request. 09');
-                err.status = 403;
-                return next(err);
-            }
+            // if (req.rawHeaders[21] != 'https') {
+            //     const err = new Error('Invalid Request. 09');
+            //     err.status = 403;
+            //     return next(err);
+            // }
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -41,11 +41,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         //AWS Load Balancer
         try {
             console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
-            if (req.rawHeaders[23] != 443) {
-                const err = new Error('Invalid Request. 0112');
-                err.status = 403;
-                return next(err);
-            }
+            // if (req.rawHeaders[23] != 443) {
+            //     const err = new Error('Invalid Request. 0112');
+            //     err.status = 403;
+            //     return next(err);
+            // }
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
