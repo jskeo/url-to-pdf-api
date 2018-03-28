@@ -7,13 +7,13 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         //req
         //
 
-        try {
-            console.log('rawHeaders:    ', req);
-        } catch (error) {
-            const err = new Error('Invalid Request.');
-            err.status = 403;
-            return next(err);
-        }
+        // try {
+        //     console.log('rawHeaders:    ', req);
+        // } catch (error) {
+        //     const err = new Error('Invalid Request.');
+        //     err.status = 403;
+        //     return next(err);
+        // }
 
         //rawHeaders Array
         try {
