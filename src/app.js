@@ -17,6 +17,7 @@ const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:10, limit:15});
 const queue = require('express-queue');
 const expressQueue = require('../');
+const queueMw = expressQueue({ activeLimit: 2, queuedLimit: -1 });
 
 
 
@@ -37,9 +38,8 @@ function createApp() {
   
   app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
 
-  app.use(queue({ activeLimit: 2, queuedLimit: -1 }));
-  console.log(`queueLength: ${expressQueue.queue.getLength()}`);
-
+  app.use(queueMw);
+  console.log(`queueLength: ${queueMw.queue.getLength()}`);
 
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
