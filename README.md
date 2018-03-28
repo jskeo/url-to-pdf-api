@@ -21,6 +21,8 @@ It's fairly easy to expose the contents of files on the server. You have been wa
 this version has a new env variable: ALLOW_DOMAIN. It's used to allow only one target domain. Also, various interaction methods are disabled and a fix for a known bug
 in the original version that allows http even when ALLOW_HTTP variable is false. My fix is not too sophisticated, but it works.
 
+Stay granly.
+
 Stay tuned.
 **⭐️ Features:**
 
