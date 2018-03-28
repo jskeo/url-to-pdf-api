@@ -99,16 +99,17 @@ async function render(_opts = {}) {
             err.status = 403;
             return next(err);
           }
-      ).pdf(opts.pdf).browser.close();
+      ).pdf(opts.pdf);
   } catch (err) {
     logger.error(`Error when rendering page: ${err}`);
     logger.error(err.stack);
     throw err;
   } finally {
+    await browser.close();
     logger.info('Closing browser..');
-    if (!config.DEBUG_MODE) {
-      await browser.close();
-    }
+    // if (!config.DEBUG_MODE) {
+    //   await browser.close();
+    // }
   }
 
   return data;
