@@ -100,13 +100,15 @@ async function render(_opts = {}) {
             return next(err);
           }
       ).pdf(opts.pdf);
+    logger.info('Closing browser..');
+    await browser.close();
   } catch (err) {
     logger.error(`Error when rendering page: ${err}`);
     logger.error(err.stack);
     throw err;
   } finally {
-    await browser.close();
     logger.info('Closing browser..');
+    await browser.close();
     // if (!config.DEBUG_MODE) {
     //   await browser.close();
     // }
