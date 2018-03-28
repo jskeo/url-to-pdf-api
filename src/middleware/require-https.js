@@ -249,7 +249,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                                 console.log(req.url);
                                 console.log(req.query);
                                 console.log('Inside with Flag, req:')
-                                console.log(req);
+                                //console.log(req);
 
                                 return next();
                             } else {
@@ -296,7 +296,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
                             console.log('without Flag');
                             console.log('Inside without Flag, req:')
-                            console.log(req);
+                            //console.log(req);
                             return next();
                             }   else {
                                 // Request ID Length error
