@@ -167,16 +167,6 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         //     return next(err);
         // }
 
-
-
-
-
-
-
-
-        // Allow requests only over https
-        if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
-            // Cut request into pieces
             try {
                 var target = req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2];
                 var requestUrl = req.url;
@@ -219,6 +209,16 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 err.status = 403;
                 return next(err);
             }
+
+
+
+
+
+
+        // Allow requests only over https
+        if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
+            // Cut request into pieces
+
 
 
             // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
