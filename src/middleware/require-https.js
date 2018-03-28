@@ -195,6 +195,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     var requestUrl = req.url.replace("&", "?");
                     var requestId = requestUrl.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
                     var requestIdLength = requestId.length;
+                    var sendgridFlag = requestUrl.split("?")[2];
+                    var sendgridFlagLength = sendgridFlag.length;
+                    console.log('Flag:', sendgridFlag);
+                    //must be length 12
+                    console.log(sendgridFlagLength);
                     console.log('prepared requestID', requestId)
                 } else {
                     const err = new Error('Invalid Request. ID 6');
