@@ -300,6 +300,12 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log('without Flag');
                             console.log('Inside without Flag, req:')
                             //console.log(req);
+                            console.log(req.url);
+                            console.log(req.query);
+                            console.log('Inside with Flag, req:');
+                            console.log(req.path);
+                            console.log(req.originalUrl);
+                            console.log(req._parsedUrl);
                             return next();
                             }   else {
                                 // Request ID Length error
