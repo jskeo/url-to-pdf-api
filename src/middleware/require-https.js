@@ -205,6 +205,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     var requestUrl = req.url.replace("&", "?");
                     var requestId = requestUrl.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
                     var requestIdLength = requestId.length;
+                    console.log('prepared requestID', requestId)
                 } else {
                     const err = new Error('Invalid Request. ID 6');
                     err.status = 403;
@@ -242,6 +243,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                                 req.query = { url: req.url.split("?url=")[1] };
                                 console.log(req.url);
                                 console.log(req.query);
+                                console.log('Inside with Flag, req:')
+                                console.log(req);
 
                                 return next();
                             } else {
@@ -287,6 +290,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG);
                             console.log('REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING from inside: ', config.REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING);
                             console.log('without Flag');
+                            console.log('Inside without Flag, req:')
+                            console.log(req);
                             return next();
                             }   else {
                                 // Request ID Length error
