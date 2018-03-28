@@ -99,7 +99,7 @@ async function render(_opts = {}) {
             err.status = 403;
             return next(err);
           }
-      ).pdf(opts.pdf);
+      ).pdf(opts.pdf).browser.close();
   } catch (err) {
     logger.error(`Error when rendering page: ${err}`);
     logger.error(err.stack);
