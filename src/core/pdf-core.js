@@ -94,7 +94,12 @@ async function render(_opts = {}) {
       throw new Error(msg);
     }
 
-    data = await page.on('err').pdf(opts.pdf);
+    data = await page.on('err', function(err) {
+            const err = new Error('Invalid Request. 77');
+            err.status = 403;
+            return next(err);
+          }
+      ).pdf(opts.pdf);
   } catch (err) {
     logger.error(`Error when rendering page: ${err}`);
     logger.error(err.stack);
