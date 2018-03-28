@@ -245,7 +245,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(sendgridFlagLength);
                             if (sendgridFlagLength == 12 && sendgridFlag == 'utm_swu=4551') {
                                 req.url = requestUrl;
-                                req.originalUrl = requestUrl;
+                                req.originalUrl = req.url;
                                 req.query = { url: req.url.split("?url=")[1] };
                                 console.log(req.url);
                                 console.log(req.query);
