@@ -14,11 +14,8 @@ const requireHttps = require('./middleware/require-https');
 const createRouter = require('./router');
 const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
-const ddos = new Ddos({burst:10, limit:15});
-const expressQueue = require('../');
-const queueMw = expressQueue({ activeLimit: 2, queuedLimit: -1 });
-
-
+const ddos = new Ddos({burst:2, limit:3});
+var queue = require('express-queue');
 
 function createApp() {
   const app = express();
@@ -36,8 +33,8 @@ function createApp() {
   
   app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
 
-  app.use(queueMw);
-  console.log(`queueLength: ${queueMw.queue.getLength()}`);
+  app.use(queue({ activeLimit: 2, queuedLimit: -1 }));
+  console.log('Queue Length: ', queue.length);
 
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
