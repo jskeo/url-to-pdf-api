@@ -2,6 +2,9 @@ const express = require('express');
 const config = require('../config');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
+const ddos = new Ddos({burst:2, limit:3});
+var queue = require('express-queue');
+
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
         //req
@@ -14,6 +17,12 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         //     err.status = 403;
         //     return next(err);
         // }
+        // 
+        // 
+        app.use(ddos.express);
+
+        app.use(queue({ activeLimit: 2, queuedLimit: -1 }));
+        console.log('Queue Length: ', queue.length);
 
         //rawHeaders Array
         try {
