@@ -4,7 +4,7 @@ const config = require('../config');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const ddos = new Ddos({burst:2, limit:3});
-var queue = require('express-queue');
+const queue = require('express-queue');
 
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
@@ -20,9 +20,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         // }
         // 
         // 
-        app.use(ddos.express);
+        const appSub = express();
 
-        app.use(queue({ activeLimit: 2, queuedLimit: -1 }));
+        appSub.use(ddos.express);
+
+        appSub.use(queue({ activeLimit: 2, queuedLimit: -1 }));
         console.log('Queue Length: ', queue.length);
 
         //rawHeaders Array
