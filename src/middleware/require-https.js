@@ -248,7 +248,10 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                                 req.query = { url: req.url.split("?url=")[1] };
                                 console.log(req.url);
                                 console.log(req.query);
-                                console.log('Inside with Flag, req:')
+                                console.log('Inside with Flag, req:');
+                                console.log(req.path);
+                                console.log(req.originalUrl);
+                                console.log(req._parsedUrl);
                                 //console.log(req);
 
                                 return next();
