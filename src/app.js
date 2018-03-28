@@ -15,7 +15,6 @@ const createRouter = require('./router');
 const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:10, limit:15});
-const queue = require('express-queue');
 const expressQueue = require('../');
 const queueMw = expressQueue({ activeLimit: 2, queuedLimit: -1 });
 
