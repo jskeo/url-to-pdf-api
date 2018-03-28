@@ -94,7 +94,7 @@ async function render(_opts = {}) {
       throw new Error(msg);
     }
 
-    data = await page.on('err', function(err) {
+    data = await page.on('error', function(error) {
             const err = new Error('Invalid Request. 77');
             err.status = 403;
             return next(err);
