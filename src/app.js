@@ -15,8 +15,8 @@ const createRouter = require('./router');
 const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:10, limit:15});
-var queue = require('express-queue');
-
+const queue = require('express-queue');
+const expressQueue = require('../');
 
 
 
@@ -38,6 +38,8 @@ function createApp() {
   app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
 
   app.use(queue({ activeLimit: 2, queuedLimit: -1 }));
+  console.log(`queueLength: ${expressQueue.queue.getLength()}`);
+
 
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
