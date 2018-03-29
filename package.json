@@ -29,6 +29,7 @@
     "ddos": "^0.1.28",
     "express": "^4.15.5",
     "express-queue": "0.0.11",
+    "express-redis-cache": "^1.1.1",
     "express-sanitizer": "^1.0.3",
     "express-validation": "^1.0.2",
     "helmet": "^3.12.0",

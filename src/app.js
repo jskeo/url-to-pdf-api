@@ -16,6 +16,7 @@ const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:2, limit:3});
 var queue = require('express-queue');
+var cache = require('express-redis-cache')();
 
 function createApp() {
   const app = express();

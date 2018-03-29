@@ -6,6 +6,7 @@ const config = require('./config');
 const logger = require('./util/logger')(__filename);
 const { renderQuerySchema, renderBodySchema, sharedQuerySchema } = require('./util/validation');
 const bodyParser = require('body-parser');
+var cache = require('express-redis-cache')();
 
 function createRouter() {
     const router = express.Router();
@@ -35,6 +36,8 @@ function createRouter() {
             allowUnknownQuery: false,
         },
     };
+
+    cache.route(5000);
 
     router.get('/api/render', validate(getRenderSchema), pdf.getRender);
 
