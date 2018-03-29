@@ -35,7 +35,7 @@ function createApp() {
     ips: ['23.101.61.176', '54.85.176.102', '77.3.252.223']
   }));
 
-  console.log('nodeFip:', nodeFip.ips);
+  console.log('nodeFip:', app.nodeFip.ips);
 
   app.use(ddos.express);
 
