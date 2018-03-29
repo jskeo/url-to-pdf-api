@@ -32,8 +32,10 @@ function createApp() {
   app.use(nodeFip({
     mode: 'blacklist',
     proxy: false,
-    ips: ['23.101.61.176', '54.85.176.102']
+    ips: [config.BLACKLIST_ARRAY]
   }));
+
+  console.log('nodeFip:', nodeFip);
 
   app.use(ddos.express);
 
