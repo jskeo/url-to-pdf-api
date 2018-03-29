@@ -45,7 +45,7 @@ function createApp() {
   
   app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
 
-  app.use(queue({ activeLimit: 3, queuedLimit: -1 }));
+  app.use(queue({ activeLimit: 2, queuedLimit: -1 }));
 
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
