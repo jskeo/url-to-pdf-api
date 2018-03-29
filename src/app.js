@@ -29,7 +29,7 @@ function createApp() {
   app.disable('x-powered-by');
 
   app.use(express.static('list'))
-  app.use(blacklist.blockRequests('/list/blacklist.txt'));
+  app.use(blacklist.blockRequests('./list/blacklist.txt'));
 
   app.use(ddos.express);
 
