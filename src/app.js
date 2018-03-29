@@ -32,7 +32,7 @@ function createApp() {
   app.use(nodeFip({
     mode: 'blacklist',
     proxy: false,
-    ips: [config.BLACKLIST_ARRAY]
+    ips: config.BLACKLIST_ARRAY
   }));
 
 
