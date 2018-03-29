@@ -101,7 +101,7 @@ function createApp() {
   // the initial call to this will take 2 seconds, but any subsequent calls
   // will receive a response instantly from cache for the next hour
   app.get('/', cache.withTtl('1 hour'), (req, res) => {
-    app.use('/', router);
+    return next();
   });
 
   // Cache everything below this line for 1 minute (defaultTtl)
