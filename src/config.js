@@ -18,6 +18,7 @@ const config = {
   REQUEST_ID_LENGTH: process.env.REQUEST_ID_LENGTH,
   FILE_NAME: process.env.FILE_NAME,
   BLACKLIST_ARRAY: process.env.BLACKLIST_ARRAY,
+  QUEUE_LIMIT: process.env.QUEUE_LIMIT,
   API_TOKENS: [],
 };
 
