@@ -38,6 +38,8 @@ function createApp() {
 
   app.use(ddos.express);
 
+  //console.log('DDOS_DefaultParams: ', ddos.defaultParams.errormessage.express);
+
   // if (config.NODE_ENV !== 'production') {
   //   app.use(morgan('dev'));
   // }
@@ -45,7 +47,7 @@ function createApp() {
   
   app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
 
-  app.use(queue({ activeLimit: config.QUEUE_LIMIT, queuedLimit: -1 }));
+  app.use(queue({ activeLimit: 1, queuedLimit: -1 }));
 
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
