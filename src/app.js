@@ -17,7 +17,7 @@ const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:2, limit:3});
 var queue = require('express-queue');
 var cache = require('express-redis-cache')();
-var blacklist = require('express-blacklist');
+var nodeFip = require('node-fip')
  
 
 
@@ -28,8 +28,11 @@ function createApp() {
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
 
-  app.use(express.static('list'))
-  app.use(blacklist.blockRequests('./list/blacklist.txt'));
+  app.use(nodeFip({
+    mode: 'blacklist',
+    proxy: false,
+    ips: ['23.101.61.176']
+  }));
 
   app.use(ddos.express);
 
