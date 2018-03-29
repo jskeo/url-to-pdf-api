@@ -28,6 +28,7 @@ function createApp() {
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
 
+  app.use('blacklist.txt');
   app.use(blacklist.blockRequests('blacklist.txt'));
 
   app.use(ddos.express);
