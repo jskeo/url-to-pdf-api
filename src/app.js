@@ -35,7 +35,7 @@ function createApp() {
     ips: [config.BLACKLIST_ARRAY]
   }));
 
-  console.log('nodeFip:', nodeFip);
+  console.log('nodeFip:', nodeFip.ips);
 
   app.use(ddos.express);
 
