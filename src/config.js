@@ -7,7 +7,7 @@ const config = {
   NODE_ENV: process.env.NODE_ENV,
   LOG_LEVEL: process.env.LOG_LEVEL,
   ALLOW_HTTP: process.env.ALLOW_HTTP === 'false',
-  DEBUG_MODE: process.env.DEBUG_MODE === 'false',
+  DEBUG_MODE: process.env.DEBUG_MODE === 'true',
   ALLOW_POST: process.env.ALLOW_POST === 'false',
   TARGET_DOMAIN: process.env.TARGET_DOMAIN,
   REQUEST_URL_LENGTH: process.env.REQUEST_URL_LENGTH,
