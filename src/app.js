@@ -27,10 +27,12 @@ function createApp() {
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
 
+  console.log('BLACKLIST_ARRAY:', config.BLACKLIST_ARRAY);
+
   app.use(nodeFip({
     mode: 'blacklist',
     proxy: false,
-    ips: ['23.101.61.176', '54.85.176.102', '77.3.252.223']
+    ips: ['23.101.61.176', '54.85.176.102']
   }));
 
   app.use(ddos.express);
