@@ -16,7 +16,7 @@ const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:2, limit:3});
 var queue = require('express-queue');
-var nodeFip = require('node-fip')
+var nodeFip = require('node-fip');
  
 
 
@@ -32,10 +32,9 @@ function createApp() {
   app.use(nodeFip({
     mode: 'blacklist',
     proxy: false,
-    ips: ['23.101.61.176', '54.85.176.102', '77.3.252.223']
+    ips: [config.BLACKLIST_ARRAY]
   }));
 
-  console.log('nodeFip:', app.nodeFip.ips);
 
   app.use(ddos.express);
 
