@@ -30,7 +30,7 @@ function createApp() {
   app.use(nodeFip({
     mode: 'blacklist',
     proxy: false,
-    ips: ['23.101.61.176', '54.85.176.102']
+    ips: ['23.101.61.176', '54.85.176.102', '77.3.252.223']
   }));
 
   app.use(ddos.express);
