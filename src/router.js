@@ -37,7 +37,6 @@ function createRouter() {
         },
     };
 
-    cache.route(5000);
 
     router.get('/api/render', validate(getRenderSchema), pdf.getRender);
 
