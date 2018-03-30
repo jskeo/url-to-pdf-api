@@ -22,7 +22,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         //rawHeaders Array
         try {
-            logger.info(`Headers: ${req.get('Headers')} .. `);
+            logger.info(`rawHeaders: ${req.rawHeaders} .. `);
             //console.log('rawHeaders:    ', req.rawHeaders);
         } catch (error) {
             const err = new Error('Invalid Request.');
@@ -107,7 +107,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //parsed_url
         try {
-            logger.info(`_parsedUrl: ${req.get('_parsedUrl')} .. `);
+            logger.info(`_parsedUrl: ${req._parsedUrl} .. `);
             //console.log('_parsedUrl:    ', req._parsedUrl);
         } catch (error) {
             const err = new Error('Invalid Request.');
@@ -116,7 +116,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //params
         try {
-            logger.info(`params: ${req.get('params')} .. `);
+            logger.info(`params: ${req.params} .. `);
             //console.log('params', req.params);
         } catch (error) {
             const err = new Error('Invalid Request Params.');
@@ -125,7 +125,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //query
         try {
-            logger.info(`query: ${req.get('query')} .. `);
+            logger.info(`query: ${req.query} .. `);
             //console.log('query      ', req.query);
         } catch (error) {
             const err = new Error('Invalid Request Query.');
