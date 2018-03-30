@@ -277,13 +277,14 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log('Inside without Flag, req.url, req.query:')
                             //console.log(req);
                             console.log(req.url);
-                            req_url = req.query[0];
                             console.log(req.query);
                             console.log('Inside without Flag, req.path, req.originalUrl, req_parsedUrl:');
                             console.log(req.path);
                             console.log(req.originalUrl);
                             console.log(req._parsedUrl);
-
+                            req.query = { url: req.url.split("?url=")[1] };
+                            req_url = req.query;
+                            console.log('req_url');
 
                             wget({
                                 url:  req_url,
