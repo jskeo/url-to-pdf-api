@@ -34,7 +34,7 @@ async function render(_opts = {}) {
         dest: '../saves',      // destination path or path with filenname, default is ./ 
         timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
           },
-          function (error, response, body) {
+          function (error, response, wgetBody) {
               if (error) {
                   console.log('--- error:');
                   console.log(error);            // error encountered 
@@ -42,7 +42,7 @@ async function render(_opts = {}) {
                   console.log('--- headers:');
                   console.log(response.headers); // response headers 
                   console.log('--- body:');
-                  console.log(body);             // content of package
+                  console.log(wgetBody);             // content of package
                   return wgetBody;
 
               }
