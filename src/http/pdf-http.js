@@ -13,6 +13,11 @@ const getRender = ex.createRoute((req, res) => {
       }
       res.set('content-type', 'application/pdf');
       res.send(data);
+      console.log('res.headers: ', res.req.headers);
+      console.log('res.statusCode: ', res.statusCode);
+      console.log('res.statusMessage: ', res.statusMessage);
+      console.log('res._headers: ', res._headers);
+      console.log('res._headerNames: ', res._headerNames);
     });
 });
 
