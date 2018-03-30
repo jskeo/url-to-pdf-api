@@ -15,7 +15,7 @@ const getRender = ex.createRoute((req, res) => {
       res.send(data);
       //console.log('res.headers: ', res.req.headers);
       console.log('res.get(): ');
-      console.log(res.get('x-forwarded-for'));
+      console.log(res.get('X-Forwarded-For'));
       console.log('res.statusCode: ', res.statusCode);
       console.log('res.statusMessage: ', res.statusMessage);
       //console.log('res._headers: ', res._headers);
