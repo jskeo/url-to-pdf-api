@@ -29,6 +29,25 @@ async function render(_opts = {}) {
     },
   }, _opts);
 
+  await wget({
+        url:  opts.url,
+        dest: '../saves',      // destination path or path with filenname, default is ./ 
+        timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
+          },
+          function (error, response, body) {
+              if (error) {
+                  console.log('--- error:');
+                  console.log(error);            // error encountered 
+              } else {
+                  console.log('--- headers:');
+                  console.log(response.headers); // response headers 
+                  console.log('--- body:');
+                  console.log(body);             // content of package
+
+              }
+          }
+      );
+
   if (_.get(_opts, 'pdf.width') && _.get(_opts, 'pdf.height')) {
     // pdf.format always overrides width and height, so we must delete it
     // when user explicitly wants to set width and height
@@ -73,24 +92,9 @@ async function render(_opts = {}) {
       await page.goto(`data:text/html,${opts.html}`, opts.goto);
     } else {
       logger.info(`Goto url ${opts.url} ..`);
-      await wget({
-        url:  opts.url,
-        dest: '../saves',      // destination path or path with filenname, default is ./ 
-        timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
-          },
-          function wgetCallback (error, response, body) {
-              if (error) {
-                  console.log('--- error:');
-                  console.log(error);            // error encountered 
-              } else {
-                  console.log('--- headers:');
-                  console.log(response.headers); // response headers 
-                  console.log('--- body:');
-                  console.log(body);             // content of package
+      
 
-              }
-          }
-      ).page.goto(`data:text/html,${body}`, opts.goto);
+      await page.goto(`data:text/html,${wget.body}`, opts.goto);
       //logger.info('Set HTML II ..');
       //await page.goto(`data:text/html,${body}`, opts.goto);
       //await page.goto(`data:text/html,${body}`, opts.goto);
