@@ -54,12 +54,12 @@ function createApp() {
 
   app.use(queue({ activeLimit: 1, queuedLimit: -1 }));
 
+  app.use(express.static('saves'));
+
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
 
   
-
-
   // if (!config.ALLOW_HTTP) {
   //   logger.info('All requests require HTTPS.');
   //   app.use(requireHttps());
