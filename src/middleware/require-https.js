@@ -107,8 +107,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //parsed_url
         try {
-            logger.info(`_parsedUrl: ${req._parsedUrl} .. `);
-            //console.log('_parsedUrl:    ', req._parsedUrl);
+            //logger.info(`_parsedUrl: ${req._parsedUrl} .. `);
+            console.log('_parsedUrl:    ', req._parsedUrl);
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -116,8 +116,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //params
         try {
-            logger.info(`params: ${req.params[0]} .. `);
-            //console.log('params', req.params);
+            //logger.info(`params: ${req.params[0]} .. `);
+            console.log('params', req.params);
         } catch (error) {
             const err = new Error('Invalid Request Params.');
             err.status = 403;
@@ -125,8 +125,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //query
         try {
-            logger.info(`query: ${req.query.url} .. `);
-            //console.log('query      ', req.query);
+            //logger.info(`query: ${req.query.url} .. `);
+            console.log('query      ', req.query);
         } catch (error) {
             const err = new Error('Invalid Request Query.');
             err.status = 403;
