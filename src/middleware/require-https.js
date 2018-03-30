@@ -3,6 +3,7 @@ const express = require('express');
 const config = require('../config');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
+const logger = require('../util/logger')(__filename);
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
         //req
@@ -21,7 +22,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         //rawHeaders Array
         try {
-            console.log('rawHeaders:    ', req.rawHeaders);
+            logger.info(`rawHeaders: ${req.get('X-Forwarded-For')} .. `);
+            //console.log('rawHeaders:    ', req.rawHeaders);
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -29,7 +31,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //Accept
         try {
-            console.log('Accept:   ', req.rawHeaders[9]);
+            logger.info(`Accept: ${req.get('Accept')} .. `);
+            //console.log('Accept:   ', req.rawHeaders[9]);
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -38,12 +41,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         //AWS Load Balancer
         try {
-            console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
-            // if (req.rawHeaders[21] != 'https') {
-            //     const err = new Error('Invalid Request. 09');
-            //     err.status = 403;
-            //     return next(err);
-            // }
+            logger.info(`X-Forwarded-Proto: ${req.get('X-Forwarded-Proto')} .. `);
+            //console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
+            
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -51,7 +51,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //AWS Load Balancer
         try {
-            console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
+            logger.info(`X-Forwarded-Port: ${req.get('X-Forwarded-Port')} .. `);
+            //console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
             // if (req.rawHeaders[23] != 443) {
             //     const err = new Error('Invalid Request. 0112');
             //     err.status = 403;
@@ -64,7 +65,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //request_url
         try {
-            console.log('request_url:       ', req.url);
+            logger.info(`request_url: ${req.url} .. `);
+            //console.log('request_url:       ', req.url);
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -72,7 +74,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //request_url_length
         try {
-            console.log('request_url_length:    ', req.url.length);
+            logger.info(`request_url_length: ${req.url.length} .. `);
+            //console.log('request_url_length:    ', req.url.length);
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -80,7 +83,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //Check if method is GET, request_method should be GET
         try {
-            console.log('request_method:    ', req.method);
+            logger.info(`request_method: ${req.method} .. `);
+            //console.log('request_method:    ', req.method);
             if (req.method != "GET") {
                 const err = new Error('Invalid Request. I');
                 err.status = 403;
@@ -93,7 +97,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //original_url
         try {
-            console.log('originalUrl:   ', req.originalUrl);
+            logger.info(`originalUrl: ${req.originalUrl} .. `);
+            //console.log('originalUrl:   ', req.originalUrl);
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -101,7 +106,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //parsed_url
         try {
-            console.log('_parsedUrl:    ', req._parsedUrl);
+            logger.info(`_parsedUrl: ${req._parsedUrl} .. `);
+            //console.log('_parsedUrl:    ', req._parsedUrl);
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -109,7 +115,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //params
         try {
-            console.log('params', req.params);
+            logger.info(`params: ${req.params} .. `);
+            //console.log('params', req.params);
         } catch (error) {
             const err = new Error('Invalid Request Params.');
             err.status = 403;
@@ -117,7 +124,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //query
         try {
-            console.log('query      ', req.query);
+            logger.info(`params: ${req.query} .. `);
+            //console.log('query      ', req.query);
         } catch (error) {
             const err = new Error('Invalid Request Query.');
             err.status = 403;
@@ -126,15 +134,19 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         //path to api
         try {
-            console.log('requestPathToApi:         ', req.url.split("?")[0]);
+            logger.info(`requestPathApi: ${req.url.split("?")[0]} .. `);
+            //console.log('requestPathToApi:         ', req.url.split("?")[0]);
             var requestApiPath = req.url.split("?")[0];
-            console.log(requestApiPath);
-            console.log(requestApiPath.length);
+            logger.info(`requestPathApi: ${requestApiPath} .. `);
+            //console.log(requestApiPath);
+            logger.info(`requestPathApi Length: ${requestApiPath.length} .. `);
+            //console.log(requestApiPath.length);
             var check_path = '/api/render';
-            console.log(check_path)
+            logger.info(`check_path: ${check_path} .. `);
+            //console.log(check_path)
             if (requestApiPath == check_path) {
-                console.log('requestPathToApi OK');
-
+                logger.info(`requestPathToApi OK .. `);
+                //console.log('requestPathToApi OK');
             } else {
                 const err = new Error('Invalid Request Path.');
                 err.status = 403;
@@ -158,7 +170,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 requestStruc_b == 'v1' &&
                 requestStruc_c == 'pdfs'
             ) {
-                console.log('Request API path structure OK');
+                logger.info(`Request API path structure OK .. `);
+                //console.log('Request API path structure OK');
             } else {
                 const err = new Error('Invalid Request Query. 1');
                 err.status = 403;
