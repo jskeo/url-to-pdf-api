@@ -16,7 +16,7 @@ const getRender = ex.createRoute((req, res) => {
       res.send(data);
       //console.log('res.headers: ', res.req.headers);
       logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-      logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | ${responseTime.express} ..`);
+      logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | ${responseTime.time.express} ..`);
       //console.log('res.get(): ');
       //console.log(req.get('X-Forwarded-For'));
       //console.log('res.statusCode: ', res.statusCode);
