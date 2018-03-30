@@ -116,7 +116,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //params
         try {
-            logger.info(`params: ${req.params} .. `);
+            logger.info(`params: ${req.params[0]} .. `);
             //console.log('params', req.params);
         } catch (error) {
             const err = new Error('Invalid Request Params.');
@@ -125,7 +125,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //query
         try {
-            logger.info(`query: ${req.query[]} .. `);
+            logger.info(`query: ${req.query.url} .. `);
             //console.log('query      ', req.query);
         } catch (error) {
             const err = new Error('Invalid Request Query.');
