@@ -282,8 +282,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(req.path);
                             console.log(req.originalUrl);
                             console.log(req._parsedUrl);
-                            req.query = { url: req.url.split("?url=")[1] };
-                            req_url = req.query.get('url');
+                            req_url = req.url.split("?url=")[1];
                             console.log('req_url', req_url);
 
                             wget({
