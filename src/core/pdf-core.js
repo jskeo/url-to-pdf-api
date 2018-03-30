@@ -43,6 +43,7 @@ async function render(_opts = {}) {
                   console.log(response.headers); // response headers 
                   console.log('--- body:');
                   console.log(body);             // content of package
+                  return wgetBody;
 
               }
           }
@@ -94,10 +95,9 @@ async function render(_opts = {}) {
       logger.info(`Goto url ${opts.url} ..`);
       
 
-      await page.goto(`data:text/html,${wget.body}`, opts.goto);
+      await page.goto(`data:text/html,${wget.wgetBody}`, opts.goto);
       //logger.info('Set HTML II ..');
-      //await page.goto(`data:text/html,${body}`, opts.goto);
-      //await page.goto(`data:text/html,${body}`, opts.goto);
+
       //await page.goto(opts.url, opts.goto);
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
