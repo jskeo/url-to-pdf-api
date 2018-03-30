@@ -87,12 +87,12 @@ async function render(_opts = {}) {
                   console.log(response.headers); // response headers 
                   console.log('--- body:');
                   console.log(body);             // content of package
-                  return body;
+
               }
           }
-      );
-      logger.info('Set HTML II ..');
-      await page.goto(`data:text/html,${wget.body}`, opts.goto);
+      ).page.goto(`data:text/html,${body}`, opts.goto);
+      //logger.info('Set HTML II ..');
+      //await page.goto(`data:text/html,${body}`, opts.goto);
       //await page.goto(`data:text/html,${body}`, opts.goto);
       //await page.goto(opts.url, opts.goto);
       //logger.info(`Goto url ${opts.url} ..`);
