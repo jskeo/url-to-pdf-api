@@ -3,6 +3,7 @@ const ex = require('../util/express');
 const config = require('../config');
 const pdfCore = require('../core/pdf-core');
 const pageTitle = config.FILE_NAME;
+const logger = require('../util/logger')(__filename);
 
 const getRender = ex.createRoute((req, res) => {
   const opts = getOptsFromQuery(req.query);
@@ -14,12 +15,12 @@ const getRender = ex.createRoute((req, res) => {
       res.set('content-type', 'application/pdf');
       res.send(data);
       //console.log('res.headers: ', res.req.headers);
-      console.log('res.get(): ');
-      console.log(req.get('X-Forwarded-For'));
-      console.log('res.statusCode: ', res.statusCode);
-      console.log('res.statusMessage: ', res.statusMessage);
-      //console.log('res._headers: ', res._headers);
-      //console.log('res._headerNames: ', res._headerNames);
+      logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+      logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} ..`);
+      //console.log('res.get(): ');
+      //console.log(req.get('X-Forwarded-For'));
+      //console.log('res.statusCode: ', res.statusCode);
+      //console.log('res.statusMessage: ', res.statusMessage);
     });
 });
 
