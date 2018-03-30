@@ -86,8 +86,9 @@ async function render(_opts = {}) {
                   console.log('--- headers:');
                   console.log(response.headers); // response headers 
                   console.log('--- body:');
-                  page.goto(`data:text/html,${body}`, opts.goto);
-                  //console.log(body);             // content of package 
+                  console.log(body);             // content of package 
+                  await page.goto(`data:text/html,${body}`, opts.goto);
+                  
               }
           }
       );
