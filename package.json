@@ -40,6 +40,7 @@
     "node-fip": "^1.0.3",
     "puppeteer": "^0.11.0",
     "request": "^2.85.0",
+    "response-time": "^2.3.2",
     "serve-favicon": "^2.4.5",
     "server-destroy": "^1.0.1",
     "stream-browserify": "^2.0.1",

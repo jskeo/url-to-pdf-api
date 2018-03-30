@@ -15,8 +15,9 @@ const createRouter = require('./router');
 const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:2, limit:3});
-var queue = require('express-queue');
-var nodeFip = require('node-fip');
+const queue = require('express-queue');
+const nodeFip = require('node-fip');
+const responseTime = require('response-time');
  
 
 
