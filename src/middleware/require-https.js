@@ -125,7 +125,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //query
         try {
-            logger.info(`query: ${req.query} .. `);
+            logger.info(`query: ${req.query[]} .. `);
             //console.log('query      ', req.query);
         } catch (error) {
             const err = new Error('Invalid Request Query.');
