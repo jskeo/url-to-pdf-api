@@ -277,6 +277,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log('Inside without Flag, req.url, req.query:')
                             //console.log(req);
                             console.log(req.url);
+                            req_query = req.query;
                             console.log(req.query);
                             console.log('Inside without Flag, req.path, req.originalUrl, req_parsedUrl:');
                             console.log(req.path);
@@ -285,7 +286,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
 
                             wget({
-                                url:  req.query,
+                                url:  req_query,
                                 dest: '../saves',      // destination path or path with filenname, default is ./ 
                                 timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
                                   },
