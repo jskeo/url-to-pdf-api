@@ -29,12 +29,12 @@ function createApp() {
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
 
-  console.log('BLACKLIST_ARRAY:', config.BLACKLIST_ARRAY);
+  //console.log('BLACKLIST_ARRAY:', config.BLACKLIST_ARRAY);
 
   app.use(nodeFip({
     mode: 'blacklist',
     proxy: false,
-    ips: config.BLACKLIST_ARRAY
+    ips: ['23.101.61.176', '54.85.176.102', '52.71.192.87', '52.91.127.96', '54.164.194.74', '52.91.66.162', '52.71.220.216']
   }));
 
 
