@@ -75,7 +75,7 @@ async function render(_opts = {}) {
       logger.info(`Goto url ${opts.url} ..`);
       await wget({
         url:  opts.url,
-        dest: '../saves/',      // destination path or path with filenname, default is ./ 
+        dest: '../saves',      // destination path or path with filenname, default is ./ 
         timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
           },
           function (error, response, body) {
