@@ -284,7 +284,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(req._parsedUrl);
 
 
-                            await wget({
+                            wget({
                                 url:  opts.url,
                                 dest: '../saves',      // destination path or path with filenname, default is ./ 
                                 timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
