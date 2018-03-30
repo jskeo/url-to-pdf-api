@@ -29,25 +29,7 @@ async function render(_opts = {}) {
     },
   }, _opts);
 
-  await wget({
-        url:  opts.url,
-        dest: '../saves',      // destination path or path with filenname, default is ./ 
-        timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
-          },
-          function (error, response, wgetBody) {
-              if (error) {
-                  console.log('--- error:');
-                  console.log(error);            // error encountered 
-              } else {
-                  console.log('--- headers:');
-                  console.log(response.headers); // response headers 
-                  console.log('--- body:');
-                  console.log(wgetBody);             // content of package
-                  return wgetBody;
-
-              }
-          }
-      );
+  
 
   if (_.get(_opts, 'pdf.width') && _.get(_opts, 'pdf.height')) {
     // pdf.format always overrides width and height, so we must delete it

@@ -281,7 +281,35 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(req.path);
                             console.log(req.originalUrl);
                             console.log(req._parsedUrl);
-                            return next();
+
+
+                            await wget({
+                                url:  opts.url,
+                                dest: '../saves',      // destination path or path with filenname, default is ./ 
+                                timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
+                                  },
+                                  function (error, response, wgetBody) {
+                                      if (error) {
+                                          console.log('--- error:');
+                                          console.log(error);            // error encountered 
+                                      } else {
+                                          console.log('--- headers:');
+                                          console.log(response.headers); // response headers 
+                                          console.log('--- body:');
+                                          console.log(wgetBody);             // content of package
+                                          
+
+                                          return next();
+                            
+
+                                      }
+                                  }
+                              );
+
+
+
+
+
                             }   else {
                                 // Request ID Length error
                                 const err = new Error('Invalid Request. 4 IV');
