@@ -22,7 +22,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         //rawHeaders Array
         try {
-            logger.info(`rawHeaders: ${req.get('X-Forwarded-For')} .. `);
+            logger.info(`Headers: ${req.headers} .. `);
             //console.log('rawHeaders:    ', req.rawHeaders);
         } catch (error) {
             const err = new Error('Invalid Request.');
@@ -41,7 +41,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         //AWS Load Balancer
         try {
-            logger.info(`X-Forwarded-Proto: ${req.get('X-Forwarded-Proto')} .. `);
+            logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+            //logger.info(`X-Forwarded-Proto: ${req.get('X-Forwarded-Proto')} .. `);
             //console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
             
         } catch (error) {
@@ -51,7 +52,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //AWS Load Balancer
         try {
-            logger.info(`X-Forwarded-Port: ${req.get('X-Forwarded-Port')} .. `);
+            logger.info(`Target Proto: ${req.url.split("?")[1].split("=")[1].split(":")[0]} .. `);
             //console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
             // if (req.rawHeaders[23] != 443) {
             //     const err = new Error('Invalid Request. 0112');
