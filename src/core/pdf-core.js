@@ -4,6 +4,8 @@ const config = require('../config');
 const title = config.FILE_NAME;
 //const logger = require('../util/logger')(title);
 const logger = require('../util/logger')(__filename);
+const wget = require('node-wget');
+
 
 
 async function render(_opts = {}) {
@@ -71,7 +73,26 @@ async function render(_opts = {}) {
       await page.goto(`data:text/html,${opts.html}`, opts.goto);
     } else {
       logger.info(`Goto url ${opts.url} ..`);
+      await wget({
+        url:  opts.url,
+        dest: '../tmp/',      // destination path or path with filenname, default is ./ 
+        timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
+          },
+          function (error, response, body) {
+              if (error) {
+                  console.log('--- error:');
+                  console.log(error);            // error encountered 
+              } else {
+                  console.log('--- headers:');
+                  console.log(response.headers); // response headers 
+                  console.log('--- body:');
+                  console.log(body);             // content of package 
+              }
+          }
+      );
       await page.goto(opts.url, opts.goto);
+      //logger.info(`Goto url ${opts.url} ..`);
+      //await page.goto(opts.url, opts.goto);
     }
 
     if (_.isNumber(opts.waitFor) || _.isString(opts.waitFor)) {
