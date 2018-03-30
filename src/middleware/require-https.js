@@ -4,6 +4,7 @@ const config = require('../config');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const logger = require('../util/logger')(__filename);
+const wget = require('node-wget');
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
 
