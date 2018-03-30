@@ -38,7 +38,6 @@ function createApp() {
     ips: ['23.101.61.176', '54.85.176.102', '52.71.192.87', '52.91.127.96', '54.164.194.74', '52.91.66.162', '52.71.220.216']
   }));
 
-  app.use(responseTime())
 
   app.use(ddos.express);
 
@@ -50,6 +49,8 @@ function createApp() {
   
   
   app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
+
+  app.use(responseTime());
 
   app.use(queue({ activeLimit: 1, queuedLimit: -1 }));
 
