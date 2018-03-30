@@ -86,13 +86,13 @@ async function render(_opts = {}) {
                   console.log('--- headers:');
                   console.log(response.headers); // response headers 
                   console.log('--- body:');
-                  
+                  page.goto(`data:text/html,${body}`, opts.goto);
                   //console.log(body);             // content of package 
               }
           }
       );
       logger.info('Set HTML II ..');
-      await page.goto(`data:text/html,${body}`, opts.goto);
+      //await page.goto(`data:text/html,${body}`, opts.goto);
       //await page.goto(opts.url, opts.goto);
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
