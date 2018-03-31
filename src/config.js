@@ -27,4 +27,6 @@ if (process.env.API_TOKENS) {
   config.API_TOKENS = process.env.API_TOKENS.split(',');
 }
 
+process.env.TZ = 'Europe/Amsterdam';
+
 module.exports = config;
