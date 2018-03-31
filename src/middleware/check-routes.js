@@ -14,16 +14,16 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	
 	staticRouter.get('/api/render', function (req, res) {
 	  res.send('CHECK ROUTES ACTIVE I');
-	  
-	  logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-      logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
 	});
 
+	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
 
+    res.end;
  
 
 	//return next();
 
 };
 
-module.exports = createCheckRoutes;
+module.exports = createCheckRoutes, staticRouter;
