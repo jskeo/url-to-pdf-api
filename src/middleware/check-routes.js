@@ -26,4 +26,4 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 };
 
-module.exports = createCheckRoutes, staticRouter;
+module.exports = createCheckRoutes;
