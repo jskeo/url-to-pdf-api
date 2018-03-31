@@ -88,9 +88,12 @@ function createApp() {
   }));
 
 
-  puppeteer.launch().then(async browser => {
+  puppeteer.launch(
+    {
+     args: ['--disable-gpu'],
+    }
+    ).then(async browser => {
   const page = await browser.newPage();
-  
   });
 
 
