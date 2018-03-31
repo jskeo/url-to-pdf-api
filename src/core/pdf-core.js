@@ -4,7 +4,7 @@ const config = require('../config');
 const title = config.FILE_NAME;
 //const logger = require('../util/logger')(title);
 const logger = require('../util/logger')(__filename);
-const wget = require('node-wget');
+//const wget = require('node-wget');
 
 
 
@@ -75,12 +75,7 @@ async function render(_opts = {}) {
       await page.goto(`data:text/html,${opts.html}`, opts.goto);
     } else {
       logger.info(`Goto url ${opts.url} ..`);
-      
-
-      //await page.goto(`data:text/html,${wget.wgetBody}`, opts.goto);
-      //logger.info('Set HTML II ..');
-
-      //await page.goto(opts.url, opts.goto);
+      await page.goto(opts.url, opts.goto);
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
     }
