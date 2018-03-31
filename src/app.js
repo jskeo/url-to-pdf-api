@@ -19,8 +19,6 @@ const queue = require('express-queue');
 const nodeFip = require('node-fip');
 const responseTime = require('response-time');
 
-const puppeteer = require('puppeteer');
-
 
 function createApp() {
 
@@ -88,11 +86,6 @@ function createApp() {
   }));
 
 
-  puppeteer.launch(
-    {
-     args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
-    }
-    );
 
 
   // Initialize routes

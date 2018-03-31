@@ -39,12 +39,12 @@ async function render(_opts = {}) {
 
   logOpts(opts);
 
-  // const browser = await puppeteer.launch({
-  //   headless: !config.DEBUG_MODE,
-  //   ignoreHTTPSErrors: opts.ignoreHttpsErrors,
-  //   args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
-  //   sloMo: config.DEBUG_MODE ? 250 : undefined,
-  // });
+  const browser = await puppeteer.launch({
+    headless: !config.DEBUG_MODE,
+    ignoreHTTPSErrors: opts.ignoreHttpsErrors,
+    args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
+    //sloMo: config.DEBUG_MODE ? 250 : undefined,
+  });
   const page = await browser.newPage();
 
   page.on('console', (...args) => logger.info('PAGE LOG:', ...args));
