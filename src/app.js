@@ -18,6 +18,9 @@ const ddos = new Ddos({burst:2, limit:3});
 const queue = require('express-queue');
 const nodeFip = require('node-fip');
 const responseTime = require('response-time');
+var time = require('time')(Date);
+var d = new Date();
+d.setTimezone('Europe/Amsterdam');
 
 
 function createApp() {
