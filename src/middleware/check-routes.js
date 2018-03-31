@@ -12,18 +12,16 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	console.log('CHECK ROUTES ACTIVE');
 
-	const staticRouter = express.Router();
+
 	
-	staticRouter.get('/api/render', function (req, res) {
+	get('/api/render', function (req, res) {
 		return res.send('CHECK ROUTES ACTIVE I');
 	});
 
 	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
     logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
 	
-	return staticRouter;
-
-
+    return next(res.status(200));
 
 	}
 
