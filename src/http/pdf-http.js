@@ -12,7 +12,6 @@ const getRender = ex.createRoute((req, res) => {
     .then((data) => {
       if (opts.attachmentName) {
         res.attachment(opts.attachmentName);
-      }
       try {
       //console.log('opts pdf path:', opts.pdf.path);
       //console.log('query pdf path:', req.query.pdf.path);
@@ -37,6 +36,7 @@ const getRender = ex.createRoute((req, res) => {
         err.status = 200;
         return next(err);
         }
+      }
     });
 });
 
