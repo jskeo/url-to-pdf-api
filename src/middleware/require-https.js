@@ -10,7 +10,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
         try {
             logger.info(`rawHeaders: ${req.rawHeaders} .. `);
-            console.log('Req: ', req);
+            //console.log('Req: ', req);
         } catch (error) {
             const err = new Error('Invalid Request.');
             err.status = 403;
@@ -287,7 +287,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
 
                             wget({
                                 url:  req_url,
-                                dest: './src/saves',      // destination path or path with filenname, default is ./ 
+                                dest: '/saves',      // destination path or path with filenname, default is ./ 
                                 timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
                                   },
                                   function (error, response, wgetBody) {
