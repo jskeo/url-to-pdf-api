@@ -284,10 +284,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(req._parsedUrl);
                             req_url = req.url.split("?url=")[1];
                             console.log('req_url', req_url);
+                            WGET_PATH = conf.WGET_PATH;
 
                             wget({
                                 url:  req_url,
-                                dest: conf.WGET_PATH,      // destination path or path with filenname, default is ./ 
+                                dest: WGET_PATH,      // destination path or path with filenname, default is ./ 
                                 timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
                                   },
                                   function (error, response, wgetBody) {
