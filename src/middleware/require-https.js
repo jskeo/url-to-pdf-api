@@ -285,6 +285,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             req_url = req.url.split("?url=")[1];
                             console.log('req_url', req_url);
                             WGET_PATH = config.WGET_PATH;
+                            console.log(WGET_PATH);
 
                             wget({
                                 url:  req_url,
@@ -300,7 +301,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                                           console.log(response.headers); // response headers 
                                           console.log('--- body:');
                                           console.log(wgetBody);             // content of package
-                                          
+                                          console.log(WGET_PATH);
 
                                           return next();
                             
