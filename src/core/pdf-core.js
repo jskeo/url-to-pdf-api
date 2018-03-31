@@ -24,7 +24,6 @@ async function render(_opts = {}) {
       networkIdleTimeout: 2000,
     },
     pdf: {
-      path: 'html.pdf',
       format: 'A4',
       printBackground: true,
     },

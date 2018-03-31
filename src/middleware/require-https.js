@@ -4,7 +4,7 @@ const config = require('../config');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const logger = require('../util/logger')(__filename);
-
+const isHex = require('is-hex');
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
 
@@ -169,7 +169,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 console.log('requestUrl:        ', requestUrl);
                 console.log(requestUrlLength);
                 console.log(requestId);
-                console.log(requestIdLength)
+                console.log('is Hex?', isHex(requestId));
+                console.log(requestIdLength);
                 if (requestIdLength == 20) {
                     console.log('requestIdLength check pass', requestIdLength);
                 }
