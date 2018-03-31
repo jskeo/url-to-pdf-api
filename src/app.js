@@ -19,14 +19,15 @@ const queue = require('express-queue');
 const nodeFip = require('node-fip');
 const responseTime = require('response-time');
 var time = require('time')(Date);
-var d = new Date();
-d.setTimezone('Europe/Amsterdam');
 
 
 function createApp() {
 
 
   const app = express();
+  var d = new Date();
+  d.setTimezone('Europe/Amsterdam');
+
   // App is served behind Heroku's router.
   // This is needed to be able to use req.ip or req.secure
   app.enable('trust proxy', 1);
