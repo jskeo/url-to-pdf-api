@@ -64,6 +64,8 @@ function createApp() {
   logger.info('Checking Routes.');
   app.use(checkRoutes());
 
+
+
   
   // if (!config.ALLOW_HTTP) {
   //   logger.info('All requests require HTTPS.');

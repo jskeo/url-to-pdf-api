@@ -8,21 +8,24 @@ const isHex = require('is-hex');
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
-	const staticRouter = express.Router();
+	
 
 	console.log('CHECK ROUTES ACTIVE');
+
+	const staticRouter = express.Router();
 	
 	staticRouter.get('/api/render', function (req, res) {
-	  res.send('CHECK ROUTES ACTIVE I');
+		return res.send('CHECK ROUTES ACTIVE I');
 	});
 
 	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
     logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+	}
 
-    res.end;
- 
+	return staticRouter;
 
-	//return next();
+
+//	return next();
 
 };
 
