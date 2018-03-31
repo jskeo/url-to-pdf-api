@@ -9,7 +9,8 @@ const isHex = require('is-hex');
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	console.log('CHECK ROUTES ACTIVE');
-	return next();
+	res.send('CHECK ROUTES ACTIVE');
+	//return next();
 
 };
 
