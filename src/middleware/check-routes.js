@@ -22,10 +22,12 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
     // err.status = 200;
     // return next(err);
 
+
+	return next();
+	
 	}
 
 
-	return next();
 
 
 
