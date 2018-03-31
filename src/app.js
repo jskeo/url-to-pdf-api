@@ -92,9 +92,7 @@ function createApp() {
     {
      args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
     }
-    ).then(async browser => {
-  const page = await browser.newPage();
-  });
+    );
 
 
   // Initialize routes
