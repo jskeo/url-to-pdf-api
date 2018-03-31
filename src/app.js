@@ -18,6 +18,8 @@ const ddos = new Ddos({burst:2, limit:3});
 const queue = require('express-queue');
 const nodeFip = require('node-fip');
 const responseTime = require('response-time');
+//
+const puppeteer = require('puppeteer');
  
 
 
@@ -95,6 +97,13 @@ function createApp() {
 
   app.use(errorLogger());
   app.use(errorResponder());
+
+  const browser = await puppeteer.launch({
+    headless: !config.DEBUG_MODE,
+    ignoreHTTPSErrors: opts.ignoreHttpsErrors,
+    args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
+    sloMo: config.DEBUG_MODE ? 250 : undefined,
+  });
 
   return app;
 }

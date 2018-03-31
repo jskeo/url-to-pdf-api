@@ -4,7 +4,7 @@ const config = require('../config');
 const title = config.FILE_NAME;
 //const logger = require('../util/logger')(title);
 const logger = require('../util/logger')(__filename);
-//const wget = require('node-wget');
+
 
 
 
@@ -39,12 +39,12 @@ async function render(_opts = {}) {
 
   logOpts(opts);
 
-  const browser = await puppeteer.launch({
-    headless: !config.DEBUG_MODE,
-    ignoreHTTPSErrors: opts.ignoreHttpsErrors,
-    args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
-    sloMo: config.DEBUG_MODE ? 250 : undefined,
-  });
+  // const browser = await puppeteer.launch({
+  //   headless: !config.DEBUG_MODE,
+  //   ignoreHTTPSErrors: opts.ignoreHttpsErrors,
+  //   args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
+  //   sloMo: config.DEBUG_MODE ? 250 : undefined,
+  // });
   const page = await browser.newPage();
 
   page.on('console', (...args) => logger.info('PAGE LOG:', ...args));
@@ -112,7 +112,8 @@ async function render(_opts = {}) {
     throw err;
   } finally {
     logger.info('Closing browser..');
-    await browser.close();
+    await page.close();
+    //await browser.close();
     // if (!config.DEBUG_MODE) {
     //   await browser.close();
     // }
