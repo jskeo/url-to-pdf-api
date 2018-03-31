@@ -4,7 +4,7 @@ const config = require('../config');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const logger = require('../util/logger')(__filename);
-const wget = require('node-wget');
+
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
 
@@ -284,33 +284,10 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(req._parsedUrl);
                             req_url = req.url.split("?url=")[1];
                             console.log('req_url', req_url);
-                            WGET_PATH = config.WGET_PATH;
-                            console.log(WGET_PATH);
-
-                            wget({
-                                url:  req_url,
-                                dest: WGET_PATH,      // destination path or path with filenname, default is ./ 
-                                timeout: 2000       // duration to wait for request fulfillment in milliseconds, default is 2 seconds 
-                                  },
-                                  function (error, response, wgetBody) {
-                                      if (error) {
-                                          console.log('--- error:');
-                                          console.log(error);            // error encountered 
-                                      } else {
-                                          console.log('--- headers:');
-                                          console.log(response.headers); // response headers 
-                                          console.log('--- body:');
-                                          //console.log(wgetBody);             // content of package
-                                          console.log(WGET_PATH);
-                                          req.body = wgetBody;
-                                          console.log(req.query);
-                                          console.log(req.body); 
-                                          return next();
                             
+                            return next();
 
-                                      }
-                                  }
-                              );
+                
 
 
 
