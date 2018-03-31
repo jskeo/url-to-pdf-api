@@ -18,13 +18,13 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	
     res.status(200).send('CHECK ROUTES ACTIVE I');
 
-    // const err = new Error('CHECK ROUTES ACTIVE I');
-    // err.status = 200;
-    // return next(err);
+    const err = new Error('CHECK ROUTES ACTIVE I');
+    err.status = 200;
+    return next(err);
 
 
-	return next();
-	
+	//return next();
+
 	}
 
 
