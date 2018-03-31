@@ -45,7 +45,7 @@ async function render(_opts = {}) {
   //   args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
   //   sloMo: config.DEBUG_MODE ? 250 : undefined,
   // });
-  const page = await browser.newPage();
+  //const page = await browser.newPage();
 
   page.on('console', (...args) => logger.info('PAGE LOG:', ...args));
 
