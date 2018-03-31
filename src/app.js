@@ -98,9 +98,11 @@ function createApp() {
   app.use(errorLogger());
   app.use(errorResponder());
 
+  app.use(puppeteer());
+
   const browser = await puppeteer.launch({
     headless: !config.DEBUG_MODE,
-    ignoreHTTPSErrors: opts.ignoreHttpsErrors,
+    //ignoreHTTPSErrors: opts.ignoreHttpsErrors,
     args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
     sloMo: config.DEBUG_MODE ? 250 : undefined,
   });
