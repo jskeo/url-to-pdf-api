@@ -15,8 +15,8 @@ const getRender = ex.createRoute((req, res) => {
       }
       res.set('content-type', 'application/pdf');
       //cache-control headers
-      res.set('Cache-Control', 'public, max-age=34560'); // 34560 30 seconds, 345600 4 days
-      res.set('Expires', new Date(Date.now() + 34560).toUTCString());
+      res.set('Cache-Control', 'public, max-age=10800000'); // 34560 30 seconds, 345600 4 days, 10800000 3h
+      res.set('Expires', new Date(Date.now() + 10800000).toUTCString());
       //
       res.send(data);
       //console.log('res.headers: ', res.req.headers);
