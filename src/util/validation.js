@@ -56,6 +56,9 @@ const sharedQuerySchema = Joi.object({
 
 const renderQuerySchema = Joi.object({
   url: urlSchema.required(),
+  pdf: Joi.object({
+    path: Joi.string().min(24).max(24)
+  })
 }).concat(sharedQuerySchema);
 
 const renderBodyObject = Joi.object({
