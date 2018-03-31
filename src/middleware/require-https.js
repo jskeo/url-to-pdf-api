@@ -169,10 +169,12 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 console.log('requestUrl:        ', requestUrl);
                 console.log(requestUrlLength);
                 console.log(requestId);
+                isHex(requestId);
                 console.log('is Hex?', isHex(requestId));
                 console.log(requestIdLength);
-                if (requestIdLength == 20) {
+                if (requestIdLength == 20 && isHex(requestId)) {
                     console.log('requestIdLength check pass', requestIdLength);
+                    res.set('request-id', requestId);
                 }
                 else if (requestIdLength == 28) {
                     var requestUrl = req.url.replace("&", "?");
@@ -183,7 +185,16 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     console.log('Flag:', sendgridFlag);
                     //must be length 12
                     console.log(sendgridFlagLength);
-                    console.log('prepared requestID', requestId)
+                    console.log('prepared requestID', requestId);
+                    console.log('is Hex?', isHex(requestId));
+                    if (requestIdLength == 20 && isHex(requestId)) {
+                        console.log('requestIdLength check pass', requestIdLength);
+                        res.set('request-id', requestId);
+                    } else {
+                    const err = new Error('Invalid Request. ID 6 III');
+                    err.status = 403;
+                    return next(err);
+                    }
                 } else {
                     const err = new Error('Invalid Request. ID 6');
                     err.status = 403;
