@@ -11,7 +11,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	console.log('CHECK ROUTES ACTIVE');
 	     
 	
-	app.get('/api/render', function (req, res) {
+	router.get('/api/render', function (req, res) {
 	  res.send('CHECK ROUTES ACTIVE I');
 	});
 
