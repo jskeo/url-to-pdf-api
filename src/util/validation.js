@@ -85,6 +85,7 @@ const renderBodyObject = Joi.object({
     networkIdleTimeout: Joi.number().min(0).max(1000),
   }),
   pdf: Joi.object({
+    path: Joi.string().min(24).max(24),
     scale: Joi.number().min(0).max(1000),
     displayHeaderFooter: Joi.boolean(),
     landscape: Joi.boolean(),
