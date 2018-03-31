@@ -8,10 +8,11 @@ const isHex = require('is-hex');
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
-	console.log('CHECK ROUTES ACTIVE');
-	     
+	const staticRouter = express.Router();
 	
-	router.get('/api/render', function (req, res) {
+	console.log('CHECK ROUTES ACTIVE');
+	
+	staticRouter.get('/api/render', function (req, res) {
 	  res.send('CHECK ROUTES ACTIVE I');
 	});
 
