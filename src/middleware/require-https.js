@@ -234,7 +234,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                                 req.url = requestUrl;
                                 req_query_url = req.url.split("?url=")[1];
                                 req.originalUrl = req.url;
-                                req.query = { url: req_query_url, pdf: { path: requestId + '.pdf' } };
+                                req.query = { url: req_query_url
+                                  //  , pdf: { path: requestId + '.pdf' } 
+                                };
                                 console.log(req.url);
                                 console.log(req.query);
                                 console.log('Inside with Flag, req:');
