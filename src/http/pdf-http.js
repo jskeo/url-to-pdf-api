@@ -14,7 +14,7 @@ const getRender = ex.createRoute((req, res) => {
         res.attachment(opts.attachmentName);
       }
       //console.log('opts pdf path:', opts.pdf.path);
-      console.log('query pdf path:', req.query.pdf.path);
+      //console.log('query pdf path:', req.query.pdf.path);
       console.log('request query:', req.query);
       res.set('content-type', 'application/pdf');
       //cache-control headers
