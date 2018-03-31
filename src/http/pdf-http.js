@@ -13,6 +13,7 @@ const getRender = ex.createRoute((req, res) => {
       if (opts.attachmentName) {
         res.attachment(opts.attachmentName);
       }
+      try {
       //console.log('opts pdf path:', opts.pdf.path);
       //console.log('query pdf path:', req.query.pdf.path);
       console.log('request query:', req.query);
@@ -31,6 +32,11 @@ const getRender = ex.createRoute((req, res) => {
       //console.log(req.get('X-Forwarded-For'));
       //console.log('res.statusCode: ', res.statusCode);
       //console.log('res.statusMessage: ', res.statusMessage);
+      } catch {
+        const err = new Error('CHECK ROUTES ACTIVE II');
+        err.status = 200;
+        return next(err);
+        }
     });
 });
 
