@@ -77,7 +77,7 @@ async function render(_opts = {}) {
       logger.info(`Goto url ${opts.url} ..`);
       
 
-      await page.goto(`data:text/html,${wget.wgetBody}`, opts.goto);
+      //await page.goto(`data:text/html,${wget.wgetBody}`, opts.goto);
       //logger.info('Set HTML II ..');
 
       //await page.goto(opts.url, opts.goto);

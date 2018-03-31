@@ -7,6 +7,9 @@ const logger = require('../util/logger')(__filename);
 
 const getRender = ex.createRoute((req, res) => {
   const opts = getOptsFromQuery(req.query);
+  //
+  opts.html = req.body;
+  //
   return pdfCore.render(opts)
     .then((data) => {
       if (opts.attachmentName) {
