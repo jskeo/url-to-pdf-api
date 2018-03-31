@@ -10,11 +10,16 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	console.log('CHECK ROUTES ACTIVE');
 	     
-	res.send('CHECK ROUTES ACTIVE');
+	
+	app.get('/api/render', function (req, res) {
+	  res.send('CHECK ROUTES ACTIVE I');
+	});
+
+
 	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
     logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
  
-	
+
 	//return next();
 
 };
