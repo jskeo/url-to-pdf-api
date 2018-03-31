@@ -1,4 +1,5 @@
 .env
+.env.swp
 .DS_Store
 .idea
 package-lock.json

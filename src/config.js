@@ -19,6 +19,7 @@ const config = {
   FILE_NAME: process.env.FILE_NAME,
   BLACKLIST_ARRAY: process.env.BLACKLIST_ARRAY,
   QUEUE_LIMIT: process.env.QUEUE_LIMIT,
+  WGET_PATH: process.env.WGET_PATH,
   API_TOKENS: [],
 };
 
