@@ -300,9 +300,11 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                                           console.log('--- headers:');
                                           console.log(response.headers); // response headers 
                                           console.log('--- body:');
-                                          console.log(wgetBody);             // content of package
+                                          //console.log(wgetBody);             // content of package
                                           console.log(WGET_PATH);
-
+                                          req.body = wgetBody;
+                                          console.log(req.query);
+                                          console.log(req.body); 
                                           return next();
                             
 
