@@ -90,7 +90,7 @@ function createApp() {
 
   puppeteer.launch(
     {
-     args: ['--disable-gpu'],
+     args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
     }
     ).then(async browser => {
   const page = await browser.newPage();
