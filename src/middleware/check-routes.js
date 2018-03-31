@@ -6,10 +6,11 @@ const expressSanitizer = require('express-sanitizer');
 const logger = require('../util/logger')(__filename);
 const isHex = require('is-hex');
 
-const createCheckRoute = () => function checkRoute(req, res, next) {
+const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
-	console.log('CHECK ROUTE ACTIVE');
+	console.log('CHECK ROUTES ACTIVE');
+	return next();
 
 };
 
-module.exports = createCheckRoute;
+module.exports = createCheckRoutes;

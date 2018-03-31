@@ -18,7 +18,7 @@ const ddos = new Ddos({burst:2, limit:3});
 const queue = require('express-queue');
 const nodeFip = require('node-fip');
 const responseTime = require('response-time');
-const checkRoute = require('./middleware/check-route');
+const checkRoutes = require('./middleware/check-routes');
 
 
 function createApp() {
@@ -61,8 +61,8 @@ function createApp() {
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
 
-  logger.info('Checking Route.');
-  app.use(checkRoute());
+  logger.info('Checking Routes.');
+  app.use(checkRoutes());
 
   
   // if (!config.ALLOW_HTTP) {
