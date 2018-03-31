@@ -232,9 +232,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(sendgridFlagLength);
                             if (sendgridFlagLength == 12 && sendgridFlag == 'utm_swu=4551') {
                                 req.url = requestUrl;
-                                req_query_url = req.url.split("?url=")[1]
+                                req_query_url = req.url.split("?url=")[1];
                                 req.originalUrl = req.url;
-                                req.query = { url: req_query_url , pdf: { path: requestId + '.pdf' } };
+                                req.query = { url: req_query_url, pdf: { path: requestId + '.pdf' } };
                                 console.log(req.url);
                                 console.log(req.query);
                                 console.log('Inside with Flag, req:');
@@ -290,13 +290,14 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log('Inside without Flag, req.url, req.query:')
                             //console.log(req);
                             console.log(req.url);
+                            req_query_url = req.url.split("?url=")[1];
+                            req.query = { url: req_query_url, pdf: { path: requestId + '.pdf' } };
                             console.log(req.query);
-                            console.log('Inside without Flag, req.path, req.originalUrl, req_parsedUrl:');
+                            console.log('Inside without Flag, req.path, req.originalUrl, req_query_url:');
                             console.log(req.path);
                             console.log(req.originalUrl);
                             console.log(req._parsedUrl);
-                            req_url = req.url.split("?url=")[1];
-                            console.log('req_url', req_url);
+                            console.log('req_query_url', req_query_url);
                             
                             return next();
 
