@@ -174,7 +174,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 console.log(requestIdLength);
                 if (requestIdLength == 20 && isHex(requestId)) {
                     console.log('requestIdLength check pass', requestIdLength);
-                    res.set('request-id', requestId);
+                    req.set('request-id', requestId);
                 }
                 else if (requestIdLength == 28) {
                     var requestUrl = req.url.replace("&", "?");
@@ -189,7 +189,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     console.log('is Hex?', isHex(requestId));
                     if (requestIdLength == 20 && isHex(requestId)) {
                         console.log('requestIdLength check pass', requestIdLength);
-                        res.set('request-id', requestId);
+                        req.set('request-id', requestId);
                     } else {
                     const err = new Error('Invalid Request. ID 6 III');
                     err.status = 403;
@@ -232,8 +232,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(sendgridFlagLength);
                             if (sendgridFlagLength == 12 && sendgridFlag == 'utm_swu=4551') {
                                 req.url = requestUrl;
+                                req_query_url = req.url.split("?url=")[1]
                                 req.originalUrl = req.url;
-                                req.query = { url: req.url.split("?url=")[1] };
+                                req.query = { url: req_query_url , pdf: { path: requestId + '.pdf' } };
                                 console.log(req.url);
                                 console.log(req.query);
                                 console.log('Inside with Flag, req:');
