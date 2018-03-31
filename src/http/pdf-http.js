@@ -83,7 +83,7 @@ function getOptsFromQuery(query) {
       networkIdleTimeout: query['goto.networkIdleTimeout'],
     },
     pdf: {
-      //path: 'html.pdf',
+      path: query['pdf.path'],
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],
