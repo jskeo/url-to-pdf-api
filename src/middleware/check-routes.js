@@ -14,11 +14,16 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	console.log('CHECK ROUTES ACTIVE');
 
 
-	console.log('res: ', res._header);
+	//console.log('res: ', res._header);
 
-	delete req.headers['request-id'];
+	//delete req.headers['request-id'];
 	//req.removeHeader['request-id'];
-	res.removeHeader['request-id'];
+	//res.removeHeader['request-id'];
+
+	res.set('content-type', 'application/pdf');
+    //cache-control headers
+    res.set('Cache-Control', 'public, max-age=10800000'); // 34560 30 seconds, 345600 4 days, 10800000 3h
+    res.set('Expires', new Date(Date.now() + 10800000).toUTCString());
 
     res.status(200).send('CHECK ROUTES ACTIVE I');
 
