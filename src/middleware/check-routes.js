@@ -7,6 +7,7 @@ const logger = require('../util/logger')(__filename);
 const isHex = require('is-hex');
 const responseTime = require('response-time');
 const fs = require('fs');
+const mkdirp = require('mkdirp');
 
 function doesDirectoryExist(directoryPath) {
 	try{	
@@ -20,6 +21,13 @@ function doesDirectoryExist(directoryPath) {
 			return next(err);
 			}
 		}
+};
+
+function createDirectory(directoryPath) {    
+	mkdirp(directoryPath, function (err) {
+	    if (err) console.error(err)
+	    else console.log('pow! directory created:', directoryPath)
+	});
 };
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
@@ -46,7 +54,12 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		//
 		console.log(doesDirectoryExist(objectPath));
 		//fs.statSync(process.cwd()+config.SAVES_PATH+"/"+requestId).isDirectory();
-		//
+		if (!doesDirectoryExist(objectPath)) {
+			console.log('Creating directory..');
+			createDirectory(objectPath);
+			console.log('Checking again if directory exists..');
+			console.log(doesDirectoryExist(objectPath));
+		}
 		//
 		console.log('Checking if dummy directory exists');
 		console.log(fs.statSync(process.cwd()+config.SAVES_PATH).isDirectory());
