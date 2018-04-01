@@ -15,7 +15,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 
 
-	//delete req.headers['request-id'];
+	delete req.headers['request-id'];
 	//req.removeHeader['request-id'];
 	res.removeHeader['request-id'];
 
@@ -23,7 +23,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
     logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
     logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
-	console.log('res: ', res);
+	//console.log('res: ', res);
 	
 
     // const err = new Error('CHECK ROUTES ACTIVE I');
