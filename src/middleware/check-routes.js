@@ -43,7 +43,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		}
 		console.log('Checking if dummy directory exists');
 		console.log(fs.statSync(process.cwd()+config.SAVES_PATH).isDirectory());
-	};
+
 
 	//
 
