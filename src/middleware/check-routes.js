@@ -17,7 +17,8 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
 
 	console.log('requestId: ', requestId);
-	const objectPath = '../saves/'+requestId;
+	//const objectPath = '../saves/'+requestId;
+	const objectPath = '../saves';
 
 	if (fs.existsSync()) {
 		console.log(objectPath);
