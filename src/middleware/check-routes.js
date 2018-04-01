@@ -1,5 +1,5 @@
 const Ddos = require('ddos');
-const express = require('express');
+const ex = require('../util/express');
 const config = require('../config');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
@@ -9,16 +9,18 @@ const responseTime = require('response-time');
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
-
 	
 
 	console.log('CHECK ROUTES ACTIVE');
 
 
-	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+
 	
     res.status(200).send('CHECK ROUTES ACTIVE I');
+
+    logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+	
 
     // const err = new Error('CHECK ROUTES ACTIVE I');
     // err.status = 200;
@@ -27,10 +29,16 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	//return next();
 
-	}
+	};
+
+// const staticRoute = ex.createRoute((req, res) => {
+
+// 	res.status(200).send('CHECK ROUTES ACTIVE I');
+// 	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+//     logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
 
 
-
+// });
 
 
 module.exports = createCheckRoutes;
