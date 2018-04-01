@@ -27,8 +27,8 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	} else {
 		console.log(objectPath);
 		console.log('file does not exist');
-		console.log('Checking if directory exists');
-		console.log(fs.statSync(process.cwd()+config.SAVES_PATH+"/"+requestId).isDirectory());
+		//console.log('Checking if directory exists');
+		//console.log(fs.statSync(process.cwd()+config.SAVES_PATH+"/"+requestId).isDirectory());
 		console.log('Checking if dummy directory exists');
 		console.log(fs.statSync(process.cwd()+config.SAVES_PATH).isDirectory());
 	};
