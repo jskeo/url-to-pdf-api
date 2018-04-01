@@ -11,7 +11,9 @@ const mkdirp = require('mkdirp');
 
 function doesDirectoryExist(directoryPath) {
 	try{	
-		fs.statSync(directoryPath).isDirectory();
+		if (fs.statSync(directoryPath).isDirectory()) {
+		return true 
+	}
 		} catch (e) {
 			if(e.code == 'ENOENT'){
 			return false;
@@ -71,7 +73,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 			createDirectory(objectDir);
 			console.log('Checking again if directory exists..');
 			console.log(doesDirectoryExist(objectDir));
-			
+
 			res.status(200).send('CHECK ROUTES ACTIVE II');
 
 		    logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
