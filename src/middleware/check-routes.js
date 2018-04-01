@@ -54,7 +54,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	if (fs.existsSync(objectPath)) {
 		console.log(objectPath);
     	console.log('file does exist');
-    	res.status(200).send('CHECK ROUTES ACTIVE I');
+    	res.send('CHECK ROUTES ACTIVE I');
 
 	    logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
 	    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
@@ -75,14 +75,14 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 			console.log('Checking again if directory exists..');
 			console.log(doesDirectoryExist(objectDir));
 
-			res.status(200).send('CHECK ROUTES ACTIVE II');
+			res.send('CHECK ROUTES ACTIVE II');
 
 		    logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
 		    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
 			console.log('res: ', res._header);
 		}
 
-		res.status(200).send('CHECK ROUTES ACTIVE III');
+		res.send('CHECK ROUTES ACTIVE III');
 
 		logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
 		logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
