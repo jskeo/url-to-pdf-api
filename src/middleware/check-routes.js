@@ -18,7 +18,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	console.log('requestId: ', requestId);
 	//const objectPath = '../saves/'+requestId;
-	const objectPath = config.SAVES_PATH;
+	const objectPath = config.SAVES_PATH+"/readme.txt";
 	console.log('CWD: ', process.cwd());
 
 	if (fs.existsSync(objectPath)) {
@@ -28,6 +28,12 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		console.log(objectPath);
 		console.log('directory does not exist');
 	};
+
+	//
+
+
+	//
+
 	//console.log('res: ', res._header);
 
 	//delete req.headers['request-id'];
