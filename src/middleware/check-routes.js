@@ -68,7 +68,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		//fs.statSync(process.cwd()+config.SAVES_PATH+"/"+requestId).isDirectory();
 		if (!doesDirectoryExist(objectDir)) {
 			console.log('Creating directory..');
-			await createDirectory(objectDir);
+			createDirectory(objectDir);
 			console.log('Checking again if directory exists..');
 			console.log(doesDirectoryExist(objectPath));
 			res.status(200).send('CHECK ROUTES ACTIVE II');
