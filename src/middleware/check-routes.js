@@ -6,6 +6,7 @@ const expressSanitizer = require('express-sanitizer');
 const logger = require('../util/logger')(__filename);
 const isHex = require('is-hex');
 const responseTime = require('response-time');
+const fs = require('fs');
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
@@ -16,6 +17,15 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
 
 	console.log('requestId: ', requestId);
+	const objectPath = '../saves/'+requestId;
+
+	if (fs.existsSync()) {
+		console.log(objectPath);
+    	console.log('path does exist');
+	} else {
+		console.log(objectPath);
+		console.log('path does not exist');
+	};
 	//console.log('res: ', res._header);
 
 	//delete req.headers['request-id'];
