@@ -16,10 +16,10 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 
 	
-    res.status(200).send('CHECK ROUTES ACTIVE I');
+    //res.status(200).send('CHECK ROUTES ACTIVE I');
 
-    logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+    //logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+    //logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
 	
 
     // const err = new Error('CHECK ROUTES ACTIVE I');
@@ -27,18 +27,17 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
     // return next(err);
 
 
-	//return next();
+	return next();
 
-	};
+};
 
-// const staticRoute = ex.createRoute((req, res) => {
+const staticRoute = ex.createRoute((req, res) => {
 
-// 	res.status(200).send('CHECK ROUTES ACTIVE I');
-// 	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-//     logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+ 	res.status(200).send('CHECK ROUTES ACTIVE I');
+ 	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
 
-
-// });
+});
 
 
 module.exports = createCheckRoutes;
