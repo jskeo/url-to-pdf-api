@@ -18,7 +18,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	console.log('requestId: ', requestId);
 	//const objectPath = '../saves/'+requestId;
-	const objectPath = process.cwd()+config.SAVES_PATH+"/readme.txt";
+	const objectPath = process.cwd()+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
 	console.log('CWD: ', process.cwd());
 
 	if (fs.existsSync(objectPath)) {
