@@ -27,7 +27,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
     // return next(err);
 
 
-	return next();
+	//return next();
 
 };
 
