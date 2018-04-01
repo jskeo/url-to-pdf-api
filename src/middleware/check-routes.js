@@ -5,8 +5,10 @@ const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const logger = require('../util/logger')(__filename);
 const isHex = require('is-hex');
+const responseTime = require('../response-time');
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
+
 
 	
 
