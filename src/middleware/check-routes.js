@@ -14,6 +14,13 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	console.log('CHECK ROUTES ACTIVE');
 
 
+	const staticRoute = ex.createRoute((req, res) => {
+
+ 	res.status(200).send('CHECK ROUTES ACTIVE I');
+ 	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+
+	});
 
 	
     //res.status(200).send('CHECK ROUTES ACTIVE I');
@@ -31,13 +38,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 };
 
-const staticRoute = ex.createRoute((req, res) => {
 
- 	res.status(200).send('CHECK ROUTES ACTIVE I');
- 	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
-
-});
 
 
 module.exports = createCheckRoutes;
