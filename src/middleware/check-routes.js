@@ -33,6 +33,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		} catch (e) {
 				if(e.code == 'ENOENT'){
 			     //no such file or directory
+			     return false;
 			     console.log('Directory does not exist');
 			   }else {
 			     const err = new Error('Internal Error III');
