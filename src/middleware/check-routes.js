@@ -18,15 +18,15 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	console.log('requestId: ', requestId);
 	//const objectPath = '../saves/'+requestId;
-	const objectPath = config.SAVES_PATH+"/readme.txt";
+	const objectPath = process.cwd()+config.SAVES_PATH+"/readme.txt";
 	console.log('CWD: ', process.cwd());
 
 	if (fs.existsSync(objectPath)) {
 		console.log(objectPath);
-    	console.log('directory does exist');
+    	console.log('file does exist');
 	} else {
 		console.log(objectPath);
-		console.log('directory does not exist');
+		console.log('file does not exist');
 	};
 
 	//
