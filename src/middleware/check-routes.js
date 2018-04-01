@@ -17,7 +17,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	//delete req.headers['request-id'];
 	req.removeHeader['request-id'];
-	res.removeHeader['request-id'];
+	//res.removeHeader['request-id'];
 
     res.status(200).send('CHECK ROUTES ACTIVE I');
 
