@@ -8,6 +8,22 @@ const isHex = require('is-hex');
 const responseTime = require('response-time');
 const fs = require('fs');
 
+function doesDirectoryExist(directoryPath) {
+	try{	
+		fs.statSync(directoryPath).isDirectory();
+		} catch (e) {
+			if(e.code == 'ENOENT'){
+			return false;
+			} 
+			else 
+			{
+			const err = new Error('Internal Error III');
+			err.status = 500;
+			return next(err);
+			}
+		}
+};
+
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	
@@ -28,22 +44,15 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		console.log(objectPath);
 		console.log('file does not exist');
 		console.log('Checking if directory exists');
-		try{	
-			console.log(fs.statSync(process.cwd()+config.SAVES_PATH+"/"+requestId).isDirectory());
-		} catch (e) {
-				if(e.code == 'ENOENT'){
-			     //no such file or directory
-			     console.log('Directory does not exist');
-			   }else {
-			     const err = new Error('Internal Error III');
-			     err.status = 500;
-			     return next(err);
-			   }
-			}
-		}
+		//
+		//
+		console.log(doesDirectoryExist(objectPath));
+		//fs.statSync(process.cwd()+config.SAVES_PATH+"/"+requestId).isDirectory();
+		//
+		//
 		console.log('Checking if dummy directory exists');
 		console.log(fs.statSync(process.cwd()+config.SAVES_PATH).isDirectory());
-
+	}
 
 	//
 
