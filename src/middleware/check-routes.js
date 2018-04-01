@@ -14,9 +14,7 @@ function doesDirectoryExist(directoryPath) {
 		} catch (e) {
 			if(e.code == 'ENOENT'){
 			return false;
-			} 
-			else 
-			{
+			} else {
 			const err = new Error('Internal Error III');
 			err.status = 500;
 			return next(err);
