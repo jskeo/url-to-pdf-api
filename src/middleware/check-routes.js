@@ -21,12 +21,12 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	const objectPath = config.SAVES_PATH;
 	console.log('CWD: ', process.cwd());
 
-	if (fs.existsSync()) {
+	if (fs.existsSync(objectPath)) {
 		console.log(objectPath);
-    	console.log('path does exist');
+    	console.log('directory does exist');
 	} else {
 		console.log(objectPath);
-		console.log('path does not exist');
+		console.log('directory does not exist');
 	};
 	//console.log('res: ', res._header);
 
