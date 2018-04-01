@@ -70,7 +70,8 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 			console.log('Creating directory..');
 			createDirectory(objectDir);
 			console.log('Checking again if directory exists..');
-			console.log(doesDirectoryExist(objectPath));
+			console.log(doesDirectoryExist(objectDir));
+			
 			res.status(200).send('CHECK ROUTES ACTIVE II');
 
 		    logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
@@ -78,8 +79,8 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 			console.log('res: ', res._header);
 		}
 		//
-		console.log('Checking if dummy directory exists');
-		console.log(fs.statSync(process.cwd()+config.SAVES_PATH).isDirectory());
+		//console.log('Checking if dummy directory exists');
+		//console.log(fs.statSync(process.cwd()+config.SAVES_PATH).isDirectory());
 	}
 
 	//
