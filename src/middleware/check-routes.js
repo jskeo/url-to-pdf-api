@@ -74,6 +74,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		        'x-sent': true
 		    }
 		  };
+		
 		res.setHeader('Content-Disposition', 'inline; filename="' + config.FILE_NAME + '"');
     	res.sendFile(objectPath, sendfileOpts, function (err) {
 		    if (err) {
