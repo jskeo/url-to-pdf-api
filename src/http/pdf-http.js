@@ -20,7 +20,7 @@ function getRequestObjectPath (req) {
 
 const getRender = ex.createRoute((req, res) => {
   const requestObjectPath = getRequestObjectPath(req);
-  const opts = getOptsFromQuery(req.query);
+  const opts = getOptsFromQuery(req.query, requestObjectPath);
 
   return pdfCore.render(opts)
     .then((data) => {
@@ -77,7 +77,7 @@ const postRender = ex.createRoute((req, res) => {
     });
 });
 
-function getOptsFromQuery(query) {
+function getOptsFromQuery(query, requestObjectPath) {
   const opts = {
     url: query.url,
     attachmentName: config.FILE_NAME,
