@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const _ = require('lodash');
 const config = require('../config');
-const title = config.FILE_NAME;
+//const title = config.FILE_NAME;
 //const logger = require('../util/logger')(title);
 const logger = require('../util/logger')(__filename);
 
@@ -161,6 +161,12 @@ function logOpts(opts) {
   logger.info(`Rendering with opts: ${JSON.stringify(supressedOpts, null, 2)}`);
 }
 
-module.exports = {
-  render, 
+module.exports = function(render) {
+  var title = config.FILE_NAME;
+  const title = Object.assign(render);
+  return title; 
 };
+
+// module.exports = {
+//   render, 
+// };
