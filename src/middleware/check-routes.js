@@ -74,7 +74,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		        'x-sent': true
 		    }
 		  };
-		res.setHeader('Content-disposition', 'inline; filename="' + config.FILE_NAME + '"');
+		res.setHeader('Content-Disposition', 'inline; filename="' + config.FILE_NAME + '"');
     	res.sendFile(objectPath, sendfileOpts, function (err) {
 		    if (err) {
 		      	const err = new Error('Internal Error VII');
