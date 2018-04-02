@@ -6,6 +6,7 @@ const pdfCore = require('../core/pdf-core');
 const pageTitle = config.FILE_NAME;
 const logger = require('../util/logger')(__filename);
 
+
 const getRender = ex.createRoute((req, res) => {
   const opts = getOptsFromQuery(req.query);
 

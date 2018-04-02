@@ -36,6 +36,18 @@ function createDirectory(directoryPath) {
 	}
 };
 
+function getRequestObjectPath (req) {
+	try {
+	  const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+	  const objectPath = process.cwd()+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
+	  return objectPath;
+	  } catch (e) {
+		const err = new Error('Internal Error V');
+		err.status = 500;
+		return next(err);
+	}
+};
+
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
@@ -83,6 +95,8 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 			//console.log('res: ', res._header);
 			
 		} else {
+
+		console.log(getRequestObjectPath(req));
 
 		res.send('CHECK ROUTES ACTIVE III');
 
