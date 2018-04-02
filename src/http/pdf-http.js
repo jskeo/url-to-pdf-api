@@ -6,8 +6,20 @@ const pdfCore = require('../core/pdf-core');
 const pageTitle = config.FILE_NAME;
 const logger = require('../util/logger')(__filename);
 
+function getRequestObjectPath (req) {
+  try {
+    const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+    const objectPath = process.cwd()+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
+    return objectPath;
+    } catch (e) {
+    const err = new Error('Internal Error V');
+    err.status = 500;
+    return next(err);
+  }
+};
 
 const getRender = ex.createRoute((req, res) => {
+
   const opts = getOptsFromQuery(req.query);
 
   return pdfCore.render(opts)
@@ -66,6 +78,7 @@ const postRender = ex.createRoute((req, res) => {
 });
 
 function getOptsFromQuery(query) {
+  const requestObjectPath = getRequestObjectPath(req);
   const opts = {
     url: query.url,
     attachmentName: config.FILE_NAME,
@@ -89,6 +102,7 @@ function getOptsFromQuery(query) {
     },
     pdf: {
       //path: query.pdf.path,
+      path: requestObjectPath;
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],

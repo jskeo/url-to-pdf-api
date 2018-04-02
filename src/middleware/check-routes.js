@@ -96,7 +96,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 			
 		} else {
 
-		console.log(getRequestObjectPath(req));
+		console.log('getRequestObjectPath function check:', getRequestObjectPath(req));
 
 		res.send('CHECK ROUTES ACTIVE III');
 
