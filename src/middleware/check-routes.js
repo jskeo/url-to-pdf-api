@@ -74,13 +74,13 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 			createDirectory(objectDir);
 			console.log('Checking again if directory exists..');
 			console.log(doesDirectoryExist(objectDir));
+			return next();
+			//res.send('CHECK ROUTES ACTIVE II');
+			//res.end();
 
-			res.send('CHECK ROUTES ACTIVE II');
-			res.end();
-
-		    logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-		    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
-			console.log('res: ', res._header);
+		    //logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+		    //logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+			//console.log('res: ', res._header);
 			
 		} else {
 
