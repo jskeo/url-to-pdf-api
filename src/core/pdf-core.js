@@ -161,12 +161,12 @@ function logOpts(opts) {
   logger.info(`Rendering with opts: ${JSON.stringify(supressedOpts, null, 2)}`);
 }
 
-module.exports = function(render) {
-  var title = config.FILE_NAME;
-  const title = Object.assign(render);
-  return title; 
-};
-
-// module.exports = {
-//   render, 
+// module.exports = function(render) {
+//   var title = config.FILE_NAME;
+//   const title = Object.assign(render);
+//   return title; 
 // };
+
+module.exports = {
+  render, 
+};
