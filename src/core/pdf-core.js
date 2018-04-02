@@ -162,5 +162,5 @@ function logOpts(opts) {
 }
 
 module.exports = {
-  renderII, 
+  render, 
 };
