@@ -67,8 +67,15 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		console.log(objectPath);
     	console.log('file does exist');
     	//res.send('CHECK ROUTES ACTIVE I');
+    	const sendfileOpts = {
+		    dotfiles: 'deny',
+		    headers: {
+		        'x-timestamp': Date.now(),
+		        'x-sent': true
+		    }
+		  };
 
-    	res.sendFile(objectPath, options, function (err) {
+    	res.sendFile(objectPath, sendfileOpts, function (err) {
 		    if (err) {
 		      	const err = new Error('Internal Error VII');
 				err.status = 500;
@@ -80,7 +87,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 			  console.log('res: ', res._header);
 		    }
 		  });
-		  	    	
+
 	} else {
 		console.log(objectPath);
 		console.log('file does not exist');
