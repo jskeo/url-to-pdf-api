@@ -40,7 +40,7 @@ async function render(_opts = {}) {
   logOpts(opts);
 
   const browser = await puppeteer.launch({
-    headless: !config.DEBUG_MODE,
+  //headless: !config.DEBUG_MODE,
     ignoreHTTPSErrors: opts.ignoreHttpsErrors,
     args: ['--enable-sandbox', '--headless'],
   //  args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
