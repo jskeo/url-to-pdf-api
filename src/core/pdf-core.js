@@ -167,8 +167,9 @@ function logOpts(opts) {
 //   return title; 
 // };
 
-module.exports = function(render) {
-  var keyNames = Object.keys(render);
-  console.log(keyNames);
-  return render; 
+var keyNames = Object.keys(render);
+console.log(keyNames);
+
+module.exports = {
+  render,
 };
