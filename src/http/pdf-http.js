@@ -102,7 +102,7 @@ function getOptsFromQuery(query) {
     },
     pdf: {
       //path: query.pdf.path,
-      path: requestObjectPath;
+      path: requestObjectPath,
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],
