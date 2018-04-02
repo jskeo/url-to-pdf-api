@@ -66,12 +66,21 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	if (fs.existsSync(objectPath)) {
 		console.log(objectPath);
     	console.log('file does exist');
-    	res.send('CHECK ROUTES ACTIVE I');
+    	//res.send('CHECK ROUTES ACTIVE I');
 
-	    logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-	    logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
-		console.log('res: ', res._header);
-	
+    	res.sendFile(objectPath, options, function (err) {
+		    if (err) {
+		      	const err = new Error('Internal Error VII');
+				err.status = 500;
+				return next(err);
+		    } else {
+		      console.log('Sent:', objectPath);
+		      logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+	    	  logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+			  console.log('res: ', res._header);
+		    }
+		  });
+		  	    	
 	} else {
 		console.log(objectPath);
 		console.log('file does not exist');
