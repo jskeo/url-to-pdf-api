@@ -8,6 +8,7 @@ const isHex = require('is-hex');
 const responseTime = require('response-time');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
+const request = require('request');
 
 function doesDirectoryExist(directoryPath) {
 	try{	
@@ -59,9 +60,28 @@ function getRequestId (req) {
 	}
 };
 
+function checkIfTargetExists (targetUrl) {
+		 const options = {
+		  	method: HEAD,
+		  	url: targetUrl
+		  }
+		 try {
+		  request(options, callback) {
+		  if (callback == 200) { return true; } else { return false; }
+		  } catch (e) {
+			const err = new Error('Internal Error IX');
+			err.status = 500;
+			return next(err);
+		}
+	}
+}
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
+	const req_url = req.url.split("?url=").[1];
+	console.log(req_url);
+	console.log('Check if target exists');
+	console.log(checkIfTargetExists(req_url));
 	
 
 	console.log('CHECK ROUTES ACTIVE');
