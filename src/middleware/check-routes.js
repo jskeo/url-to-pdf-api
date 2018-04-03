@@ -48,6 +48,17 @@ function getRequestObjectPath (req) {
 	}
 };
 
+function getRequestId (req) {
+	try {
+	  const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+	  return requestId;
+	  } catch (e) {
+		const err = new Error('Internal Error VIII');
+		err.status = 500;
+		return next(err);
+	}
+};
+
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
@@ -74,7 +85,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		        'x-sent': true
 		    }
 		  };
-		
+
 		res.setHeader('Content-Disposition', 'inline; filename="' + config.FILE_NAME + '"');
     	res.sendFile(objectPath, sendfileOpts, function (err) {
 		    if (err) {

@@ -41,7 +41,7 @@ async function render(_opts = {}) {
 
   const browser = await puppeteer.launch({
   //headless: !config.DEBUG_MODE,
-    ignoreHTTPSErrors: opts.ignoreHttpsErrors,
+  //ignoreHTTPSErrors: opts.ignoreHttpsErrors,
     args: ['--enable-sandbox', '--headless'],
   //  args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
     //sloMo: config.DEBUG_MODE ? 250 : undefined,
@@ -78,6 +78,11 @@ async function render(_opts = {}) {
       logger.info(`Goto url ${opts.url} ..`);
       const response = await page.goto(opts.url, opts.goto);
       console.log(response.status);
+      if (response.status != 200) {
+        const err = new Error('Invalid Request XII');
+        err.status = 403;
+        return next(err);
+      }
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
     }
