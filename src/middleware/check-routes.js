@@ -66,9 +66,11 @@ function checkIfTargetExists (targetUrl) {
     method: 'HEAD',
 	};
 	try {
-		request(options, function(e, res) {  
+		request(options, function(e, res) {
+		let json = JSON.parse(res);
+    	console.log(json);
 		//return res.statusCode;
-		console.log(res.statusCode);
+		//console.log(res.statusCode);
 		});
 	} catch (e) {
 		const err = new Error('Internal Error IX');
