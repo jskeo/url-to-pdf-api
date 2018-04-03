@@ -81,7 +81,7 @@ async function render(_opts = {}) {
       if (response.status != 200) {
         const err = new Error('Invalid Request XII');
         err.status = 403;
-        return next(err);
+        return err;
       }
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
