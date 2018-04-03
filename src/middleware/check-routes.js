@@ -67,7 +67,7 @@ function checkIfTargetExists (targetUrl) {
 	};
 	rp(options)
     .then(function (res) {
-        console.log(res);
+        console.log(res.statusCode);
     })
     .catch(function (e) {
         throw e;
