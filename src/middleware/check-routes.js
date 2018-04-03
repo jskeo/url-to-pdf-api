@@ -67,7 +67,7 @@ function checkIfTargetExists (targetUrl) {
 	};
 	try {
 		request(options, function(e, res) {  
-		console.log(res);
+		console.log(res.status);
 		});
 	} catch (e) {
 		const err = new Error('Internal Error IX');
