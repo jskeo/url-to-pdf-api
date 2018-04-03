@@ -64,10 +64,11 @@ function checkIfTargetExists (targetUrl) {
 	const options = {  
     url: targetUrl,
     method: 'HEAD',
+    json: true
 	};
 	rp(options)
-    .then(function (res) {
-        console.log(res.statusCode);
+    .then(function (response) {
+        console.log(response.statusCode);
     })
     .catch(function (e) {
         console.log('error');
