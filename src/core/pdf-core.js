@@ -77,7 +77,7 @@ async function render(_opts = {}) {
     } else {
       logger.info(`Goto url ${opts.url} ..`);
       const response = await page.goto(opts.url, opts.goto);
-      console.log(response.headers);
+      console.log(response);
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
     }
