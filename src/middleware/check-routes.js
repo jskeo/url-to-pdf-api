@@ -62,7 +62,7 @@ function getRequestId (req) {
 
 function checkIfTargetExists (targetUrl) {
 		 try {
-		  request({	method: HEAD, url: targetUrl }, function (result, e) {
+		  request({	method: HEAD, url: targetUrl }, function (next, e) {
 		  if (callback == 200) { 
 		  	return true; 
 		  } else { 
