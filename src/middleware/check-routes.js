@@ -67,13 +67,14 @@ function checkIfTargetExists (targetUrl) {
 		  	return true; 
 		  } else { 
 		  	return false; 
-		  }})
+		  }});
+		}
 		  catch (e) {
 			const err = new Error('Internal Error IX');
 			err.status = 500;
 			return next(err);
 		}
-}};
+};
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
