@@ -61,20 +61,19 @@ function getRequestId (req) {
 };
 
 function checkIfTargetExists (targetUrl) {
-		 const options = {
-		  	method: HEAD,
-		  	url: targetUrl
-		  }
 		 try {
-		  request(options, callback) {
-		  if (callback == 200) { return true; } else { return false; }
-		  } catch (e) {
+		  request({	method: HEAD, url: targetUrl }, function (result, e) {
+		  if (callback == 200) { 
+		  	return true; 
+		  } else { 
+		  	return false; 
+		  }  
+		  catch (e) {
 			const err = new Error('Internal Error IX');
 			err.status = 500;
 			return next(err);
 		}
-	}
-}
+)}};
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
