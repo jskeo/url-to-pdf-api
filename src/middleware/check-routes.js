@@ -69,10 +69,10 @@ function checkIfTargetExists (targetUrl) {
     .then(function (res) {
         console.log(res);
     })
-    .catch(function (e, next) {
+    .catch(function (err) {
         const err = new Error('Internal Error IX');
 		err.status = 500;
-		return next(err);
+		return err;
     });
 };
 
