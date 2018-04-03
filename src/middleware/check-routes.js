@@ -8,7 +8,7 @@ const isHex = require('is-hex');
 const responseTime = require('response-time');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
-const request = require('request');
+const rp = require('request-promise');
 
 function doesDirectoryExist(directoryPath) {
 	try{	
@@ -65,16 +65,15 @@ function checkIfTargetExists (targetUrl) {
     url: targetUrl,
     method: 'HEAD',
 	};
-	try {
-		request(options, function(e, res) {
-		//return res.statusCode;
-		console.log(res.statusCode);
-		});
-	} catch (e) {
-		const err = new Error('Internal Error IX');
+	rp(options)
+    .then(function (res) {
+        console.log(res);
+    })
+    .catch(function (e) {
+        const err = new Error('Internal Error IX');
 		err.status = 500;
 		return next(err);
-	}
+    });
 };
 
 
