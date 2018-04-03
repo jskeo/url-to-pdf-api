@@ -67,7 +67,7 @@ function checkIfTargetExists (targetUrl) {
 	};
 	try {
 		request(options, function(e, res) {  
-		const responseStatus = res.get('statusCode');
+		const responseStatus = res;
 		return responseStatus;
 		//console.log(res.statusCode);
 		});
