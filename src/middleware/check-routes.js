@@ -67,9 +67,9 @@ function checkIfTargetExists (targetUrl) {
 	};
 	try {
 		request(options, function(e, res) {  
-		const responseStatus = res.statusCode;
+		const responseStatus = res.get('statusCode');
 		return responseStatus;
-		console.log(res.statusCode);
+		//console.log(res.statusCode);
 		});
 	} catch (e) {
 		const err = new Error('Internal Error IX');
