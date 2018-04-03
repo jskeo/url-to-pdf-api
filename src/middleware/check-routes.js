@@ -78,7 +78,7 @@ function checkIfTargetExists (targetUrl) {
 
 const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
-	const req_url = req.url.split("?url=").[1];
+	const req_url = req.url.split("?url=")[1];
 	console.log(req_url);
 	console.log('Check if target exists');
 	console.log(checkIfTargetExists(req_url));
