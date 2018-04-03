@@ -66,9 +66,8 @@ function checkIfTargetExists (targetUrl) {
     method: 'HEAD',
 	};
 	try {
-		request(options, function(e, res) {
-		let json = JSON.parse(res);
-    	console.log(json);
+		request.head(options, function(e, res) {
+		return res;
 		//return res.statusCode;
 		//console.log(res.statusCode);
 		});
