@@ -70,7 +70,7 @@ function checkIfTargetExists (targetUrl) {
         console.log(res.statusCode);
     })
     .catch(function (e) {
-        throw e;
+        console.log('error');
     });
 };
 
