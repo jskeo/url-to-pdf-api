@@ -60,20 +60,20 @@ function getRequestId (req) {
 	}
 };
 
-function checkIfTargetExists (targetUrl) {
-	const options = {  
-    url: targetUrl,
-    method: 'HEAD',
-    json: true
-	};
-	const responsePromise = await rp(options)
-    .then(function (response) {
-        console.log(response.statusCode);
-    })
-    .catch(function (e) {
-        console.log('error');
-    });
-};
+// function checkIfTargetExists (targetUrl) {
+// 	const options = {  
+//     url: targetUrl,
+//     method: 'HEAD',
+//     json: true
+// 	};
+// 	const responsePromise = await rp(options)
+//     .then(function (response) {
+//         console.log(response.statusCode);
+//     })
+//     .catch(function (e) {
+//         console.log('error');
+//     });
+// };
 
 
 
@@ -84,9 +84,9 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	const req_url = req.url.split("?url=")[1];
 	console.log(req_url);
-	console.log('Check if target exists');
-	const targetExists = checkIfTargetExists(req_url);
- 	console.log(targetExists);
+	// console.log('Check if target exists');
+	// const targetExists = checkIfTargetExists(req_url);
+ // 	console.log(targetExists);
 	
 
 	console.log('CHECK ROUTES ACTIVE');
