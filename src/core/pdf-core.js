@@ -84,10 +84,9 @@ async function render(_opts = {}) {
          const err = new Error('Invalid Request XII');
          err.status = 403;
          return err;
-       } } catch (em) {
-         const em = new Error('Invalid Request XIII');
-         em.status = 403;
-         return em;
+       } } catch (errorCarrier) {
+         console.log('Connection to target has been closed expected.')
+
        }
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
