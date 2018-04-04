@@ -86,7 +86,7 @@ async function render(_opts = {}) {
          return err;
        } } catch (em) {
          const em = new Error('Invalid Request XIII');
-         erro.status = 403;
+         em.status = 403;
          return em;
        }
       //logger.info(`Goto url ${opts.url} ..`);
