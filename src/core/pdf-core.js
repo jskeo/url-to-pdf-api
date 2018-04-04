@@ -84,10 +84,10 @@ async function render(_opts = {}) {
          const err = new Error('Invalid Request XII');
          err.status = 403;
          return err;
-       } } catch (err) {
-         const err = new Error('Invalid Request XIII');
-         err.status = 500;
-         return err;
+       } } catch (erro) {
+         const erro = new Error('Invalid Request XIII');
+         erro.status = 403;
+         return err0;
        }
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
