@@ -40,7 +40,7 @@ function createDirectory(directoryPath) {
 function getRequestObjectPath(req) {
 	try {
 	  const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
-	  const objectPath = process.cwd()+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
+	  const objectPath = config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
 	  return objectPath;
 	  } catch (e) {
 		const err = new Error('Internal Error V');
@@ -96,8 +96,8 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	console.log('requestId: ', requestId);
 	//const objectPath = '../saves/'+requestId;
 	const objectPath = getRequestObjectPath(req);
-	const objectDir = process.cwd()+config.SAVES_PATH+"/"+requestId;
-	console.log('CWD: ', process.cwd());
+	const objectDir = config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId;
+	console.log('CWD: ', config.WORKING_DIRECTORY);
 
 	if (fs.existsSync(objectPath)) {
 		console.log(objectPath);
@@ -133,7 +133,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		//
 		console.log(doesDirectoryExist(objectDir));
 
-		//fs.statSync(process.cwd()+config.SAVES_PATH+"/"+requestId).isDirectory();
+		//fs.statSync(config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId).isDirectory();
 		if (!doesDirectoryExist(objectDir)) {
 			console.log('Creating directory..');
 			createDirectory(objectDir);
@@ -159,7 +159,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		}
 		//
 		//console.log('Checking if dummy directory exists');
-		//console.log(fs.statSync(process.cwd()+config.SAVES_PATH).isDirectory());
+		//console.log(fs.statSync(config.WORKING_DIRECTORY+config.SAVES_PATH).isDirectory());
 	}
 
 	//
