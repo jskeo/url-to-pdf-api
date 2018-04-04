@@ -123,7 +123,7 @@ async function render(_opts = {}) {
     //await page.close();
     try {
     await browser.close();
-  } catch {
+  } catch (err) {
     logger.error(`Error when rendering page: ${err}`);
     logger.error(err.stack);
     throw err;
