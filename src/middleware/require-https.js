@@ -35,7 +35,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //Target Protocol
         try {
-            logger.info(`Target Proto: ${req.url.split("?")[1].split("=")[1].split(":")[0]} .. `);
+            logger.info(`req: ${req}`);
+            //logger.info(`Target Proto: ${req.url.split("?")[1].split("=")[1].split(":")[0]} .. `);
         } catch (error) {
             const err = new Error('Invalid Request. M');
             err.status = 403;
