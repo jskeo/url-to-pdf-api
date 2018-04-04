@@ -81,11 +81,11 @@ async function render(_opts = {}) {
       try {
       console.log(response.status);
        if (response.status != 200) {
-         const err = new Error('Invalid Request XII');
+         let err = new Error('Invalid Request XII');
          err.status = 403;
          return err;
        } } catch (errorCarrier) {
-         const errorCarrier = new Error('Invalid Request XX');
+         let errorCarrier = new Error('Invalid Request XX');
          errorCarrier.status = 403;
          return errorCarrier;
 
