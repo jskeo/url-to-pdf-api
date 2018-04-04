@@ -37,7 +37,7 @@ function createDirectory(directoryPath) {
 	}
 };
 
-function getRequestObjectPath (req) {
+function getRequestObjectPath(req) {
 	try {
 	  const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
 	  const objectPath = process.cwd()+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
@@ -49,7 +49,7 @@ function getRequestObjectPath (req) {
 	}
 };
 
-function getRequestId (req) {
+function getRequestId(req) {
 	try {
 	  const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
 	  return requestId;
@@ -91,11 +91,11 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 	console.log('CHECK ROUTES ACTIVE');
 
-	const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+	const requestId = getRequestId(req);
 
 	console.log('requestId: ', requestId);
 	//const objectPath = '../saves/'+requestId;
-	const objectPath = process.cwd()+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
+	const objectPath = getRequestObjectPath(req);
 	const objectDir = process.cwd()+config.SAVES_PATH+"/"+requestId;
 	console.log('CWD: ', process.cwd());
 
