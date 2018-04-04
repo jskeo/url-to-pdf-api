@@ -85,7 +85,9 @@ async function render(_opts = {}) {
          err.status = 403;
          return err;
        } } catch (errorCarrier) {
-         console.log('Connection to target has been closed expected.')
+         const errorCarrier = new Error('Invalid Request XX');
+         errorCarrier.status = 403;
+         return errorCarrier;
 
        }
       //logger.info(`Goto url ${opts.url} ..`);
