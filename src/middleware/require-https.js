@@ -12,7 +12,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             logger.info(`rawHeaders: ${req.rawHeaders} .. `);
             //console.log('Req: ', req);
         } catch (error) {
-            const err = new Error('Invalid Request.');
+            const err = new Error('Invalid Request. P');
             err.status = 403;
             return next(err);
         }
@@ -20,7 +20,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         try {
             logger.info(`Accept: ${req.get('Accept')} .. `);
         } catch (error) {
-            const err = new Error('Invalid Request.');
+            const err = new Error('Invalid Request. L');
             err.status = 403;
             return next(err);
         }
@@ -29,7 +29,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         try {
             logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
         } catch (error) {
-            const err = new Error('Invalid Request.');
+            const err = new Error('Invalid Request. Q');
             err.status = 403;
             return next(err);
         }
@@ -37,7 +37,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         try {
             logger.info(`Target Proto: ${req.url.split("?")[1].split("=")[1].split(":")[0]} .. `);
         } catch (error) {
-            const err = new Error('Invalid Request.');
+            const err = new Error('Invalid Request. M');
             err.status = 403;
             return next(err);
         }
@@ -45,7 +45,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         try {
             logger.info(`request_url: ${req.url} .. `);
         } catch (error) {
-            const err = new Error('Invalid Request.');
+            const err = new Error('Invalid Request. N');
             err.status = 403;
             return next(err);
         }
@@ -53,7 +53,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         try {
             logger.info(`request_url_length: ${req.url.length} .. `);
         } catch (error) {
-            const err = new Error('Invalid Request.');
+            const err = new Error('Invalid Request. U');
             err.status = 403;
             return next(err);
         }
@@ -74,7 +74,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         try {
             logger.info(`originalUrl: ${req.originalUrl} .. `);
         } catch (error) {
-            const err = new Error('Invalid Request.');
+            const err = new Error('Invalid Request. V');
             err.status = 403;
             return next(err);
         }
@@ -82,7 +82,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         try {
             console.log('_parsedUrl:    ', req._parsedUrl);
         } catch (error) {
-            const err = new Error('Invalid Request.');
+            const err = new Error('Invalid Request. E');
             err.status = 403;
             return next(err);
         }

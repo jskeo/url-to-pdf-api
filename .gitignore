@@ -3,6 +3,8 @@
 .DS_Store
 .idea
 package-lock.json
+ecosystem.config.js
+
 
 # Logs
 logs

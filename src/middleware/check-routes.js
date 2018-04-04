@@ -66,7 +66,7 @@ function checkIfTargetExists (targetUrl) {
     method: 'HEAD',
     json: true
 	};
-	rp(options)
+	const responsePromise = await rp(options)
     .then(function (response) {
         console.log(response.statusCode);
     })
