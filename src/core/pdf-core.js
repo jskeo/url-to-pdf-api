@@ -76,13 +76,14 @@ async function render(_opts = {}) {
       await page.goto(`data:text/html,${opts.html}`, opts.goto);
     } else {
       logger.info(`Goto url ${opts.url} ..`);
-      const response = await page.goto(opts.url, opts.goto);
-      console.log(response.status);
-      if (response.status != 200) {
-        const err = new Error('Invalid Request XII');
-        err.status = 403;
-        return err;
-      }
+      await page.goto(opts.url, opts.goto);
+      //const response = await page.goto(opts.url, opts.goto);
+      //console.log(response.status);
+      // if (response.status != 200) {
+      //   const err = new Error('Invalid Request XII');
+      //   err.status = 403;
+      //   return err;
+      // }
       //logger.info(`Goto url ${opts.url} ..`);
       //await page.goto(opts.url, opts.goto);
     }
