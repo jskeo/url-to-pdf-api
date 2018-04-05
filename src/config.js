@@ -20,6 +20,7 @@ const config = {
   BLACKLIST_ARRAY: process.env.BLACKLIST_ARRAY,
   QUEUE_LIMIT: process.env.QUEUE_LIMIT,
   SAVES_PATH: process.env.SAVES_PATH,
+  SAVES_SUB_PATH: process.env.SAVES_SUB_PATH,
   WORKING_DIRECTORY: process.env.WORKING_DIRECTORY,
   API_TOKENS: [],
 };

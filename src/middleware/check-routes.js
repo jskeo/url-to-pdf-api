@@ -8,7 +8,7 @@ const isHex = require('is-hex');
 const responseTime = require('response-time');
 const fs = require('fs');
 const mkdirp = require('mkdirp');
-const rp = require('request-promise');
+//const rp = require('request-promise');
 
 function doesDirectoryExist(directoryPath) {
 	try{	
