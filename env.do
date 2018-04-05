@@ -14,7 +14,7 @@ export REQUEST_URL_LENGTH_WITHOUT_FLAG_TESTING=79
 export TARGET_DOMAIN=admin.bottimmo.de
 export TARGET_DOMAIN_TESTING=bottimo.herokuapp.com
 export SAVES_PATH=/src/saves
-export SAVES_SUB_PATH=/Marktwert-Analyse
+export SAVES_SUB_PATH=/marktwert-analyse
 export WORKING_DIRECTORY=/var/www/url-to-pdf-api
 
 
