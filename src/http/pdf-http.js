@@ -21,7 +21,7 @@ function getRequestObjectPath (req) {
 function getStaticObjectPath (req) {
   try {
     const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
-    const objectPath = "/docs/"+requestId+"/"+config.FILE_NAME;
+    const staticObjectPath = "/docs/"+requestId+"/"+config.FILE_NAME;
     return staticObjectPath;
     } catch (e) {
     const err = new Error('Internal Error V');
