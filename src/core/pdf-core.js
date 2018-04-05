@@ -4,7 +4,7 @@ const config = require('../config');
 //const title = config.FILE_NAME;
 //const logger = require('../util/logger')(title);
 const logger = require('../util/logger')(__filename);
-
+const delay = require('delay');
 
 
 
@@ -116,7 +116,7 @@ async function render(_opts = {}) {
   } finally {
     logger.info('Closing browser..');
     //await page.close();
-    
+    await delay(100);
     await browser.close();
 
     // if (!config.DEBUG_MODE) {

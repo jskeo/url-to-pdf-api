@@ -27,6 +27,7 @@
     "compression": "^1.7.1",
     "cors": "^2.8.4",
     "ddos": "^0.1.28",
+    "delay": "^2.0.0",
     "express": "^4.15.5",
     "express-expeditious": "^3.2.1",
     "express-queue": "0.0.11",
