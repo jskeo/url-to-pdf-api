@@ -116,13 +116,9 @@ async function render(_opts = {}) {
   } finally {
     logger.info('Closing browser..');
     //await page.close();
-    try {
+    
     await browser.close();
-  } catch (err) {
-    logger.error(`Error when rendering page: ${err}`);
-    logger.error(err.stack);
-    throw err;
-  }
+
     // if (!config.DEBUG_MODE) {
     //   await browser.close();
     // }
