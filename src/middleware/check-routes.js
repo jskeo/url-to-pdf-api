@@ -40,7 +40,7 @@ function createDirectory(directoryPath) {
 function getRequestObjectPath(req) {
 	try {
 	  const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
-	  const objectPath = config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId+config.SAVES_SUB"/"+config.FILE_NAME;
+	  const objectPath = config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId+config.SAVES_SUB+"/"+config.FILE_NAME;
 	  return objectPath;
 	  } catch (e) {
 		const err = new Error('Internal Error V');
@@ -96,7 +96,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 	console.log('requestId: ', requestId);
 	//const objectPath = '../saves/'+requestId;
 	const objectPath = getRequestObjectPath(req);
-	const objectDir = config.WORKING_DIRECTORY+config.SAVES_PATH"/"+requestId+config.SAVES_SUB;
+	const objectDir = config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId+config.SAVES_SUB;
 	console.log('CWD: ', config.WORKING_DIRECTORY);
 
 	if (fs.existsSync(objectPath)) {
