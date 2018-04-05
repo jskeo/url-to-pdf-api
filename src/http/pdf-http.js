@@ -9,7 +9,7 @@ const logger = require('../util/logger')(__filename);
 function getRequestObjectPath (req) {
   try {
     const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
-    const objectPath = config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId+config.SAVES_SUB_PATH+"/"+config.FILE_NAME;
+    const objectPath = config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
     return objectPath;
     } catch (e) {
     const err = new Error('Internal Error V');
