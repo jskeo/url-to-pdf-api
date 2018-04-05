@@ -14,7 +14,7 @@ function getRequestObjectPath (req) {
     } catch (e) {
     const err = new Error('Internal Error V');
     err.status = 500;
-    return next(err);
+    return err;
   }
 };
 
@@ -26,7 +26,7 @@ function getStaticObjectPath (req) {
     } catch (e) {
     const err = new Error('Internal Error V');
     err.status = 500;
-    return next(err);
+    return err;
   }
 };
 
