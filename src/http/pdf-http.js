@@ -94,7 +94,7 @@ const postRender = ex.createRoute((req, res) => {
 function getOptsFromQuery(query, requestObjectPath) {
   const opts = {
     url: query.url,
-    attachmentName: config.FILE_NAME,
+    //attachmentName: config.FILE_NAME,
     scrollPage: query.scrollPage,
     emulateScreenMedia: query.emulateScreenMedia,
     ignoreHttpsErrors: query.ignoreHttpsErrors,
