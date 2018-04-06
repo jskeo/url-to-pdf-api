@@ -111,7 +111,7 @@ async function render(_opts = {}) {
             err.status = 403;
             return next(err);
           }
-      ).pdf(opts.pdf);
+      ).delay(400).pdf(opts.pdf);
   } catch (err) {
     logger.error(`Error when rendering page: ${err}`);
     logger.error(err.stack);
