@@ -39,14 +39,15 @@ async function render(_opts = {}) {
 
   logOpts(opts);
 
+  if (!browser) {
   const browser = await puppeteer.launch({
   //headless: !config.DEBUG_MODE,
   //ignoreHTTPSErrors: opts.ignoreHttpsErrors,
     args: ['--enable-sandbox', '--headless'],
-    sloMo: 250,
   //  args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
     //sloMo: config.DEBUG_MODE ? 250 : undefined,
   });
+  }
   const page = await browser.newPage();
 
   page.on('console', (...args) => logger.info('PAGE LOG:', ...args));
@@ -117,9 +118,9 @@ async function render(_opts = {}) {
   } finally {
     //await delay(2000);
     logger.info('Closing browser..');
-    //await page.close();
+    await page.close();
     
-    setTimeout(() => {browser.close().catch(e => console.error(e));}, 2000);
+    //setTimeout(() => {browser.close().catch(e => console.error(e));}, 2000);
 
     //await browser.close();
 
