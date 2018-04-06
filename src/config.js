@@ -6,6 +6,7 @@ const config = {
   PORT: Number(process.env.PORT) || 9000,
   NODE_ENV: process.env.NODE_ENV,
   LOG_LEVEL: process.env.LOG_LEVEL,
+  HOST_DOMAIN: process.env.HOST_DOMAIN,
   ALLOW_HTTP: process.env.ALLOW_HTTP === 'false',
   DEBUG_MODE: process.env.DEBUG_MODE === 'true',
   ALLOW_POST: process.env.ALLOW_POST === 'false',
@@ -20,7 +21,6 @@ const config = {
   BLACKLIST_ARRAY: process.env.BLACKLIST_ARRAY,
   QUEUE_LIMIT: process.env.QUEUE_LIMIT,
   SAVES_PATH: process.env.SAVES_PATH,
-  SAVES_SUB_PATH: process.env.SAVES_SUB_PATH,
   WORKING_DIRECTORY: process.env.WORKING_DIRECTORY,
   API_TOKENS: [],
 };
