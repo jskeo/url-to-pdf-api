@@ -114,9 +114,10 @@ async function render(_opts = {}) {
     logger.error(err.stack);
     throw err;
   } finally {
+    await delay(500);
     logger.info('Closing browser..');
     //await page.close();
-    await delay(100);
+    
     await browser.close();
 
     // if (!config.DEBUG_MODE) {
