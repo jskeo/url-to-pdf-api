@@ -47,8 +47,8 @@ const getRender = ex.createRoute((req, res) => {
       //cache-control headers
       //res.set('Cache-Control', 'public, max-age=10800000'); // 34560 30 seconds, 345600 4 days, 10800000 3h
       //res.set('Expires', new Date(Date.now() + 10800000).toUTCString());
-
-      res.send(data);
+      res.redirect("https://"+config.HOST_DOMAIN+staticObjectPath);
+      //res.send(data);
       //console.log('res.headers: ', res.req.headers);
       logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
       logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
@@ -110,8 +110,8 @@ function getOptsFromQuery(query, requestObjectPath) {
     goto: {
       timeout: query['goto.timeout'],
       waitUntil: query['goto.waitUntil'],
-      networkIdleInflight: query['goto.networkIdleInflight'],
-      networkIdleTimeout: query['goto.networkIdleTimeout'],
+      //networkIdleInflight: query['goto.networkIdleInflight'],
+      //networkIdleTimeout: query['goto.networkIdleTimeout'],
     },
     pdf: {
       //path: query.pdf.path,
