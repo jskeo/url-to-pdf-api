@@ -43,6 +43,7 @@ async function render(_opts = {}) {
   //headless: !config.DEBUG_MODE,
   //ignoreHTTPSErrors: opts.ignoreHttpsErrors,
     args: ['--enable-sandbox', '--headless'],
+    sloMo: 250,
   //  args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
     //sloMo: config.DEBUG_MODE ? 250 : undefined,
   });
