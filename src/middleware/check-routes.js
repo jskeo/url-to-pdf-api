@@ -49,6 +49,18 @@ function getRequestObjectPath(req) {
 	}
 };
 
+function getStaticObjectPath (req) {
+  try {
+    const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+    const staticObjectPath = "/docs/"+requestId+"/"+config.FILE_NAME;
+    return staticObjectPath;
+    } catch (e) {
+    const err = new Error('Internal Error V');
+    err.status = 500;
+    return err;
+  }
+};
+
 function getRequestId(req) {
 	try {
 	  const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
@@ -103,27 +115,34 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		console.log(objectPath);
     	console.log('file does exist');
     	//res.send('CHECK ROUTES ACTIVE I');
-    	const sendfileOpts = {
-		    dotfiles: 'deny',
-		    headers: {
-		        'x-timestamp': Date.now(),
-		        'x-sent': true
-		    }
-		  };
+    	const staticObjectPath = getStaticObjectPath (req);
+    	res.setHeader('Content-Disposition', 'inline; filename="' + config.FILE_NAME + '"');
+    	res.redirect(200, staticObjectPath);
+    	logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+	 	logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+		console.log('res: ', res._header);
+    	
+  //   	const sendfileOpts = {
+		//     dotfiles: 'deny',
+		//     headers: {
+		//         'x-timestamp': Date.now(),
+		//         'x-sent': true
+		//     }
+		//   };
 
-		res.setHeader('Content-Disposition', 'inline; filename="' + config.FILE_NAME + '"');
-    	res.sendFile(objectPath, sendfileOpts, function (err) {
-		    if (err) {
-		      	const err = new Error('Internal Error VII');
-				err.status = 500;
-				return next(err);
-		    } else {
-		      console.log('Sent:', objectPath);
-		      logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
-	    	  logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
-			  console.log('res: ', res._header);
-		    }
-		  });
+		// res.setHeader('Content-Disposition', 'inline; filename="' + config.FILE_NAME + '"');
+  //   	res.sendFile(objectPath, sendfileOpts, function (err) {
+		//     if (err) {
+		//       	const err = new Error('Internal Error VII');
+		// 		err.status = 500;
+		// 		return next(err);
+		//     } else {
+		//       console.log('Sent:', objectPath);
+		//       logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+	 //    	  logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+		// 	  console.log('res: ', res._header);
+		//     }
+		//   });
 
 	} else {
 		console.log(objectPath);
