@@ -118,7 +118,7 @@ async function render(_opts = {}) {
     //await delay(2000);
     logger.info('Closing browser..');
     await page.close();
-    
+    await browser.close();
     //setTimeout(() => {browser.close().catch(e => console.error(e));}, 2000);
 
     //await browser.close();
