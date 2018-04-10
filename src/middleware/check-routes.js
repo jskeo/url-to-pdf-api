@@ -26,16 +26,12 @@ function doesDirectoryExist(directoryPath) {
 		}
 };
 
-function createDirectory(directoryPath) {    
-	try {
-	mkdirp(directoryPath);
+function createDirectory(directoryPath) {    	
+	mkdirp.sync(directoryPath);
 	console.log('pow! directory created:', directoryPath);
-	} catch (e) {
-		const err = new Error('Internal Error IV');
-		err.status = 500;
-		return next(err);
-	}
 };
+
+
 
 function getRequestObjectPath(req) {
 	try {
@@ -155,9 +151,17 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 		//fs.statSync(config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId).isDirectory();
 		if (!doesDirectoryExist(objectDir)) {
 			console.log('Creating directory..');
-			createDirectory(objectDir);
+			try { 
+				createDirectory(objectDir);
+					} catch (e) {
+				const err = new Error('Internal Error IV');
+				err.status = 500;
+				console.log('Error inside createDirectory')
+				return next(err);
+			}
 			console.log('Checking again if directory exists..');
 			console.log(doesDirectoryExist(objectDir));
+			
 			return next();
 			//res.send('CHECK ROUTES ACTIVE II');
 			//res.end();
