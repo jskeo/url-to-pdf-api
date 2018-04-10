@@ -170,7 +170,7 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 		console.log('getRequestObjectPath function check:', getRequestObjectPath(req));
 
-		res.send('CHECK ROUTES ACTIVE III');
+		res.send('Please reload page');
 
 		logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
 		logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
