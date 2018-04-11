@@ -20,9 +20,9 @@ async function render(_opts = {}) {
       height: 1200,
     },
     goto: {
-      //waitUntil: 'networkidle0',
+      waitUntil: 'networkidle0',
       //waitUntil: 'networkidle2',
-      waitUntil: 'load',
+      //waitUntil: 'load',
       //networkIdleTimeout: 2000,
     },
     pdf: {
