@@ -1,9 +1,11 @@
 const puppeteer = require('puppeteer');
 const _ = require('lodash');
 const config = require('../config');
-const title = config.FILE_NAME;
+//const title = config.FILE_NAME;
 //const logger = require('../util/logger')(title);
 const logger = require('../util/logger')(__filename);
+const delay = require('delay');
+
 
 
 async function render(_opts = {}) {
@@ -18,14 +20,18 @@ async function render(_opts = {}) {
       height: 1200,
     },
     goto: {
-      waitUntil: 'networkidle',
-      networkIdleTimeout: 2000,
+      waitUntil: 'networkidle0',
+      //waitUntil: 'networkidle2',
+      //waitUntil: 'load',
+      //networkIdleTimeout: 2000,
     },
     pdf: {
       format: 'A4',
       printBackground: true,
     },
   }, _opts);
+
+  
 
   if (_.get(_opts, 'pdf.width') && _.get(_opts, 'pdf.height')) {
     // pdf.format always overrides width and height, so we must delete it
@@ -36,11 +42,13 @@ async function render(_opts = {}) {
   logOpts(opts);
 
   const browser = await puppeteer.launch({
-    headless: !config.DEBUG_MODE,
-    ignoreHTTPSErrors: opts.ignoreHttpsErrors,
-    args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
-    sloMo: config.DEBUG_MODE ? 250 : undefined,
+  //headless: !config.DEBUG_MODE,
+  //ignoreHTTPSErrors: opts.ignoreHttpsErrors,
+    args: ['--enable-sandbox', '--headless'],
+  //  args: ['--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
+    //sloMo: config.DEBUG_MODE ? 250 : undefined,
   });
+  
   const page = await browser.newPage();
 
   page.on('console', (...args) => logger.info('PAGE LOG:', ...args));
@@ -72,6 +80,10 @@ async function render(_opts = {}) {
     } else {
       logger.info(`Goto url ${opts.url} ..`);
       await page.goto(opts.url, opts.goto);
+      //const response = await page.goto(opts.url, opts.goto);      
+      //console.log(response.status);
+      //logger.info(`Goto url ${opts.url} ..`);
+      //await page.goto(opts.url, opts.goto);
     }
 
     if (_.isNumber(opts.waitFor) || _.isString(opts.waitFor)) {
@@ -105,8 +117,14 @@ async function render(_opts = {}) {
     logger.error(err.stack);
     throw err;
   } finally {
+    //await delay(2000);
     logger.info('Closing browser..');
+    await page.close();
     await browser.close();
+    //setTimeout(() => {browser.close().catch(e => console.error(e));}, 2000);
+
+    //await browser.close();
+
     // if (!config.DEBUG_MODE) {
     //   await browser.close();
     // }
@@ -154,6 +172,8 @@ function logOpts(opts) {
   logger.info(`Rendering with opts: ${JSON.stringify(supressedOpts, null, 2)}`);
 }
 
+
+
 module.exports = {
-  render, 
+  render,
 };

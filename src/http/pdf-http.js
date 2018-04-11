@@ -1,18 +1,64 @@
+
 const _ = require('lodash');
 const ex = require('../util/express');
 const config = require('../config');
 const pdfCore = require('../core/pdf-core');
 const pageTitle = config.FILE_NAME;
+const logger = require('../util/logger')(__filename);
+
+function getRequestObjectPath (req) {
+  try {
+    const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+    const objectPath = config.WORKING_DIRECTORY+config.SAVES_PATH+"/"+requestId+"/"+config.FILE_NAME;
+    return objectPath;
+    } catch (e) {
+    const err = new Error('Internal Error V');
+    err.status = 500;
+    return err;
+  }
+};
+
+function getStaticObjectPath (req) {
+  try {
+    const requestId = req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3];
+    const staticObjectPath = "/docs/"+requestId+"/"+config.FILE_NAME;
+    return staticObjectPath;
+    } catch (e) {
+    const err = new Error('Internal Error V');
+    err.status = 500;
+    return err;
+  }
+};
 
 const getRender = ex.createRoute((req, res) => {
-  const opts = getOptsFromQuery(req.query);
+  const requestObjectPath = getRequestObjectPath(req);
+  const staticObjectPath = getStaticObjectPath (req);
+  const opts = getOptsFromQuery(req.query, requestObjectPath);
+
   return pdfCore.render(opts)
     .then((data) => {
       if (opts.attachmentName) {
         res.attachment(opts.attachmentName);
       }
+      //console.log('opts pdf path:', opts.pdf.path);
+      //console.log('query pdf path:', req.query.pdf.path);
+      console.log('request query:', req.query);
       res.set('content-type', 'application/pdf');
-      res.send(data);
+      //cache-control headers
+      //res.set('Cache-Control', 'public, max-age=10800000'); // 34560 30 seconds, 345600 4 days, 10800000 3h
+      //res.set('Expires', new Date(Date.now() + 10800000).toUTCString());
+      res.redirect("https://"+config.HOST_DOMAIN+staticObjectPath);
+      //res.send(data);
+      //console.log('res.headers: ', res.req.headers);
+      logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+      logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+      console.log('req.headers: ', req.headers);
+      console.log('res: ', res._headers);
+      console.log(staticObjectPath);
+      //console.log('res.get(): ');
+      //console.log(req.get('X-Forwarded-For'));
+      //console.log('res.statusCode: ', res.statusCode);
+      //console.log('res.statusMessage: ', res.statusMessage);
     });
 });
 
@@ -45,10 +91,10 @@ const postRender = ex.createRoute((req, res) => {
     });
 });
 
-function getOptsFromQuery(query) {
+function getOptsFromQuery(query, requestObjectPath) {
   const opts = {
     url: query.url,
-    attachmentName: config.FILE_NAME,
+    //attachmentName: config.FILE_NAME,
     scrollPage: query.scrollPage,
     emulateScreenMedia: query.emulateScreenMedia,
     ignoreHttpsErrors: query.ignoreHttpsErrors,
@@ -64,10 +110,12 @@ function getOptsFromQuery(query) {
     goto: {
       timeout: query['goto.timeout'],
       waitUntil: query['goto.waitUntil'],
-      networkIdleInflight: query['goto.networkIdleInflight'],
-      networkIdleTimeout: query['goto.networkIdleTimeout'],
+      //networkIdleInflight: query['goto.networkIdleInflight'],
+      //networkIdleTimeout: query['goto.networkIdleTimeout'],
     },
     pdf: {
+      //path: query.pdf.path,
+      path: requestObjectPath,
       scale: query['pdf.scale'],
       displayHeaderFooter: query['pdf.displayHeaderFooter'],
       landscape: query['pdf.landscape'],

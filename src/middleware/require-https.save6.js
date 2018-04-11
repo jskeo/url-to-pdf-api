@@ -4,23 +4,37 @@ const config = require('../config');
 const bodyParser = require('body-parser');
 const expressSanitizer = require('express-sanitizer');
 const logger = require('../util/logger')(__filename);
-const isHex = require('is-hex');
 
 const createRequireHttps = () => function RequireHttps(req, res, next) {
+        //req
+        //
 
+        // try {
+        //     console.log('rawHeaders:    ', req);
+        // } catch (error) {
+        //     const err = new Error('Invalid Request.');
+        //     err.status = 403;
+        //     return next(err);
+        // }
+        // 
+        // 
+     
+
+        //rawHeaders Array
         try {
             logger.info(`rawHeaders: ${req.rawHeaders} .. `);
-            //console.log('Req: ', req);
+            //console.log('rawHeaders:    ', req.rawHeaders);
         } catch (error) {
-            const err = new Error('Invalid Request. P');
+            const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
         }
         //Accept
         try {
             logger.info(`Accept: ${req.get('Accept')} .. `);
+            //console.log('Accept:   ', req.rawHeaders[9]);
         } catch (error) {
-            const err = new Error('Invalid Request. L');
+            const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
         }
@@ -28,39 +42,50 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         //AWS Load Balancer
         try {
             logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+            //logger.info(`X-Forwarded-Proto: ${req.get('X-Forwarded-Proto')} .. `);
+            //console.log('X-Forwarded-Proto:   ', req.rawHeaders[21]);
+            
         } catch (error) {
-            const err = new Error('Invalid Request. Q');
+            const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
         }
-        //Target Protocol
+        //AWS Load Balancer
         try {
-            //logger.info(`req: ${req}`);
             logger.info(`Target Proto: ${req.url.split("?")[1].split("=")[1].split(":")[0]} .. `);
+            //console.log('X-Forwarded-Port:  ', req.rawHeaders[23]);
+            // if (req.rawHeaders[23] != 443) {
+            //     const err = new Error('Invalid Request. 0112');
+            //     err.status = 403;
+            //     return next(err);
+            // }
         } catch (error) {
-            const err = new Error('Invalid Request. M');
+            const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
         }
         //request_url
         try {
             logger.info(`request_url: ${req.url} .. `);
+            //console.log('request_url:       ', req.url);
         } catch (error) {
-            const err = new Error('Invalid Request. N');
+            const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
         }
         //request_url_length
         try {
             logger.info(`request_url_length: ${req.url.length} .. `);
+            //console.log('request_url_length:    ', req.url.length);
         } catch (error) {
-            const err = new Error('Invalid Request. U');
+            const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
         }
         //Check if method is GET, request_method should be GET
         try {
             logger.info(`request_method: ${req.method} .. `);
+            //console.log('request_method:    ', req.method);
             if (req.method != "GET") {
                 const err = new Error('Invalid Request. I');
                 err.status = 403;
@@ -74,21 +99,24 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         //original_url
         try {
             logger.info(`originalUrl: ${req.originalUrl} .. `);
+            //console.log('originalUrl:   ', req.originalUrl);
         } catch (error) {
-            const err = new Error('Invalid Request. V');
+            const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
         }
         //parsed_url
         try {
+            //logger.info(`_parsedUrl: ${req._parsedUrl} .. `);
             console.log('_parsedUrl:    ', req._parsedUrl);
         } catch (error) {
-            const err = new Error('Invalid Request. E');
+            const err = new Error('Invalid Request.');
             err.status = 403;
             return next(err);
         }
         //params
         try {
+            //logger.info(`params: ${req.params[0]} .. `);
             console.log('params', req.params);
         } catch (error) {
             const err = new Error('Invalid Request Params.');
@@ -97,6 +125,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         }
         //query
         try {
+            //logger.info(`query: ${req.query.url} .. `);
             console.log('query      ', req.query);
         } catch (error) {
             const err = new Error('Invalid Request Query.');
@@ -107,13 +136,18 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
         //path to api
         try {
             logger.info(`requestPathApi: ${req.url.split("?")[0]} .. `);
+            //console.log('requestPathToApi:         ', req.url.split("?")[0]);
             var requestApiPath = req.url.split("?")[0];
             logger.info(`requestPathApi: ${requestApiPath} .. `);
+            //console.log(requestApiPath);
             logger.info(`requestPathApi Length: ${requestApiPath.length} .. `);
+            //console.log(requestApiPath.length);
             var check_path = '/api/render';
             logger.info(`check_path: ${check_path} .. `);
+            //console.log(check_path)
             if (requestApiPath == check_path) {
                 logger.info(`requestPathToApi OK .. `);
+                //console.log('requestPathToApi OK');
             } else {
                 const err = new Error('Invalid Request Path.');
                 err.status = 403;
@@ -138,6 +172,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 requestStruc_c == 'pdfs'
             ) {
                 logger.info(`Request API path structure OK .. `);
+                //console.log('Request API path structure OK');
             } else {
                 const err = new Error('Invalid Request Query. 1');
                 err.status = 403;
@@ -149,6 +184,23 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             return next(err);
         };
 
+
+        // //requestId
+        // try {
+        //     console.log('requestId:         ', req.url.split("?")[1].split("=")[1].split(":")[1].split("//")[2].split("/")[3].split("&")[0]);
+        // } catch (error) {
+        //     const err = new Error('Invalid Request. 1');
+        //     err.status = 403;
+        //     return next(err);
+        // }
+        // //tracking_flag
+        // try {
+        //     console.log('requestId:         ', req.url.split("&")[1]);
+        // } catch (error) {
+        //     const err = new Error('Invalid Request. 12');
+        //     err.status = 403;
+        //     return next(err);
+        // }
 
             try {
                 var target = req.url.split("?")[1].split("=")[1].split(":")[1].split("/")[2];
@@ -170,12 +222,9 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                 console.log('requestUrl:        ', requestUrl);
                 console.log(requestUrlLength);
                 console.log(requestId);
-                isHex(requestId);
-                console.log('is Hex?', isHex(requestId));
-                console.log(requestIdLength);
-                if (requestIdLength == 20 && isHex(requestId)) {
+                console.log(requestIdLength)
+                if (requestIdLength == 20) {
                     console.log('requestIdLength check pass', requestIdLength);
-                    //res.setHeader('request-id', requestId);
                 }
                 else if (requestIdLength == 28) {
                     var requestUrl = req.url.replace("&", "?");
@@ -186,16 +235,7 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                     console.log('Flag:', sendgridFlag);
                     //must be length 12
                     console.log(sendgridFlagLength);
-                    console.log('prepared requestID', requestId);
-                    console.log('is Hex?', isHex(requestId));
-                    if (requestIdLength == 20 && isHex(requestId)) {
-                        console.log('requestIdLength check pass', requestIdLength);
-                        //res.setHeader('request-id', requestId);
-                    } else {
-                    const err = new Error('Invalid Request. ID 6 III');
-                    err.status = 403;
-                    return next(err);
-                    }
+                    console.log('prepared requestID', requestId)
                 } else {
                     const err = new Error('Invalid Request. ID 6');
                     err.status = 403;
@@ -211,9 +251,16 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
             }
 
 
+
+
+
+
         // Allow requests only over https
         if (req.url.split("?")[1].split("=")[1].split(":")[0] === 'https') {
             // Cut request into pieces
+
+
+
             // Check TARGET_DOMAIN ENV Var matches target domain, check length of ID and target route 
             if (requestUrlLength == config.REQUEST_URL_LENGTH || requestUrlLength == config.REQUEST_URL_LENGTH_TESTING) {
                 if (config.TARGET_DOMAIN == target || config.TARGET_DOMAIN_TESTING == target) {
@@ -233,11 +280,8 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log(sendgridFlagLength);
                             if (sendgridFlagLength == 12 && sendgridFlag == 'utm_swu=4551') {
                                 req.url = requestUrl;
-                                req_query_url = req.url.split("?url=")[1];
                                 req.originalUrl = req.url;
-                                req.query = { url: req_query_url
-                                  //  , pdf: { path: requestId + '.pdf' } 
-                                };
+                                req.query = { url: req.url.split("?url=")[1] };
                                 console.log(req.url);
                                 console.log(req.query);
                                 console.log('Inside with Flag, req:');
@@ -293,25 +337,12 @@ const createRequireHttps = () => function RequireHttps(req, res, next) {
                             console.log('Inside without Flag, req.url, req.query:')
                             //console.log(req);
                             console.log(req.url);
-                            req_query_url = req.url.split("?url=")[1];
-                            req.query = { url: req_query_url
-                            //    ,pdf: { path: requestId + '.pdf' } 
-                            };
                             console.log(req.query);
-                            console.log('Inside without Flag, req.path, req.originalUrl, req_query_url:');
+                            console.log('Inside without Flag, req.path, req.originalUrl, req_parsedUrl:');
                             console.log(req.path);
                             console.log(req.originalUrl);
                             console.log(req._parsedUrl);
-                            console.log('req_query_url', req_query_url);
-                            
                             return next();
-
-                
-
-
-
-
-
                             }   else {
                                 // Request ID Length error
                                 const err = new Error('Invalid Request. 4 IV');

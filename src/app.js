@@ -15,26 +15,29 @@ const createRouter = require('./router');
 const config = require('./config');
 const sixtyDaysInSeconds = 5184000;
 const ddos = new Ddos({burst:2, limit:3});
-var queue = require('express-queue');
-var nodeFip = require('node-fip');
- 
+const queue = require('express-queue');
+const nodeFip = require('node-fip');
+const responseTime = require('response-time');
+const checkRoutes = require('./middleware/check-routes');
 
 
 function createApp() {
 
 
   const app = express();
+  
+
   // App is served behind Heroku's router.
   // This is needed to be able to use req.ip or req.secure
   app.enable('trust proxy', 1);
   app.disable('x-powered-by');
 
-  console.log('BLACKLIST_ARRAY:', config.BLACKLIST_ARRAY);
+  //console.log('BLACKLIST_ARRAY:', config.BLACKLIST_ARRAY);
 
   app.use(nodeFip({
     mode: 'blacklist',
     proxy: false,
-    ips: config.BLACKLIST_ARRAY
+    ips: ['23.101.61.176', '54.85.176.102', '52.71.192.87', '52.91.127.96', '54.164.194.74', '52.91.66.162', '52.71.220.216']
   }));
 
 
@@ -49,14 +52,21 @@ function createApp() {
   
   app.use(favicon(path.join(__dirname, 'images', 'favicon.ico')));
 
+  app.use(responseTime());
+
   app.use(queue({ activeLimit: 1, queuedLimit: -1 }));
+
+  app.use(express.static('saves'));
 
   logger.info('All requests require HTTPS.');
   app.use(requireHttps());
 
+  logger.info('Checking Routes.');
+  app.use(checkRoutes());
+
+
+
   
-
-
   // if (!config.ALLOW_HTTP) {
   //   logger.info('All requests require HTTPS.');
   //   app.use(requireHttps());
@@ -83,7 +93,8 @@ function createApp() {
     threshold: 10,
   }));
 
-  
+
+
 
   // Initialize routes
   const router = createRouter();
@@ -92,6 +103,7 @@ function createApp() {
 
   app.use(errorLogger());
   app.use(errorResponder());
+
 
   return app;
 }
