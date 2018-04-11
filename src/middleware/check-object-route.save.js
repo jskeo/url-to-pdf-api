@@ -174,10 +174,12 @@ const createCheckRoutes = () => function checkRoutes(req, res, next) {
 
 		console.log('getRequestObjectPath function check:', getRequestObjectPath(req));
 
-		console.log('Check routes case III..');
-		console.log(doesDirectoryExist(objectDir));
-			
-		return next();
+		res.send('Please reload page');
+
+		logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
+		logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
+		console.log('res: ', res._header);
+		}
 		//
 		//console.log('Checking if dummy directory exists');
 		//console.log(fs.statSync(config.WORKING_DIRECTORY+config.SAVES_PATH).isDirectory());
