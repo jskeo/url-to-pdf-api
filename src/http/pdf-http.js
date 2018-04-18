@@ -52,7 +52,8 @@ const getRender = ex.createRoute((req, res) => {
       //console.log('res.headers: ', res.req.headers);
       logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
       logger.info(`Status Code: ${res.statusCode} | Status Message ${res.statusMessage} | Response time ${res.get('X-Response-Time')} ..`);
-      console.log('req.headers: ', req.headers);
+      console.log('req', req.getHeaders());
+      //console.log('req.headers: ', req.headers);
       console.log('res', res.getHeaders());
       //console.log('res: ', res._headers);
       console.log(staticObjectPath);
