@@ -49,9 +49,8 @@ const getRender = ex.createRoute((req, res) => {
       //res.set('Cache-Control', 'public, max-age=10800000'); // 34560 30 seconds, 345600 4 days, 10800000 3h
       //res.set('Expires', new Date(Date.now() + 10800000).toUTCString());
       res.set("Connection", "close");
-      res.setTimeout(250);
-      res.redirect("https://"+config.HOST_DOMAIN+staticObjectPath);
-      res.end();
+      res.redirect("https://"+config.HOST_DOMAIN+staticObjectPath).end();
+      //res.end();
       //res.send(data);
       //console.log('res.headers: ', res.req.headers);
       logger.info(`X-Forwarded-For: ${req.get('X-Forwarded-For')} .. `);
