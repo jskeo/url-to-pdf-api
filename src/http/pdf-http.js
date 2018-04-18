@@ -49,6 +49,7 @@ const getRender = ex.createRoute((req, res) => {
       //res.set('Cache-Control', 'public, max-age=10800000'); // 34560 30 seconds, 345600 4 days, 10800000 3h
       //res.set('Expires', new Date(Date.now() + 10800000).toUTCString());
       res.set("Connection", "close");
+      res.shouldKeepAlive = false;
       res.redirect("https://"+config.HOST_DOMAIN+staticObjectPath);
       res.end();
       //res.send(data);
