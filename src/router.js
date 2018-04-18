@@ -37,7 +37,7 @@ function createRouter() {
     };
 
 
-    router.get('/api/render', validate(getRenderSchema), pdf.getRender);
+    router.get('/api/render', validate(getRenderSchema), pdf.getRender, res.end());
 
     // const postRenderSchema = {
     //   body: renderBodySchema,
