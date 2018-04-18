@@ -43,7 +43,8 @@ const getRender = ex.createRoute((req, res) => {
       //console.log('opts pdf path:', opts.pdf.path);
       //console.log('query pdf path:', req.query.pdf.path);
       console.log('request query:', req.query);
-      res.set('content-type', 'application/pdf');
+      //res.set('content-type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'inline; filename="' + config.FILE_NAME + '"');
       //cache-control headers
       //res.set('Cache-Control', 'public, max-age=10800000'); // 34560 30 seconds, 345600 4 days, 10800000 3h
       //res.set('Expires', new Date(Date.now() + 10800000).toUTCString());
